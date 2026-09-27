@@ -4,7 +4,7 @@
 #        ./bin/package-release.sh          # only when HEAD is an exact git tag
 # Does not ship vendor/ — run composer install on the host after deploy.
 # Env: SKIP_ASSETS=1 — skip npm ci/build when public/ assets are already built
-#      SKIP_ARCHIVE=1 — keep dist/mt2-cms-VERSION/ only (no .tar.gz)
+#      SKIP_ARCHIVE=1 — keep dist/metin2-website-VERSION/ only (no .tar.gz)
 set -eu
 
 ROOT="$(CDPATH= cd -- "$(dirname "$0")/.." && pwd)"
@@ -28,7 +28,7 @@ case "$VERSION" in
   v*) VERSION="${VERSION#v}" ;;
 esac
 
-NAME="mt2-cms-${VERSION}"
+NAME="metin2-website-${VERSION}"
 OUT_DIR="${OUT_DIR:-$ROOT/dist}"
 STAGE="$OUT_DIR/$NAME"
 ARCHIVE="$OUT_DIR/${NAME}.tar.gz"

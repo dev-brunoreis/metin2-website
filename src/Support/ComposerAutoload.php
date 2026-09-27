@@ -60,7 +60,7 @@ final class ComposerAutoload
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dependencies not installed — Mt2 CMS</title>
+    <title>Dependencies not installed — Metin2 website</title>
     <style>
         body { margin: 0; min-height: 100vh; background: #020617; color: #f1f5f9; font-family: ui-sans-serif, system-ui, sans-serif; line-height: 1.5; }
         main { max-width: 32rem; margin: 0 auto; padding: 3rem 1rem; }

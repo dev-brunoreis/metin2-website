@@ -1,5 +1,5 @@
 {
-  "name": "mt2-cms",
+  "name": "metin2-website",
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -i resources/css/app.css -o public/css/app.css --minify",

@@ -1,5 +1,5 @@
 {
-    "name": "dev-brunoreis/mt2-cms",
+    "name": "dev-brunoreis/metin2-website",
     "autoload": {
         "psr-4": {
             "Mt2Cms\\": "src/"

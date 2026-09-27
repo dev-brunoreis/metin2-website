@@ -11,6 +11,6 @@ A public theme is a folder next to `default`. It overlays Twig, layout JSON, and
 3. Edit `assets/css/tokens.css`. Keep the `@font-face` blocks.
 4. **Admin → Settings → Themes** → activate `my-theme`. Or set `THEME=my-theme` in `.env`.
 
-Full guide (what data templates can show, widgets, safety): [docs/add-theme.md](https://github.com/dev-brunoreis/mt2-cms/blob/main/docs/add-theme.md) in the source repo. This `docs/` tree is not in the release tarball.
+Full guide (what data templates can show, widgets, safety): [docs/add-theme.md](https://github.com/dev-brunoreis/metin2-website/blob/main/docs/add-theme.md) in the source repo. This `docs/` tree is not in the release tarball.
 
-Keep the "Mt2 CMS" line if you override the footer.
+Keep the footer credit link if you override the footer.

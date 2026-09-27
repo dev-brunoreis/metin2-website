@@ -19,11 +19,11 @@ final class TotpTest extends TestCase
 
     public function testProvisioningUriContainsIssuerAndAccount(): void
     {
-        $uri = Totp::provisioningUri('JBSWY3DPEHPK3PXP', 'admin', 'Mt2 CMS Admin');
+        $uri = Totp::provisioningUri('JBSWY3DPEHPK3PXP', 'admin', 'Metin2 website Admin');
 
         self::assertStringStartsWith('otpauth://totp/', $uri);
         self::assertStringContainsString('secret=JBSWY3DPEHPK3PXP', $uri);
-        self::assertStringContainsString('issuer=Mt2', $uri);
+        self::assertStringContainsString('issuer=Metin2', $uri);
     }
 
     public function testVerifyAcceptsValidCode(): void
@@ -40,7 +40,7 @@ final class TotpTest extends TestCase
 
     public function testQrDataUriReturnsSvgImage(): void
     {
-        $uri = Totp::provisioningUri('JBSWY3DPEHPK3PXP', 'admin', 'Mt2 CMS Admin');
+        $uri = Totp::provisioningUri('JBSWY3DPEHPK3PXP', 'admin', 'Metin2 website Admin');
         $dataUri = Totp::qrDataUri($uri);
 
         self::assertStringStartsWith('data:image/svg+xml;base64,', $dataUri);

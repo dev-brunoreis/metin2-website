@@ -486,7 +486,7 @@ class SettingsService
     {
         $value = trim((string) ($this->settings->get('mail_from_name') ?? ''));
 
-        return $value !== '' ? $value : 'Mt2 CMS';
+        return $value !== '' ? $value : 'Metin2 website';
     }
 
     public function setMailFrom(string $address, string $name): void

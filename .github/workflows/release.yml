@@ -41,9 +41,9 @@ jobs:
         run: |
           set -eu
           VERSION="${GITHUB_REF_NAME#v}"
-          TARBALL="dist/mt2-cms-${VERSION}.tar.gz"
+          TARBALL="dist/metin2-website-${VERSION}.tar.gz"
           CHECKSUM="${TARBALL}.sha256"
-          NOTES="Production package ${GITHUB_REF_NAME}. Unpack mt2-cms-${VERSION}.tar.gz on the Linux CMS host and run composer install --no-dev. See README.md."
+          NOTES="Production package ${GITHUB_REF_NAME}. Unpack metin2-website-${VERSION}.tar.gz on the Linux CMS host and run composer install --no-dev. See README.md."
           PRERELEASE=""
           case "$GITHUB_REF_NAME" in
             *-*) PRERELEASE="--prerelease" ;;
@@ -54,7 +54,7 @@ jobs:
           fi
           # shellcheck disable=SC2086
           gh release create "$GITHUB_REF_NAME" \
-            --title "Mt2 CMS ${GITHUB_REF_NAME}" \
+            --title "Metin2 website ${GITHUB_REF_NAME}" \
             --notes "$NOTES" \
             $PRERELEASE \
             $ASSETS

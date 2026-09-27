@@ -4,7 +4,7 @@ Run the CMS on a **Linux** host **separate** from the Metin2 game server. Local 
 
 **Before go-live:** wire remote game MySQL with a host-scoped app user — [game-mysql.md](game-mysql.md).
 
-Bare-metal tree: GitHub Release on a version tag such as `1.0.0-beta.0` (or `./bin/package-release.sh VERSION` locally), copy `dist/mt2-cms-VERSION/`, then `composer install --no-dev` on the host. Nginx/PHP-FPM snippets: [`deploy/linux/`](../deploy/linux/). Compose path below uses `compose.prod.yml`.
+Bare-metal tree: GitHub Release on a version tag such as `1.0.0-beta.0` (or `./bin/package-release.sh VERSION` locally), copy `dist/metin2-website-VERSION/`, then `composer install --no-dev` on the host. Nginx/PHP-FPM snippets: [`deploy/linux/`](../deploy/linux/). Compose path below uses `compose.prod.yml`.
 
 Related: [game-mysql.md](game-mysql.md), [security.md](security.md), [improvements.md](improvements.md).
 
@@ -18,7 +18,7 @@ On a machine with Node 20 (for CSS/assets):
 SKIP_ARCHIVE=1 ./bin/package-release.sh 1.0.0-beta.0
 ```
 
-Pass an explicit `VERSION` (or run on an exact git tag). Output is `dist/mt2-cms-VERSION/` (gitignored): app tree + root `VERSION` file (admin footer via `CmsVersion`) + `game/` schema and [`game/README.md`](../game/README.md) only (no proto, drops, client text, icons, or maps), empty `public/uploads/` and `var/`. No `vendor/`, `docs/`, tests, or maintainer scripts (`package-release.sh`, `i18n-deepl.php`, `economy-seed-demo.php`). On the host: `composer install --no-dev`. Node is not required there. Copy game files after unpack — [game-files.md](game-files.md).
+Pass an explicit `VERSION` (or run on an exact git tag). Output is `dist/metin2-website-VERSION/` (gitignored): app tree + root `VERSION` file (admin footer via `CmsVersion`) + `game/` schema and [`game/README.md`](../game/README.md) only (no proto, drops, client text, icons, or maps), empty `public/uploads/` and `var/`. No `vendor/`, `docs/`, tests, or maintainer scripts (`package-release.sh`, `i18n-deepl.php`, `economy-seed-demo.php`). On the host: `composer install --no-dev`. Node is not required there. Copy game files after unpack — [game-files.md](game-files.md).
 
 ### GitHub Release (production tags)
 
@@ -36,7 +36,7 @@ Download the tarball from **Releases**. Same unpack + `composer install --no-dev
 ```
 Internet → TLS reverse proxy (Caddy / Nginx / Traefik)
               ↓ HTTP to localhost:8000 (or php-fpm socket)
-         Mt2 CMS on Linux (Nginx + PHP-FPM)
+         Metin2 website on Linux (Nginx + PHP-FPM)
               ├─ CMS MySQL 8 (local) — never on 0.0.0.0
               └─ Game MySQL (remote private IP) — see game-mysql.md
 ```
@@ -229,7 +229,7 @@ Store dumps off-server and test restores periodically. The CMS does not include 
 Example cron (daily at 03:00, from the project root on the host). Set `BACKUP_DIR` to a path **outside** the application tree (off-server mount or remote sync):
 
 ```cron
-0 3 * * * cd /path/to/mt2-cms && BACKUP_DIR=/mnt/backups/mt2-cms ./bin/backup-dbs.sh >> /var/log/mt2-cms-backup.log 2>&1
+0 3 * * * cd /path/to/metin2-website && BACKUP_DIR=/mnt/backups/metin2-website ./bin/backup-dbs.sh >> /var/log/metin2-website-backup.log 2>&1
 ```
 
 ### Economy tick (item census / market snapshots)
@@ -237,7 +237,7 @@ Example cron (daily at 03:00, from the project root on the host). Set `BACKUP_DI
 Admin **Game → Economy** reads CMS snapshot tables only. Refresh them every 15 minutes (do **not** run this on the HTTP request path):
 
 ```cron
-*/15 * * * * cd /path/to/mt2-cms && docker compose exec -T php php bin/economy-tick.php >> /var/log/mt2-cms-economy.log 2>&1
+*/15 * * * * cd /path/to/metin2-website && docker compose exec -T php php bin/economy-tick.php >> /var/log/metin2-website-economy.log 2>&1
 ```
 
 The tick takes a file lock under `var/economy-tick.lock` so overlapping runs skip. First run after deploy may take longer (full `GROUP BY` on `player.item`).
@@ -247,7 +247,7 @@ The tick takes a file lock under `var/economy-tick.lock` so overlapping runs ski
 `POST /payments/webhook/{provider}` stores the raw postback and returns `200` after signature verification. Capture and cash credit run in the worker (and once after the HTTP response via a shutdown hook). Drain the queue every minute:
 
 ```cron
-* * * * * cd /path/to/mt2-cms && docker compose exec -T php php bin/payments-process.php >> /var/log/mt2-cms-payments.log 2>&1
+* * * * * cd /path/to/metin2-website && docker compose exec -T php php bin/payments-process.php >> /var/log/metin2-website-payments.log 2>&1
 ```
 
 The worker takes a file lock under `var/payments-process.lock`. Failed captures retry with backoff (1, 2, 5, then 15 minutes) up to 10 attempts. Raw payloads appear on **Admin → Store → Payments → detail**.

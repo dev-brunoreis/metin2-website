@@ -60,7 +60,7 @@ Folder and feature names: theme `^[A-Za-z0-9_-]+$`. `ThemeCatalog` does not read
 
 Shipped public themes: `default` (Kingdoms) and `starter` (child example). New public pages still land in `default`; a child only overrides what it needs. See [add-page.md](add-page.md).
 
-The default footer (`templates/components/footer.twig`) includes an "Mt2 CMS" credit. Keep that line if you override the footer.
+The default footer (`templates/components/footer.twig`) includes a credit link to this repository. Keep that link if you override the footer.
 
 ### Columns (optional feature)
 
@@ -288,7 +288,7 @@ Equipment uses `equipmentLayout` plus `components/public-equipment.twig` in the 
 - New forms: `method="post"` and `<input type="hidden" name="_csrf" value="{{ csrf }}">`. The matching controller must already accept that POST — a theme cannot add a route.
 - Do not put passwords, PINs, emails, or API secrets in templates. They are not in the view data; do not read files from Twig.
 - Asset paths cannot contain `..`. Extensions are `css`, `js`, `woff2`, `jpg`/`jpeg`, `webp`, `png`, `svg`.
-- If you override `footer.twig`, keep the Mt2 CMS credit link (`t('theme.kingdoms.cms_credit')` in the default footer).
+- If you override `footer.twig`, keep the credit link to this repository (`t('theme.kingdoms.cms_credit')` in the default footer).
 
 ## Keep it fast
 

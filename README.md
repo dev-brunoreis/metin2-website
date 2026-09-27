@@ -1,6 +1,6 @@
-# Mt2 CMS
+# Metin2 website + admin
 
-Metin2 site + admin. Beta — public APIs and schema can still change before `1.0.0`.
+Beta — public APIs and schema can still change before `1.0.0`.
 
 ## Who is this for?
 
@@ -55,8 +55,8 @@ Reference pack (files + SQL): [40.250 serverfile + client](https://metin2.dev/to
 ### 1. Unpack and install PHP deps
 
 ```bash
-tar -xzf mt2-cms-VERSION.tar.gz
-cd mt2-cms-VERSION
+tar -xzf metin2-website-VERSION.tar.gz
+cd metin2-website-VERSION
 composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
 php bin/check-requirements.php
 ```
@@ -169,7 +169,7 @@ Public project. Send fixes as pull requests.
 
 If this helps you, **star** and **fork** the repo. Need a custom system for your server? Get in touch on [GitHub](https://github.com/dev-brunoreis).
 
-Keep the "Mt2 CMS" line in the site footer. Support development: [GitHub Sponsors](https://github.com/sponsors/dev-brunoreis).
+Keep the footer credit link to this repository. Support development: [GitHub Sponsors](https://github.com/sponsors/dev-brunoreis).
 
 [CONTRIBUTING.md](CONTRIBUTING.md)
 

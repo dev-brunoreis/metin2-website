@@ -4,7 +4,7 @@
 declare(strict_types=1);
 
 /**
- * Print host dependency checks for Mt2 CMS. Exit 0 when all required checks pass.
+ * Print host dependency checks for Metin2 website. Exit 0 when all required checks pass.
  * Usable before or after `composer install` (loads SetupRequirements without vendor if needed).
  */
 
@@ -40,7 +40,7 @@ $labels = [
     'setup.req.uploads_writable' => 'public/uploads/ writable',
 ];
 
-fwrite(STDOUT, "Mt2 CMS host requirements\n");
+fwrite(STDOUT, "Metin2 website host requirements\n");
 fwrite(STDOUT, str_repeat('-', 48) . "\n");
 
 foreach ($checks as $check) {

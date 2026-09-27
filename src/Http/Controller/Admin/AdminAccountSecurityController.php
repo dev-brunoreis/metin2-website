@@ -49,7 +49,7 @@ class AdminAccountSecurityController extends AdminController
             $provisioningUri = Totp::provisioningUri(
                 $secret,
                 (string) ($user['login'] ?? 'admin'),
-                'Mt2 CMS Admin',
+                'Metin2 website Admin',
             );
             $qrDataUri = Totp::qrDataUri($provisioningUri);
         }

@@ -321,7 +321,7 @@ class SeoService
     {
         $title = $this->settings->siteTitle();
 
-        return $title !== '' ? $title : 'Mt2 CMS';
+        return $title !== '' ? $title : 'Metin2 website';
     }
 
     private function pathOnly(string $uri): string
