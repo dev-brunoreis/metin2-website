@@ -3,6 +3,10 @@
     <div class="admin-log-summary">
         <p class="font-medium text-slate-900">{{ row._summary|default('—') }}</p>
     </div>
+{% elseif column.key == 'who' and row._who_kind|default('') == 'socket' %}
+    {{ t('admin.logs.slot', {slot: value}) }}
+{% elseif column.key == 'who' and row._who_kind|default('') == 'attr' %}
+    {{ t('admin.logs.bonus_slot', {slot: value}) }}
 {% elseif value is same as(null) or value is same as('') %}
     —
 {% elseif column.key in ['account_id'] and value %}

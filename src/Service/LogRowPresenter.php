@@ -37,7 +37,13 @@ final class LogRowPresenter
         $playerColumns = $log['playerColumns'] ?? [];
 
         foreach ($rows as $row) {
+            $slotKind = $this->itemSlotKind($row);
+
             foreach ($playerColumns as $column) {
+                if ($column === 'who' && $slotKind !== null) {
+                    continue;
+                }
+
                 if (in_array($column, ['pid', 'player_id', 'who'], true)) {
                     $id = (int) ($row[$column] ?? 0);
 
@@ -121,13 +127,24 @@ final class LogRowPresenter
         array $accountLogins,
         array $guildNames,
     ): array {
+        $slotKind = $this->itemSlotKind($row);
+
         foreach (['pid', 'player_id', 'who'] as $column) {
             if (!array_key_exists($column, $row)) {
                 continue;
             }
 
+            if ($column === 'who' && $slotKind !== null) {
+                $row['who_name'] = '';
+                continue;
+            }
+
             $id = (int) $row[$column];
             $row[$column . '_name'] = $id > 0 ? ($playerNames[$id] ?? '') : '';
+        }
+
+        if ($slotKind !== null) {
+            $row['_who_kind'] = $slotKind;
         }
 
         foreach (['item_vnum', 'vnum', 'fish_id'] as $column) {
@@ -263,6 +280,12 @@ final class LogRowPresenter
      */
     private function itemCharacterSummary(array $row, array $playerNames, array $itemNames): string
     {
+        $slotKind = $this->itemSlotKind($row);
+
+        if ($slotKind !== null) {
+            return $this->itemSlotSummary($row, $itemNames, $slotKind);
+        }
+
         $how = strtoupper(trim((string) ($row['how'] ?? '')));
         $shop = is_array($row['_shop'] ?? null) ? $row['_shop'] : ItemLogHintParser::parseShop((string) ($row['hint'] ?? ''));
 
@@ -303,6 +326,51 @@ final class LogRowPresenter
             'x' => (string) (int) ($row['x'] ?? 0),
             'y' => (string) (int) ($row['y'] ?? 0),
         ]);
+    }
+
+    /**
+     * Socket and bonus rows store the slot in `who` and the value in `x`/`y`, not a player or map position.
+     *
+     * @param array<string, mixed> $row
+     * @param array<int, string> $itemNames
+     */
+    private function itemSlotSummary(array $row, array $itemNames, string $slotKind): string
+    {
+        $item = $this->itemName((int) ($row['vnum'] ?? 0), $itemNames, (string) ($row['hint'] ?? ''));
+        $shared = [
+            'slot' => (string) (int) ($row['who'] ?? 0),
+            'item' => $item,
+            'uid' => (string) (int) ($row['what'] ?? 0),
+        ];
+
+        if ($slotKind === 'socket') {
+            return $this->t('admin.logs.summary.log_socket', $shared + [
+                'value' => (string) (int) ($row['x'] ?? 0),
+            ]);
+        }
+
+        return $this->t('admin.logs.summary.log_attr', $shared + [
+            'type' => (string) (int) ($row['x'] ?? 0),
+            'value' => (string) (int) ($row['y'] ?? 0),
+        ]);
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
+    private function itemSlotKind(array $row): ?string
+    {
+        if (!array_key_exists('how', $row)) {
+            return null;
+        }
+
+        $how = strtoupper(trim((string) $row['how']));
+
+        return match ($how) {
+            'SET_SOCKET', 'INFO_SOCKET' => 'socket',
+            'SET_ATTR', 'SET_FORCE_ATTR', 'INFO_ATTR' => 'attr',
+            default => null,
+        };
     }
 
     /**

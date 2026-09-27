@@ -62,7 +62,7 @@ New admin screen: menu in `AdminSections`, path in `AdminPaths`, **permissions i
 | `/admin/content/` | news hub, tickets, downloads, banners, events |
 | `/admin/store/` | item shop hub, packages, payments |
 | `/admin/game-data/` | shops, refine, items, mobs, gms (items/mobs stay out of the sidebar when proto dumps in `game/db` are missing) |
-| `/admin/logs` | Hub `?tab=` |
+| `/admin/logs` | Hub `?tab=`. Item slot `how` codes (`SET_SOCKET`, `INFO_SOCKET`, `SET_ATTR`, `SET_FORCE_ATTR`, `INFO_ATTR`) reuse `who`/`x`/`y` as slot metadata, not a player |
 | `/admin/system/` | admins, roles, audit-log (super-only) |
 | `/admin/settings` | Hub `?tab=` (registration, themes, locale, security, community, seo, payment-methods, unstuck, news, banners) |
 | `/admin/account/security` | Own TOTP (no ACL resource) |

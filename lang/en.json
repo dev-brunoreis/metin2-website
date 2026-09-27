@@ -1123,6 +1123,8 @@
             "unknown_player": "Unknown character",
             "unknown_item": "Unknown item",
             "unknown_account": "Unknown account",
+            "slot": "Socket {slot}",
+            "bonus_slot": "Bonus slot {slot}",
             "codes": {
                 "how": {
                     "BUY": "Bought from NPC",
@@ -1189,6 +1191,8 @@
                 "goldlog_quest": "{player} received {yang} yang from a quest ({item})",
                 "goldlog_generic": "{player}: {how} {item} ×{count} ({yang} yang)",
                 "log_item": "{player} — {how} {item} (uid {uid}) at {x}, {y}",
+                "log_socket": "Socket {slot} = {value} on {item} (uid {uid})",
+                "log_attr": "Bonus slot {slot}: type {type}, value {value} on {item} (uid {uid})",
                 "log_character": "{player} — {how} at {x}, {y}",
                 "log_shop_sell": "{player} sold {item} ×{count} in a player shop for {yang} yang (buyer {other})",
                 "log_shop_buy": "{player} bought {item} ×{count} from a player shop for {yang} yang (seller {other})",
