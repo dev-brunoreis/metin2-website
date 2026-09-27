@@ -117,6 +117,14 @@ final class AdminAuditMeta
     }
 
     /**
+     * @return array<string, mixed>
+     */
+    public static function decoded(mixed $meta): array
+    {
+        return self::decode($meta) ?? [];
+    }
+
+    /**
      * @return array<string, mixed>|null
      */
     private static function decode(mixed $meta): ?array

@@ -69,4 +69,11 @@ final class AdminAuditMetaTest extends TestCase
             ['key' => 'item_vnum', 'value' => '123'],
         ], $columns['after']);
     }
+
+    public function testDecodedReturnsEmptyArrayForBlankMeta(): void
+    {
+        self::assertSame([], AdminAuditMeta::decoded(null));
+        self::assertSame(['login' => 'a'], AdminAuditMeta::decoded(['login' => 'a']));
+        self::assertSame(['login' => 'a'], AdminAuditMeta::decoded('{"login":"a"}'));
+    }
 }

@@ -60,6 +60,7 @@ use Mt2Cms\Repository\UnstuckRepository;
 use Mt2Cms\Service\AccountEmailService;
 use Mt2Cms\Service\AclService;
 use Mt2Cms\Service\AdminAuditService;
+use Mt2Cms\Service\AdminAuditTargetService;
 use Mt2Cms\Service\BanService;
 use Mt2Cms\Service\CashCreditService;
 use Mt2Cms\Service\DiscordWebhookService;
@@ -292,9 +293,16 @@ return static function (Application $app): void {
         $app->paymentGateways,
         $app->cashCredits,
     );
+    $auditEntries = new AdminAuditRepository($app->cmsDb);
     $app->adminAudit = new AdminAuditService(
-        new AdminAuditRepository($app->cmsDb),
+        $auditEntries,
         $app->adminAuth,
+    );
+    $app->adminAuditTargets = new AdminAuditTargetService(
+        $app->accounts,
+        $app->players,
+        $app->guilds,
+        $auditEntries,
     );
     $app->itemShopPurchases = new ItemShopPurchaseService(
         $app->itemShopProducts,

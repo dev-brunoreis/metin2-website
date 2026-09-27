@@ -175,7 +175,7 @@ return [
         $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->adminRoles,
     ),
     \Mt2Cms\Http\Controller\Admin\AdminAuditLogController::class => static fn ($app) => new \Mt2Cms\Http\Controller\Admin\AdminAuditLogController(
-        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, new \Mt2Cms\Repository\AdminAuditRepository($app->cmsDb),
+        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, new \Mt2Cms\Repository\AdminAuditRepository($app->cmsDb), $app->adminAuditTargets,
     ),
     \Mt2Cms\Http\Controller\Admin\AdminBansController::class => static fn ($app) => new \Mt2Cms\Http\Controller\Admin\AdminBansController(
         $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->banRepo, $app->banService, $app->accounts,

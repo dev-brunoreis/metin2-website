@@ -14,7 +14,7 @@ Admin routes use area prefixes:
 | Store | `/admin/store/` | categories + orders (hub at `/admin/store`; products live in a category) |
 | Game data | `/admin/game-data/` | shops, refine, items, mobs, gms |
 | Logs | `/admin/logs` | Hub with `?tab={logId}` |
-| System | `/admin/system/` | admins, roles, audit-log |
+| System | `/admin/system/` | admins, roles, audit-log (target + admin login are links) |
 | Settings | `/admin/settings` | Hub with `?tab=` for registration, themes, locale, security, community, unstuck, banners |
 
 Use [`AdminPaths.php`](../src/Admin/AdminPaths.php) for paths (and `admin_path()` in Twig).

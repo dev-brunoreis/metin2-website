@@ -1,0 +1,4 @@
+{% set type = row.target_type|default('') %}
+{% set key = 'admin.audit_log.types.' ~ type %}
+{% set label = t(key) %}
+<span class="text-slate-600">{{ label != key ? label : (type != '' ? type : '—') }}</span>

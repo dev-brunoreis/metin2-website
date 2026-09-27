@@ -21,7 +21,7 @@ What the CMS already enforces, and what every change must keep intact.
 | Errors | Unhandled exceptions logged via `Log`; generic HTTP 500 to clients (no stack traces) |
 | Admin ACL | See [acl.md](acl.md). Resource-based access via `AclService` (hierarchical IDs in `acl_role_resources` / `acl_admin_resources`, catalog in `AdminResourceCatalog`). `adminView()` is section-level; mutations use `requireAdminResource()`. Super-only: admins, roles, audit log |
 | Security contracts | `tests/Unit/Contract/SecurityContractTest.php` — CSRF, mass-action whitelist, rate-limited POSTs, prepared statements, **admin POST ACL**. Keep green on every PR |
-| Admin audit | Mutating admin POSTs write to `admin_audit_log`; super admins can browse `/admin/audit-log` |
+| Admin audit | Mutating admin POSTs write to `admin_audit_log`; super admins browse `/admin/system/audit-log`. The grid resolves target names (account login, character, CMS title, …) and links Admin + Target to the matching admin page (`AdminAuditTarget`) |
 | Response headers | `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, CSP (self-hosted CSS/JS only; `form-action 'self'`) |
 | Config | `DB_PASSWORD` and `APP_KEY` required in `.env` when installed (no hardcoded runtime default) |
 | PayPal webhooks | Signature verification is fail-closed; webhook id required in **Settings → Payment methods** for `/donate` and webhook acceptance. Raw bodies are stored in `cms_payment_events` and shown only on the admin payment detail (`store/payments/view`). Invalid signatures are not attached to a payment. |

@@ -60,7 +60,7 @@
     {% if row.is_system|default(false) %}
         {% set href = '/admin/system/roles/' ~ rowId|url_encode %}
     {% else %}
-        {% set href = column.href|replace({'{id}': rowId, '{vnum}': row.vnum|default(''), '{mID}': rowId, '{name}': row.name|default('')|url_encode, '{opponent_id}': row.opponent_id|default(''), '{item_vnum}': row.item_vnum|default(rowId)}) %}
+        {% set href = column.href|replace({'{id}': rowId, '{vnum}': row.vnum|default(''), '{mID}': rowId, '{name}': row.name|default('')|url_encode, '{opponent_id}': row.opponent_id|default(''), '{item_vnum}': row.item_vnum|default(rowId), '{admin_id}': row.admin_id|default('')}) %}
     {% endif %}
     <a href="{{ href }}" class="font-medium text-indigo-600 hover:underline">{{ value|default('—') }}</a>
 

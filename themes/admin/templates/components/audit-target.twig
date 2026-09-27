@@ -1,0 +1,22 @@
+{% set href = row.target_href|default('') %}
+{% set label = row.target_label|default('') %}
+{% set id = row.target_id %}
+{% set hasId = id is defined and id is not same as(null) and id is not same as('') %}
+{% set typeKey = 'admin.audit_log.types.' ~ row.target_type|default('') %}
+{% set typeLabel = t(typeKey) %}
+{% if typeLabel == typeKey %}
+    {% set typeLabel = row.target_type|default('') %}
+{% endif %}
+{% set text = label != '' ? label : (hasId ? ('#' ~ id) : typeLabel) %}
+{% if text == '' %}
+    <span class="text-slate-400">—</span>
+{% else %}
+    {% if href != '' %}
+        <a href="{{ href }}" class="font-medium text-indigo-600 hover:underline">{{ text }}</a>
+    {% else %}
+        <span class="text-slate-600">{{ text }}</span>
+    {% endif %}
+    {% if label != '' and hasId %}
+        <span class="text-slate-400">#{{ id }}</span>
+    {% endif %}
+{% endif %}

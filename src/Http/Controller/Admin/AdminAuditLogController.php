@@ -14,6 +14,7 @@ use Mt2Cms\I18n\Translator;
 use Mt2Cms\Repository\AdminAuditRepository;
 use Mt2Cms\Service\AclService;
 use Mt2Cms\Service\AdminAuditService;
+use Mt2Cms\Service\AdminAuditTargetService;
 use Mt2Cms\Theme\ThemeEngine;
 
 class AdminAuditLogController extends AdminController
@@ -28,6 +29,7 @@ class AdminAuditLogController extends AdminController
         AclService $acl,
         AdminAuditService $auditLog,
         private AdminAuditRepository $auditEntries,
+        private AdminAuditTargetService $targets,
     ) {
         parent::__construct($theme, $auth, $csrf, $translator, $adminAuth, $adminTheme, $auditLog, $acl);
     }
@@ -40,7 +42,7 @@ class AdminAuditLogController extends AdminController
             $spec,
             $query,
             fn ($q) => $this->auditEntries->countForGrid($q),
-            fn ($q) => $this->auditEntries->listForGrid($q),
+            fn ($q) => $this->targets->enrich($this->auditEntries->listForGrid($q)),
         );
 
         return $this->adminView('audit-log', 'pages/audit-log.twig', [

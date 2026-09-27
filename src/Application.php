@@ -54,6 +54,7 @@ use Mt2Cms\Repository\AdminRoleRepository;
 use Mt2Cms\Repository\AdminTotpRepository;
 use Mt2Cms\Service\AclService;
 use Mt2Cms\Service\AdminAuditService;
+use Mt2Cms\Service\AdminAuditTargetService;
 use Mt2Cms\Service\DropFileService;
 use Mt2Cms\Service\GameIconService;
 use Mt2Cms\Service\GameProtoService;
@@ -168,6 +169,7 @@ class Application
     public SeoService $seo;
     public TicketUploadService $ticketUploads;
     public AdminAuditService $adminAudit;
+    public AdminAuditTargetService $adminAuditTargets;
     public AclService $acl;
     public AdminRoleRepository $adminRoles;
     public AdminTotpRepository $adminTotp;
