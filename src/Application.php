@@ -6,6 +6,7 @@ namespace Metin2Website;
 
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
+use Metin2Website\Admin\AdminPaths;
 use Metin2Website\Admin\AdminSections;
 use Metin2Website\Auth\AdminAuth;
 use Metin2Website\Auth\Auth;
@@ -408,12 +409,30 @@ class Application
             return;
         }
 
-        $this->adminTheme->setGlobals([
+        $pendingComments = $this->newsComments->countPending();
+        $openTickets = $this->tickets->countOpen();
+
+        $globals = [
             'admin_nav_counts' => [
-                'news' => $this->newsComments->countPending(),
-                'tickets' => $this->tickets->countOpen(),
+                'news' => $pendingComments,
+                'tickets' => $openTickets,
             ],
-        ]);
+        ];
+
+        if ($pendingComments > 0) {
+            $admin = $this->adminAuth->user();
+            $sections = $this->acl->filterSections($admin, AdminSections::all());
+            $sections = AdminSections::withoutUnavailableProto($sections, $this->gameProfile);
+            $sections = AdminSections::withChildPath(
+                $sections,
+                'news',
+                AdminPaths::contentNews('comments'),
+            );
+            $globals['admin_sections'] = $sections;
+            $globals['admin_pinned_nav'] = AdminSections::pinnedNavItem($sections);
+        }
+
+        $this->adminTheme->setGlobals($globals);
     }
 
     /**

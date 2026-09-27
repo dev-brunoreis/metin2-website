@@ -66,6 +66,10 @@ final class ComposerAutoloadTest extends TestCase
         self::assertSame('nosniff', $headers['X-Content-Type-Options']);
         self::assertSame('DENY', $headers['X-Frame-Options']);
         self::assertSame('no-store', $headers['Cache-Control']);
+        self::assertSame(
+            'metin2-website - github.com/dev-brunoreis',
+            $headers['X-Powered-By'],
+        );
     }
 
     public function testCliMessageTellsOperatorToRunComposerInstall(): void

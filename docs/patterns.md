@@ -19,7 +19,7 @@ DI: construct in `src/bootstrap/installed_services.php`, expose as `Application`
 
 ## HTTP
 
-- Return `Response` (`html`, `redirect`, `json`, `text`, `xml`). Never `header()` / `echo` in controllers.
+- Return `Response` (`html`, `redirect`, `json`, `text`, `xml`). Never `header()` / `echo` in controllers. Defaults include `X-Powered-By: metin2-website - github.com/dev-brunoreis` (visible in browser Network).
 - Public render: `$this->view('layoutName', $data)` (layout JSON under `themes/*/layouts/`).
 - Admin render: `$this->adminView('section-id', 'pages/….twig', $data)` (checks login, 2FA policy, **section** ACL).
 - Lazy tab HTML: `adminFragment()` is login-only — call `requireAdminResourceView` first.

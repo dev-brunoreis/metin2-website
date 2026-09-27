@@ -6,16 +6,16 @@ namespace Metin2Website\Admin\Grid\Definitions;
 
 use Metin2Website\Admin\Grid\GridDefinition;
 
-final class NewsCommentsGrid
+final class NewsPostCommentsGrid
 {
-    public static function definition(): GridDefinition
+    public static function definition(int $newsId): GridDefinition
     {
+        $base = '/admin/content/news/posts/' . $newsId . '?tab=comments';
 
-        return GridDefinition::create('/admin/content/news?tab=comments', 'admin.news.comments_grid')
+        return GridDefinition::create($base, 'admin.news.post_comments_grid')
             ->defaultSort('created_at')
             ->orderBy([
                 'id' => 'c.id',
-                'news_title' => 'n.title',
                 'author_login' => 'c.account_login',
                 'body' => 'c.body',
                 'status' => 'c.status',
@@ -23,7 +23,6 @@ final class NewsCommentsGrid
             ])
             ->columns([
                 ['key' => 'id', 'label' => 'admin.news.comment_id', 'sort' => 'id', 'type' => 'muted'],
-                ['key' => 'news_title', 'label' => 'admin.news.post_title', 'sort' => 'news_title', 'type' => 'link', 'href' => '/admin/content/news/posts/{news_id}'],
                 ['key' => 'author_login', 'label' => 'admin.news.comment_author', 'sort' => 'author_login', 'type' => 'text'],
                 ['key' => 'body', 'label' => 'admin.news.comment_body', 'type' => 'wrap', 'class' => 'admin-grid-wrap-cell'],
                 ['key' => 'status', 'label' => 'admin.news.comment_status', 'sort' => 'status', 'type' => 'badge', 'badgeMap' => [
@@ -40,10 +39,10 @@ final class NewsCommentsGrid
                     'rejected' => 'admin.news.comment_status_rejected',
                 ]],
             ])
-            ->massActions('/admin/content/news/comments/mass', [
+            ->massActions('/admin/content/news/posts/' . $newsId . '/comments/mass', [
                 ['id' => 'approve', 'label' => 'admin.grid.approve'],
                 ['id' => 'reject', 'label' => 'admin.grid.reject'],
                 ['id' => 'delete', 'label' => 'admin.grid.delete', 'confirm' => 'admin.news.confirm_mass_delete_comments'],
             ]);
-        }
+    }
 }

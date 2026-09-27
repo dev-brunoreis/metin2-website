@@ -9,7 +9,13 @@
             {% include 'components/tab.twig' with { id: 'posts', label: t('admin.news.tab_posts'), active: activeTab == 'posts' } %}
         {% endif %}
         {% if acl_allowed('content/news/comments/view') %}
-            {% include 'components/tab.twig' with { id: 'comments', label: t('admin.news.tab_comments'), active: activeTab == 'comments' } %}
+            {% include 'components/tab.twig' with {
+                id: 'comments',
+                label: t('admin.news.tab_comments'),
+                active: activeTab == 'comments',
+                badge: pendingComments|default(0),
+                badgeTitle: t('admin.nav.pending_comments', {count: pendingComments|default(0)})
+            } %}
         {% endif %}
     </div>
 

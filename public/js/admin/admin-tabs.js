@@ -126,11 +126,18 @@ const initTabs = (root) => {
       writeQueryTab(id, id === defaultTab)
     }
 
-    const headerForm = root.getAttribute('data-header-form-' + id)
+    const headerFormAttr = 'data-header-form-' + id
     const headerButton = document.querySelector('.admin-page-header button[form]')
 
-    if (headerForm && headerButton instanceof HTMLButtonElement) {
-      headerButton.setAttribute('form', headerForm)
+    if (root.hasAttribute(headerFormAttr) && headerButton instanceof HTMLButtonElement) {
+      const headerForm = root.getAttribute(headerFormAttr) || ''
+
+      if (headerForm !== '') {
+        headerButton.setAttribute('form', headerForm)
+        headerButton.hidden = false
+      } else {
+        headerButton.hidden = true
+      }
     }
   }
 

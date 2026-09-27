@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Metin2Website\Repository;
 
 use Metin2Website\Admin\Grid\Definitions\NewsCommentsGrid;
+use Metin2Website\Admin\Grid\Definitions\NewsPostCommentsGrid;
+use Metin2Website\Admin\Grid\GridDefinition;
 use Metin2Website\Admin\Grid\GridQuery;
 use Metin2Website\Admin\Grid\GridSql;
 use Metin2Website\Admin\Grid\ProvidesAdminGrid;
@@ -44,12 +46,15 @@ class NewsCommentRepository extends Repository implements ProvidesAdminGrid
 
     public function countPending(): int
     {
-        return $this->countForGrid(new GridQuery(null, 1, 20, 'created_at', 'asc', []));
+        return (int) $this->db()->fetchColumn(
+            'SELECT COUNT(*) FROM news_comments WHERE status = ?',
+            ['pending'],
+        );
     }
 
     public function countForGrid(GridQuery $query): int
     {
-        [$where, $params] = $this->gridWhere($query);
+        [$where, $params] = $this->gridWhere($query, NewsCommentsGrid::definition(), null);
 
         return (int) $this->db()->fetchColumn(
             'SELECT COUNT(*)
@@ -59,12 +64,28 @@ class NewsCommentRepository extends Repository implements ProvidesAdminGrid
         );
     }
 
+    public function countForPostGrid(int $newsId, GridQuery $query): int
+    {
+        [$where, $params] = $this->gridWhere(
+            $query,
+            NewsPostCommentsGrid::definition($newsId),
+            $newsId,
+        );
+
+        return (int) $this->db()->fetchColumn(
+            'SELECT COUNT(*) FROM news_comments c' . $where,
+            $params,
+        );
+    }
+
     /**
      * @return list<array<string, mixed>>
      */
     public function listPending(int $page, int $perPage): array
     {
-        return $this->listForGrid(new GridQuery(null, $page, $perPage, 'created_at', 'asc', []));
+        return $this->listForGrid(new GridQuery(null, $page, $perPage, 'created_at', 'asc', [
+            'status' => 'pending',
+        ]));
     }
 
     /**
@@ -72,7 +93,7 @@ class NewsCommentRepository extends Repository implements ProvidesAdminGrid
      */
     public function listForGrid(GridQuery $query): array
     {
-        [$where, $params] = $this->gridWhere($query);
+        [$where, $params] = $this->gridWhere($query, NewsCommentsGrid::definition(), null);
         $params[] = $query->perPage;
         $params[] = $query->offset();
         $order = GridSql::orderBy($query, NewsCommentsGrid::definition()->sortMap(), 'c.created_at ASC, c.id ASC');
@@ -82,6 +103,25 @@ class NewsCommentRepository extends Repository implements ProvidesAdminGrid
                     n.title AS news_title
              FROM news_comments c
              INNER JOIN news n ON n.id = c.news_id' . $where . $order . '
+             LIMIT ? OFFSET ?',
+            $params,
+        );
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    public function listForPostGrid(int $newsId, GridQuery $query): array
+    {
+        $definition = NewsPostCommentsGrid::definition($newsId);
+        [$where, $params] = $this->gridWhere($query, $definition, $newsId);
+        $params[] = $query->perPage;
+        $params[] = $query->offset();
+        $order = GridSql::orderBy($query, $definition->sortMap(), 'c.created_at DESC, c.id DESC');
+
+        return $this->db()->fetchAll(
+            'SELECT c.id, c.news_id, c.account_id, c.account_login, c.body, c.status, c.created_at
+             FROM news_comments c' . $where . $order . '
              LIMIT ? OFFSET ?',
             $params,
         );
@@ -125,12 +165,17 @@ class NewsCommentRepository extends Repository implements ProvidesAdminGrid
     /**
      * @return array{0: string, 1: list<mixed>}
      */
-    private function gridWhere(GridQuery $query): array
-    {
-        return GridSql::append(
-            GridSql::where($query, NewsCommentsGrid::definition()->filterSql()),
-            'c.status = ?',
-            ['pending'],
-        );
+    private function gridWhere(
+        GridQuery $query,
+        GridDefinition $definition,
+        ?int $newsId,
+    ): array {
+        $where = GridSql::where($query, $definition->filterSql());
+
+        if ($newsId !== null) {
+            $where = GridSql::append($where, 'c.news_id = ?', [$newsId]);
+        }
+
+        return $where;
     }
 }

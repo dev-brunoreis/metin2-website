@@ -37,6 +37,8 @@ In [`AdminSections.php`](../src/Admin/AdminSections.php), add the item under the
 
 The scrollable `.admin-sidebar-nav` keeps its scroll position across page loads (`public/js/admin/admin-sidebar.js` + `sessionStorage`). The script loads after the sidebar footer so restore is not clamped, and it saves on `pointerdown` (not `scroll`) so a focused link does not nudge the stored position. Do not call `scrollIntoView` on the active item.
 
+Sidebar badges: `Application::attachAdminNavCounts()` sets `admin_nav_counts` (`news` = pending comments, `tickets` = open tickets). `nav-item.twig` renders the orange count. When news has pending comments, the News path becomes `AdminPaths::contentNews('comments')` so the click lands on the moderation tab. Hub Comments tab also shows the same pending badge.
+
 ```php
 [
     'id' => 'your-section',
@@ -101,7 +103,9 @@ Character **Items** and owned-item detail include `components/player-items-cauti
 
 Hub `*BaseUrl` must be the path **without** `?tab=` (or use `admin_path('logs', tab.id) ~ '&partial=1'`). Concatenating `?tab=` onto a URL that already has `?tab=` makes every lazy panel load the default tab.
 
-In-form tabs (one form, every panel still POSTs): news and events CRUD (`data` + `seo`). Hub examples: [`AdminLogsController`](../src/Http/Controller/Admin/AdminLogsController.php), [`AdminNewsHubController`](../src/Http/Controller/Admin/AdminNewsHubController.php), [`AdminStoreHubController`](../src/Http/Controller/Admin/AdminStoreHubController.php), [`AdminSettingsController`](../src/Http/Controller/Admin/AdminSettingsController.php).
+In-form tabs (one form, every panel still POSTs): news and events CRUD (`data` + `seo`). News edit also has a lazy **Comments** panel outside the POST form (so the comments grid can own its mass-action form) when the staff role can view `content/news/comments/view`. Hub examples: [`AdminLogsController`](../src/Http/Controller/Admin/AdminLogsController.php), [`AdminNewsHubController`](../src/Http/Controller/Admin/AdminNewsHubController.php), [`AdminStoreHubController`](../src/Http/Controller/Admin/AdminStoreHubController.php), [`AdminSettingsController`](../src/Http/Controller/Admin/AdminSettingsController.php).
+
+Long plain-text cells (comment bodies) use grid column `type: wrap` + `class: admin-grid-wrap-cell` (`whitespace-pre-wrap`). Hub news comments list all statuses (filterable); the dashboard pending badge still uses `NewsCommentRepository::countPending()`.
 
 ## 6. List pages (admin grid)
 

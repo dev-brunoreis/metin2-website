@@ -34,8 +34,8 @@ class AdminNewsCommentsController extends AdminNewsBaseController
             NewsCommentsGrid::definition()->spec(),
             '/admin/content/news?tab=comments',
             [
-                'approve' => fn (int $id): bool => $this->comments->setStatus($id, 'approved'),
-                'reject' => fn (int $id): bool => $this->comments->setStatus($id, 'rejected'),
+                'approve' => fn (int $id): bool => $this->moderateComment($id, 'approved'),
+                'reject' => fn (int $id): bool => $this->moderateComment($id, 'rejected'),
                 'delete' => fn (int $id): bool => $this->comments->delete($id),
             ],
             'news_comment',
@@ -90,7 +90,13 @@ class AdminNewsCommentsController extends AdminNewsBaseController
 
         $comment = $this->comments->findById($id);
 
-        if ($comment === null || !$this->comments->setStatus($id, $status)) {
+        if ($comment === null) {
+            $this->flash('error', $this->t('admin.news.comment_update_failed'));
+
+            return $this->redirect('/admin/content/news?tab=comments');
+        }
+
+        if (!$this->moderateComment($id, $status)) {
             $this->flash('error', $this->t('admin.news.comment_update_failed'));
         } else {
             $this->auditChange(

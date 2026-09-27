@@ -14,6 +14,9 @@ class NotificationService
     public const TYPE_PAYMENT_CANCELLED = 'payment_cancelled';
     public const TYPE_ACCOUNT_BANNED = 'account_banned';
     public const TYPE_ITEM_SENT = 'item_sent';
+    public const TYPE_NEWS_COMMENT_APPROVED = 'news_comment_approved';
+    public const TYPE_NEWS_COMMENT_REJECTED = 'news_comment_rejected';
+    public const TYPE_TICKET_REPLIED = 'ticket_replied';
 
     public function __construct(private NotificationRepository $notifications)
     {
@@ -88,6 +91,36 @@ class NotificationService
                 'count' => max(1, $count),
                 'vnum' => max(0, $vnum),
             ],
+        );
+    }
+
+    public function newsCommentApproved(int $accountId, int $commentId, string $newsTitle): void
+    {
+        $this->push(
+            $accountId,
+            self::TYPE_NEWS_COMMENT_APPROVED,
+            'news-comment-approved:' . $commentId . ':' . time(),
+            ['title' => mb_substr(trim($newsTitle), 0, 120)],
+        );
+    }
+
+    public function newsCommentRejected(int $accountId, int $commentId, string $newsTitle): void
+    {
+        $this->push(
+            $accountId,
+            self::TYPE_NEWS_COMMENT_REJECTED,
+            'news-comment-rejected:' . $commentId . ':' . time(),
+            ['title' => mb_substr(trim($newsTitle), 0, 120)],
+        );
+    }
+
+    public function ticketReplied(int $accountId, int $ticketId, string $subject): void
+    {
+        $this->push(
+            $accountId,
+            self::TYPE_TICKET_REPLIED,
+            'ticket-replied:' . $ticketId . ':' . time(),
+            ['subject' => mb_substr(trim($subject), 0, 120), 'id' => max(0, $ticketId)],
         );
     }
 

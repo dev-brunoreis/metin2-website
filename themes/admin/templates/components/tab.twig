@@ -7,5 +7,12 @@
         aria-selected="{{ active ? 'true' : 'false' }}"
         tabindex="{{ active ? '0' : '-1' }}">
     {{ label }}
+    {% if badge|default(0) > 0 %}
+        <span class="admin-tab-badge"
+              title="{{ badgeTitle|default('') }}"
+              aria-label="{{ badgeTitle|default('') }}">
+            {{ badge > 99 ? '99+' : badge }}
+        </span>
+    {% endif %}
     <span class="admin-tab-dirty" hidden title="{{ t('admin.tabs.unsaved') }}"></span>
 </button>

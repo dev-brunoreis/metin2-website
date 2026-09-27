@@ -30,7 +30,9 @@ class AdminNewsHubController extends AdminNewsBaseController
             return $this->redirect(AdminPaths::settingsNews());
         }
 
-        $tab = $this->resolveResourceTab(self::TABS, self::TAB_VIEW_RESOURCES, 'posts');
+        $pendingComments = $this->comments->countPending();
+        $defaultTab = $pendingComments > 0 ? 'comments' : 'posts';
+        $tab = $this->resolveResourceTab(self::TABS, self::TAB_VIEW_RESOURCES, $defaultTab);
 
         if ($deny = $this->requireAdminResourceView(self::TAB_VIEW_RESOURCES[$tab])) {
             return $deny;
@@ -52,6 +54,7 @@ class AdminNewsHubController extends AdminNewsBaseController
             'pageLead' => $this->t('admin.news.hub_lead'),
             'activeTab' => $tab,
             'newsBaseUrl' => AdminPaths::contentNews(),
+            'pendingComments' => $pendingComments,
             'initialPartial' => $this->partialPayload($tab),
         ], $header));
     }

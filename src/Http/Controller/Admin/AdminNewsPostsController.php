@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Metin2Website\Http\Controller\Admin;
 
 use Metin2Website\Admin\Grid\Definitions\NewsGrid;
+use Metin2Website\Admin\Grid\Definitions\NewsPostCommentsGrid;
 use Metin2Website\Admin\Grid\GridRunner;
+use Metin2Website\Admin\NewsFormTabs;
 use Metin2Website\Service\DiscordWebhookService;
 use Metin2Website\Http\Response;
 use Metin2Website\Service\SeoImageUploadService;
@@ -26,6 +28,7 @@ class AdminNewsPostsController extends AdminNewsBaseController
         \Metin2Website\Service\SettingsService $settings,
         \Metin2Website\Support\HtmlSanitizer $sanitizer,
         \Metin2Website\Service\NewsUploadService $uploads,
+        \Metin2Website\Service\NotificationService $notifications,
         private DiscordWebhookService $discord,
     ) {
         parent::__construct(
@@ -42,6 +45,7 @@ class AdminNewsPostsController extends AdminNewsBaseController
             $settings,
             $sanitizer,
             $uploads,
+            $notifications,
         );
     }
 
@@ -132,7 +136,8 @@ class AdminNewsPostsController extends AdminNewsBaseController
 
     public function edit(string $id): Response
     {
-        $post = $this->news->findById((int) $id);
+        $newsId = (int) $id;
+        $post = $this->news->findById($newsId);
 
         if ($post === null) {
             $this->flash('error', $this->t('admin.news.not_found'));
@@ -140,7 +145,21 @@ class AdminNewsPostsController extends AdminNewsBaseController
             return $this->redirect('/admin/content/news?tab=posts');
         }
 
-        return $this->formView([
+        $tab = $this->normalizeNewsFormTab($this->requestedNewsFormTab(), true);
+
+        if ($tab === 'comments') {
+            if ($deny = $this->requireAdminResourceView('content/news/comments/view')) {
+                return $deny;
+            }
+
+            if ($this->wantsTabPartial()) {
+                return $this->adminFragment('components/news-post-comments.twig', [
+                    'commentsGrid' => $this->postCommentsGrid($newsId),
+                ]);
+            }
+        }
+
+        $postData = [
             'id' => (int) $post['id'],
             'title' => (string) $post['title'],
             'body' => (string) $post['body'],
@@ -153,7 +172,39 @@ class AdminNewsPostsController extends AdminNewsBaseController
             'author_login' => (string) $post['author_login'],
             'views' => (int) $post['views'],
             'published_at' => $post['published_at'],
-        ], activeTab: $this->requestedNewsFormTab());
+        ];
+
+        $extra = [];
+
+        if ($tab === 'comments') {
+            $extra['commentsGrid'] = $this->postCommentsGrid($newsId);
+        }
+
+        return $this->formView($postData, activeTab: $tab, extra: $extra);
+    }
+
+    public function massPostComments(string $id): Response
+    {
+        $newsId = (int) $id;
+
+        if ($this->news->findById($newsId) === null) {
+            $this->flash('error', $this->t('admin.news.not_found'));
+
+            return $this->redirect('/admin/content/news?tab=posts');
+        }
+
+        return $this->runMassActions(
+            NewsPostCommentsGrid::definition($newsId)->spec(),
+            '/admin/content/news/posts/' . $newsId . '?tab=comments',
+            [
+                'approve' => fn (int $commentId): bool => $this->moderateComment($commentId, 'approved'),
+                'reject' => fn (int $commentId): bool => $this->moderateComment($commentId, 'rejected'),
+                'delete' => fn (int $commentId): bool => $this->comments->delete($commentId),
+            ],
+            'news_comment',
+            'admin.news.mass_comments_done',
+            'content/news/comments/mass',
+        );
     }
 
     public function update(string $id): Response
@@ -272,11 +323,19 @@ class AdminNewsPostsController extends AdminNewsBaseController
     /**
      * @param array<string, mixed> $post
      */
-    private function formView(array $post = [], ?string $error = null, int $status = 200, ?string $activeTab = null): Response
-    {
+    /**
+     * @param array<string, mixed> $extra
+     */
+    private function formView(
+        array $post = [],
+        ?string $error = null,
+        int $status = 200,
+        ?string $activeTab = null,
+        array $extra = [],
+    ): Response {
         $isEdit = isset($post['id']);
 
-        return $this->adminView('news', 'pages/news-form.twig', [
+        return $this->adminView('news', 'pages/news-form.twig', array_merge([
             'title' => $isEdit ? $this->t('admin.news.edit') : $this->t('admin.news.create_title'),
             'pageLead' => $this->t('admin.news.form_lead'),
             'formId' => 'admin-news-form',
@@ -284,13 +343,13 @@ class AdminNewsPostsController extends AdminNewsBaseController
             'post' => $post,
             'isEdit' => $isEdit,
             'error' => $error,
-            'activeTab' => $this->normalizeNewsFormTab($activeTab ?? $this->requestedNewsFormTab()),
-        ], $status);
+            'activeTab' => $this->normalizeNewsFormTab($activeTab ?? $this->requestedNewsFormTab(), $isEdit),
+        ], $extra), $status);
     }
 
     private function requestedNewsFormTab(): string
     {
-        return $this->normalizeNewsFormTab((string) ($_GET['tab'] ?? 'data'));
+        return (string) ($_GET['tab'] ?? 'data');
     }
 
     private function newsFormTabFromError(\Throwable $error): string
@@ -298,9 +357,27 @@ class AdminNewsPostsController extends AdminNewsBaseController
         return str_contains($error->getMessage(), 'invalid_seo') ? 'seo' : 'data';
     }
 
-    private function normalizeNewsFormTab(string $tab): string
+    private function normalizeNewsFormTab(string $tab, bool $isEdit): string
     {
-        return in_array($tab, ['data', 'seo'], true) ? $tab : 'data';
+        $allowComments = $this->acl->isAllowed($this->adminAuth->user(), 'content/news/comments/view');
+
+        return NewsFormTabs::normalize($tab, $isEdit, $allowComments);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function postCommentsGrid(int $newsId): array
+    {
+        $spec = NewsPostCommentsGrid::definition($newsId)->spec();
+        $query = $this->gridQuery($spec);
+
+        return GridRunner::fetch(
+            $spec,
+            $query,
+            fn ($q) => $this->comments->countForPostGrid($newsId, $q),
+            fn ($q) => $this->comments->listForPostGrid($newsId, $q),
+        );
     }
 
     /**

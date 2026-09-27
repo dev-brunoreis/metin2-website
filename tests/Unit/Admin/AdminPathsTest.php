@@ -143,4 +143,24 @@ final class AdminPathsTest extends TestCase
         self::assertContains('hack_log', $ids);
         self::assertGreaterThan(20, count($ids));
     }
+
+    public function testWithChildPathUpdatesMatchingNavItem(): void
+    {
+        $sections = [
+            [
+                'id' => 'content',
+                'label' => 'admin.nav.content',
+                'children' => [
+                    ['id' => 'news', 'path' => '/admin/content/news', 'label' => 'admin.nav.news'],
+                    ['id' => 'tickets', 'path' => '/admin/content/tickets', 'label' => 'admin.nav.tickets'],
+                ],
+            ],
+        ];
+
+        $updated = AdminSections::withChildPath($sections, 'news', '/admin/content/news?tab=comments');
+
+        self::assertSame('/admin/content/news?tab=comments', $updated[0]['children'][0]['path']);
+        self::assertSame('/admin/content/tickets', $updated[0]['children'][1]['path']);
+        self::assertSame('/admin/content/news', $sections[0]['children'][0]['path']);
+    }
 }

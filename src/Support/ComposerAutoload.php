@@ -49,6 +49,7 @@ final class ComposerAutoload
             'X-Frame-Options' => 'DENY',
             'Referrer-Policy' => 'strict-origin-when-cross-origin',
             'Content-Security-Policy' => "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'",
+            'X-Powered-By' => 'metin2-website - github.com/dev-brunoreis',
         ];
     }
 

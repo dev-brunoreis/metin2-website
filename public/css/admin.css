@@ -96,6 +96,27 @@
   flex-shrink: 0;
 }
 
+.admin-tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.15rem;
+  height: 1.15rem;
+  padding: 0 0.35rem;
+  border-radius: 9999px;
+  background: #ea580c;
+  color: #fff;
+  font-size: 0.625rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.admin-tab.is-active .admin-tab-badge {
+  background: #f97316;
+}
+
 .admin-nav-link.is-active .admin-nav-badge {
   background: #fb923c;
 }
@@ -2265,6 +2286,21 @@ input.admin-grid-col-filter[type='date']::-webkit-calendar-picker-indicator {
   border-top: 1px solid #f1f5f9;
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
+}
+
+.admin-grid-wrap-cell {
+  vertical-align: top;
+  min-width: 14rem;
+  max-width: 28rem;
+  white-space: normal;
+}
+
+.admin-grid-wrap {
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #475569;
+  line-height: 1.45;
 }
 
 .admin-audit-diff-cell {

@@ -12,6 +12,7 @@ use Metin2Website\Auth\Csrf;
 use Metin2Website\Http\Response;
 use Metin2Website\I18n\Translator;
 use Metin2Website\Repository\TicketRepository;
+use Metin2Website\Service\NotificationService;
 use Metin2Website\Service\TicketUploadService;
 use Metin2Website\Support\HtmlSanitizer;
 use Metin2Website\Service\AclService;
@@ -35,6 +36,7 @@ class AdminTicketsController extends AdminController
         private TicketRepository $tickets,
         private TicketUploadService $uploads,
         private HtmlSanitizer $sanitizer,
+        private NotificationService $notifications,
     ) {
         parent::__construct($theme, $auth, $csrf, $translator, $adminAuth, $adminTheme, $auditLog, $acl);
     }
@@ -177,6 +179,11 @@ class AdminTicketsController extends AdminController
         );
         $this->tickets->setStatus((int) $ticket['id'], 'answered');
         $this->tickets->touch((int) $ticket['id']);
+        $this->notifications->ticketReplied(
+            (int) $ticket['account_id'],
+            (int) $ticket['id'],
+            (string) $ticket['subject'],
+        );
         $this->auditChange('ticket.reply', 'ticket', (int) $ticket['id'], [
             'status' => $ticket['status'],
         ], [

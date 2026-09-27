@@ -159,6 +159,7 @@ final class AdminRoutes
         $r->addRoute('POST', '/admin/content/news/posts/mass', [AdminNewsPostsController::class, 'mass']);
         $r->addRoute('GET', '/admin/content/news/posts/{id:\d+}', [AdminNewsPostsController::class, 'edit']);
         $r->addRoute('POST', '/admin/content/news/posts/{id:\d+}', [AdminNewsPostsController::class, 'update']);
+        $r->addRoute('POST', '/admin/content/news/posts/{id:\d+}/comments/mass', [AdminNewsPostsController::class, 'massPostComments']);
         $r->addRoute('POST', '/admin/content/news/posts/{id:\d+}/delete', [AdminNewsPostsController::class, 'destroy']);
         $r->addRoute('POST', '/admin/content/news/comments/{id:\d+}/approve', [AdminNewsCommentsController::class, 'approveComment']);
         $r->addRoute('POST', '/admin/content/news/comments/{id:\d+}/reject', [AdminNewsCommentsController::class, 'rejectComment']);

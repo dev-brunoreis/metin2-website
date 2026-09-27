@@ -46,7 +46,7 @@ New admin screen: menu in `AdminSections`, path in `AdminPaths`, **permissions i
 | Notifications | [notifications.md](notifications.md) | `NotificationService`, `/account/notifications` |
 | SEO | [seo.md](seo.md) | `SeoService`, `SeoController`, settings tab `seo`, news/events form tab `seo` |
 | Security invariants | [security.md](security.md) | `tests/Unit/Contract/SecurityContractTest.php` |
-| Theme overlay | [add-theme.md](add-theme.md) | Author guide: child overlay, data globals, tutorials. `themes/{name}/` (`^[A-Za-z0-9_-]+$`), `theme.json` `layout_columns`, layout JSON by node `id`, `/theme-assets/` via nginx or `ThemeAssetController`. Shipped example: `themes/starter` (parent `default`). Default footer keeps a "Metin2 website" credit linking to github.com/dev-brunoreis/metin2-website. Admin panel footer links to GitHub Sponsors and shows `v{{ cms_version }}` from package root `VERSION` (`CmsVersion`, else `dev`) |
+| Theme overlay | [add-theme.md](add-theme.md) | Author guide: child overlay, data globals, tutorials. `themes/{name}/` (`^[A-Za-z0-9_-]+$`), `theme.json` `layout_columns`, layout JSON by node `id`, `/theme-assets/` via nginx or `ThemeAssetController`. Shipped example: `themes/starter` (parent `default`). Default footer keeps a "Metin2 website" credit linking to github.com/dev-brunoreis/metin2-website. Every HTTP response also sends `X-Powered-By: metin2-website - github.com/dev-brunoreis` (`Response`, nginx static, pre-autoload 503). Admin panel footer links to GitHub Sponsors and shows `v{{ cms_version }}` from package root `VERSION` (`CmsVersion`, else `dev`) |
 | Locale | [add-locale.md](add-locale.md) | Shipped: `en` (`lang/en.json`). Public `POST /locale`; admin sidebar `POST /admin/locale`. Codes `^[A-Za-z0-9_-]+$`. Optional: `bin/i18n-deepl.php` to generate more packs |
 | Game dumps / proto | [game-files.md](game-files.md) | `game/config.json` + `schema/` ship; proto, drops, and client files are copied by the operator (`game/README.md`, 40.250 reference). Icons are TGA under `game/client/icon/`; PNG is generated on request |
 | Install / first boot | [setup.md](setup.md) | `SetupController`, `SetupInstaller`, `SetupRequirements` (`bin/check-requirements.php` / `composer check`), `SetupDatabaseDefaults`, `BannerSeedService`, `NewsSeedService`, `EventSeedService` |
@@ -59,7 +59,7 @@ New admin screen: menu in `AdminSections`, path in `AdminPaths`, **permissions i
 | `/admin` | Dashboard |
 | `/admin/population` | Online / census |
 | `/admin/game/` | accounts, characters (last_play presence dots), guilds, awards, bans, referrals, economy |
-| `/admin/content/` | news hub, tickets, downloads, banners, events |
+| `/admin/content/` | news hub (sidebar/hub badge = pending comments; link jumps to `?tab=comments` when pending > 0), tickets (open-ticket badge), downloads, banners, events |
 | `/admin/store/` | item shop hub, packages, payments |
 | `/admin/game-data/` | shops, refine, items, mobs, gms (items/mobs stay out of the sidebar when proto dumps in `game/db` are missing) |
 | `/admin/logs` | Hub `?tab=`. Item slot `how` codes (`SET_SOCKET`, `INFO_SOCKET`, `SET_ATTR`, `SET_FORCE_ATTR`, `INFO_ATTR`) reuse `who`/`x`/`y` as slot metadata, not a player |

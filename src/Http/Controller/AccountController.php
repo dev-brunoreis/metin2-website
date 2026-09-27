@@ -460,6 +460,9 @@ class AccountController extends Controller
                 'payment_cancelled',
                 'account_banned',
                 'item_sent',
+                'news_comment_approved',
+                'news_comment_rejected',
+                'ticket_replied',
             ];
 
             if (!in_array($type, $known, true)) {
@@ -474,6 +477,9 @@ class AccountController extends Controller
 
             if ($type === 'account_banned' && trim((string) ($payload['reason'] ?? '')) === '') {
                 $row['body'] = $this->t('notifications.account_banned_no_reason');
+            } elseif (in_array($type, ['news_comment_approved', 'news_comment_rejected'], true)
+                && trim((string) ($payload['title'] ?? '')) === '') {
+                $row['body'] = $this->t('notifications.' . $type . '_no_title');
             } else {
                 $row['body'] = $this->t('notifications.' . $type, $payload);
             }

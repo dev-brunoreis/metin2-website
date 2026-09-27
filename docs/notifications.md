@@ -12,8 +12,11 @@ In-app inbox for **players** (not admin ACL). Table `cms_notifications` (see [`0
 | `payment_cancelled` | Cancelled |
 | `account_banned` | Ban/block |
 | `item_sent` | Item award / shop send |
+| `news_comment_approved` | Staff approved a news comment |
+| `news_comment_rejected` | Staff rejected a news comment |
+| `ticket_replied` | Staff replied to a support ticket |
 
-Pushes are keyed by `ref` so the same event is not duplicated.
+Pushes are keyed by `ref` so the same event is not duplicated. Comment approve/reject and ticket replies append a timestamp so each moderation/reply can notify again.
 
 ## Player UI
 

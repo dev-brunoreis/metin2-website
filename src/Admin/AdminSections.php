@@ -539,6 +539,33 @@ class AdminSections
         return $groups;
     }
 
+    /**
+     * @param list<array<string, mixed>> $sections
+     * @return list<array<string, mixed>>
+     */
+    public static function withChildPath(array $sections, string $childId, string $path): array
+    {
+        foreach ($sections as $groupIndex => $group) {
+            $children = $group['children'] ?? null;
+
+            if (!is_array($children)) {
+                continue;
+            }
+
+            foreach ($children as $childIndex => $child) {
+                if (!is_array($child) || (string) ($child['id'] ?? '') !== $childId) {
+                    continue;
+                }
+
+                $sections[$groupIndex]['children'][$childIndex]['path'] = $path;
+
+                return $sections;
+            }
+        }
+
+        return $sections;
+    }
+
     public static function isSuperOnly(string $sectionId): bool
     {
         return in_array($sectionId, self::SUPER_ONLY, true);

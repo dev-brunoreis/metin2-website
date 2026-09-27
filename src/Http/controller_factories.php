@@ -133,22 +133,22 @@ return [
         $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->awards, $app->accounts, $app->players, $app->gameProto, $app->notificationService,
     ),
     \Metin2Website\Http\Controller\Admin\AdminNewsHubController::class => static fn ($app) => new \Metin2Website\Http\Controller\Admin\AdminNewsHubController(
-        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->news, $app->newsComments, $app->settings, $app->htmlSanitizer, $app->newsUploads,
+        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->news, $app->newsComments, $app->settings, $app->htmlSanitizer, $app->newsUploads, $app->notificationService,
     ),
     \Metin2Website\Http\Controller\Admin\AdminStoreHubController::class => static fn ($app) => new \Metin2Website\Http\Controller\Admin\AdminStoreHubController(
         $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->itemShopCategories, $app->itemShopProducts, $app->itemShopOrders, $app->gameProto,
     ),
     \Metin2Website\Http\Controller\Admin\AdminNewsPostsController::class => static fn ($app) => new \Metin2Website\Http\Controller\Admin\AdminNewsPostsController(
-        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->news, $app->newsComments, $app->settings, $app->htmlSanitizer, $app->newsUploads, $app->discord,
+        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->news, $app->newsComments, $app->settings, $app->htmlSanitizer, $app->newsUploads, $app->notificationService, $app->discord,
     ),
     \Metin2Website\Http\Controller\Admin\AdminNewsCommentsController::class => static fn ($app) => new \Metin2Website\Http\Controller\Admin\AdminNewsCommentsController(
-        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->news, $app->newsComments, $app->settings, $app->htmlSanitizer, $app->newsUploads,
+        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->news, $app->newsComments, $app->settings, $app->htmlSanitizer, $app->newsUploads, $app->notificationService,
     ),
     \Metin2Website\Http\Controller\Admin\AdminNewsSettingsController::class => static fn ($app) => new \Metin2Website\Http\Controller\Admin\AdminNewsSettingsController(
-        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->news, $app->newsComments, $app->settings, $app->htmlSanitizer, $app->newsUploads,
+        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->news, $app->newsComments, $app->settings, $app->htmlSanitizer, $app->newsUploads, $app->notificationService,
     ),
     \Metin2Website\Http\Controller\Admin\AdminTicketsController::class => static fn ($app) => new \Metin2Website\Http\Controller\Admin\AdminTicketsController(
-        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->tickets, $app->ticketUploads, $app->htmlSanitizer,
+        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->tickets, $app->ticketUploads, $app->htmlSanitizer, $app->notificationService,
     ),
     \Metin2Website\Http\Controller\Admin\AdminItemShopProductsController::class => static fn ($app) => new \Metin2Website\Http\Controller\Admin\AdminItemShopProductsController(
         $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->itemShopCategories, $app->itemShopProducts, $app->itemShopOrders, $app->gameProto,

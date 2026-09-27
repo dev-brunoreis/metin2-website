@@ -1,0 +1,5 @@
+<section class="admin-fieldset">
+    <h2 class="admin-fieldset-title">{{ t('admin.news.post_comments_title') }}</h2>
+    <p class="admin-fieldset-help mb-4">{{ t('admin.news.post_comments_help') }}</p>
+    {% include 'components/grid.twig' with { grid: commentsGrid } %}
+</section>
