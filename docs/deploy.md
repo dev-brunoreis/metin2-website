@@ -210,6 +210,7 @@ The production PHP image (`docker/php/Dockerfile` target `php`) ships:
 - `docker/php/zz-opcache-prod.ini` — OPcache with `validate_timestamps=0`
 - PHP-FPM ping endpoint for container healthchecks
 - **GD** with JPEG / PNG / WebP — required for admin banner variant generation
+- Vendor stage (`composer:2`) installs deps with `--ignore-platform-req=ext-gd` / `ext-pdo_mysql` because those extensions land in the `php` stage, not the Composer image
 
 Mirror these in your production `php.ini` if you deploy without the Compose image. Banner CMS uploads need the GD extension (`jpeg`, `png`, `webp`).
 

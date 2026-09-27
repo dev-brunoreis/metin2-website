@@ -46,7 +46,10 @@ FROM composer:2 AS vendor
 WORKDIR /app
 
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --prefer-dist --no-scripts --no-interaction
+# Runtime image (php stage) provides gd + pdo_mysql; composer:2 does not.
+RUN composer install --no-dev --prefer-dist --no-scripts --no-interaction \
+    --ignore-platform-req=ext-gd \
+    --ignore-platform-req=ext-pdo_mysql
 
 # =============================================================================
 # Production PHP-FPM
