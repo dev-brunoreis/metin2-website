@@ -8,9 +8,6 @@
         <div class="admin-game-inv">
             <div class="admin-inv-paperdoll admin-inv-paperdoll-equip"
                  style="--board-w: {{ layout.equipment.width }}; --board-h: {{ layout.equipment.height }};">
-                <div class="admin-inv-paperdoll-silhouette" aria-hidden="true">
-                    {% include 'components/inventory-silhouette.twig' %}
-                </div>
                 {% for slot in layout.equipment.slots %}
                     <div class="admin-inv-cell admin-inv-cell-abs"
                          style="--slot-x: {{ slot.x }}; --slot-y: {{ slot.y }}; --slot-w: {{ slot.w }}; --slot-h: {{ slot.h }};"

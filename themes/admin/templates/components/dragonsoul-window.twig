@@ -16,9 +16,6 @@
                          {% if not loop.first %}hidden{% endif %}>
                         <div class="admin-inv-paperdoll admin-inv-paperdoll-ds"
                              style="--board-w: {{ deck.width }}; --board-h: {{ deck.height }};">
-                            <div class="admin-game-ds-circle" aria-hidden="true">
-                                {% include 'components/dragonsoul-disc.twig' %}
-                            </div>
                             {% for slot in deck.slots %}
                                 <div class="admin-inv-cell admin-inv-cell-abs admin-game-ds-slot admin-game-ds-slot-{{ loop.index0 }}"
                                      style="--slot-x: {{ slot.x }}; --slot-y: {{ slot.y }}; --slot-w: {{ slot.w }}; --slot-h: {{ slot.h }};"
