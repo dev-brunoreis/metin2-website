@@ -12,6 +12,17 @@ use PHPUnit\Framework\TestCase;
 
 final class EconomyMathTest extends TestCase
 {
+    public function testYangMoneyTypesExcludeDropAndKill(): void
+    {
+        foreach (EconomyStats::YANG_MONEY_TYPES as $type) {
+            self::assertTrue(EconomyStats::isYangMoneyType($type));
+        }
+
+        self::assertFalse(EconomyStats::isYangMoneyType('DROP'));
+        self::assertFalse(EconomyStats::isYangMoneyType('KILL'));
+        self::assertFalse(EconomyStats::isYangMoneyType(''));
+    }
+
     public function testMedianOddAndEven(): void
     {
         self::assertSame(2.0, EconomyStats::median([1, 2, 3]));

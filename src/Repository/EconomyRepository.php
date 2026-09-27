@@ -950,7 +950,7 @@ class EconomyRepository extends Repository implements ProvidesAdminGrid
     }
 
     /**
-     * @return array{volume_yang: int, trades: int, money_created: int, money_destroyed: int}
+     * @return array{volume_yang: int, trades: int, money_created: int, money_destroyed: int, money_drop: int}
      */
     public function marketKpis(string $fromDay, string $toDay): array
     {
@@ -965,7 +965,8 @@ class EconomyRepository extends Repository implements ProvidesAdminGrid
 
         $yang = $this->db()->fetch(
             'SELECT COALESCE(SUM(money_created), 0) AS money_created,
-                    COALESCE(SUM(money_destroyed), 0) AS money_destroyed
+                    COALESCE(SUM(money_destroyed), 0) AS money_destroyed,
+                    COALESCE(SUM(money_drop), 0) AS money_drop
              FROM economy_yang_daily
              WHERE day BETWEEN ? AND ?',
             [$fromDay, $toDay],
@@ -976,6 +977,7 @@ class EconomyRepository extends Repository implements ProvidesAdminGrid
             'trades' => (int) ($trade['trades'] ?? 0),
             'money_created' => (int) ($yang['money_created'] ?? 0),
             'money_destroyed' => (int) ($yang['money_destroyed'] ?? 0),
+            'money_drop' => (int) ($yang['money_drop'] ?? 0),
         ];
     }
 

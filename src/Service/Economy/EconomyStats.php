@@ -10,6 +10,26 @@ namespace Mt2Cms\Service\Economy;
 final class EconomyStats
 {
     /**
+     * money_log types whose `gold` column is yang.
+     * DROP is item count; KILL is mob kill count (this core).
+     *
+     * @var list<string>
+     */
+    public const YANG_MONEY_TYPES = [
+        'MONSTER',
+        'SHOP',
+        'REFINE',
+        'QUEST',
+        'GUILD',
+        'MISC',
+    ];
+
+    public static function isYangMoneyType(string $type): bool
+    {
+        return in_array($type, self::YANG_MONEY_TYPES, true);
+    }
+
+    /**
      * @param list<int|float> $values
      */
     public static function median(array $values): ?float

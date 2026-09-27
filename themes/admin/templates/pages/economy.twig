@@ -52,6 +52,9 @@
                 <dd class="text-xs font-normal text-slate-500">
                     +{{ kpis.money_created|number_format }} / −{{ kpis.money_destroyed|number_format }}
                 </dd>
+                <dd class="text-xs font-normal text-slate-500">
+                    {{ t('admin.economy.yang_ground') }} {{ kpis.money_drop|number_format }}
+                </dd>
             </div>
         </dl>
         {% if yang %}

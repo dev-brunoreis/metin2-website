@@ -6,7 +6,11 @@ Admin **Game → Economy** (`/admin/game/economy`). ACL: `game/economy/view`, `e
 
 `php bin/economy-tick.php` → `EconomyTickService::run()` (lock `var/economy-tick.lock`).
 
-Each run: player/safebox/guild yang census, daily yang + money-log rollup, trade ingest from gold/item logs, anomaly alerts (outlier band, Discord via `DiscordWebhookService` when configured).
+Each run: player/safebox/guild yang census, daily yang rollup, trade ingest from gold/item logs, anomaly alerts (outlier band, Discord via `DiscordWebhookService` when configured).
+
+`money_created` / `money_destroyed` sum `money_log` types whose `gold` column is yang: `MONSTER`, `SHOP`, `REFINE`, `QUEST`, `GUILD`, `MISC` (`EconomyStats::isYangMoneyType`). `DROP` is item count and `KILL` is mob kill count on this core, so they are excluded (`money_kill` is stored as 0). The db process flushes `money_log` about once an hour, and it drops quest rows (`type` 4) before insert.
+
+`money_drop` is ground pickup: `SUM(log.what)` where `type=CHARACTER` and `how=GET_GOLD`. This core only writes that row when the pile is greater than 1000. It is not added on top of `money_created`, because `MONEY_LOG_MONSTER` already counts yang at drop time.
 
 Without a frequent cron the admin KPIs go stale (UI flags last-ok older than ~2h).
 

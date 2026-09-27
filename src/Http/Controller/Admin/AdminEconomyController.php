@@ -148,6 +148,7 @@ class AdminEconomyController extends AdminController
                 'trades_delta' => $this->deltaRatio($kpis['trades'], $prev['trades']),
                 'money_created' => $kpis['money_created'],
                 'money_destroyed' => $kpis['money_destroyed'],
+                'money_drop' => $kpis['money_drop'],
                 'money_net' => $kpis['money_created'] - $kpis['money_destroyed'],
                 'money_net_delta' => $this->deltaRatio(
                     $kpis['money_created'] - $kpis['money_destroyed'],

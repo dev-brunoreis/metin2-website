@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Mt2Cms\Repository;
 
+use Mt2Cms\Service\Economy\EconomyStats;
+
 /**
  * Read-only aggregations against the game MySQL (player / log).
  */
@@ -353,7 +355,8 @@ class GameEconomyScanRepository extends Repository
     /**
      * money_log gold sums by type for a calendar day (best-effort; table has no date id).
      *
-     * Net per type is gold SUM; created/destroyed split positive vs negative rows.
+     * Net per type is gold SUM; created/destroyed count yang types only
+     * (DROP is item count, KILL is mob kills on this core).
      *
      * @return array{
      *   by_type: array<string, int>,
@@ -399,6 +402,10 @@ class GameEconomyScanRepository extends Repository
                 $byType[$type] = (int) ($row['total'] ?? 0);
             }
 
+            if (!EconomyStats::isYangMoneyType($type)) {
+                continue;
+            }
+
             $created += (int) ($row['created'] ?? 0);
             $destroyed += (int) ($row['destroyed'] ?? 0);
         }
@@ -408,6 +415,30 @@ class GameEconomyScanRepository extends Repository
             'created' => $created,
             'destroyed' => $destroyed,
         ];
+    }
+
+    /**
+     * Yang picked up from the ground (`log.how = GET_GOLD`).
+     *
+     * This core only writes a row when the pile is greater than 1000.
+     * Not added on top of money_log MONSTER (that row is creation at drop time).
+     */
+    public function groundGoldSumForDay(string $day): int
+    {
+        if (!$this->logTableExists('log')) {
+            return 0;
+        }
+
+        $log = $this->db->useDatabase('log');
+
+        return (int) ($log->fetchColumn(
+            'SELECT COALESCE(SUM(`what`), 0)
+             FROM `log`
+             WHERE `type` = \'CHARACTER\'
+               AND `how` = \'GET_GOLD\'
+               AND DATE(`time`) = ?',
+            [$day],
+        ) ?? 0);
     }
 
     /**
