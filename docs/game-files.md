@@ -6,7 +6,11 @@ Git and the release tarball ship **only** `config.json`, `schema/*.json`, and em
 
 Supported base: the [40.250 reference serverfile and client](https://metin2.dev/topic/27610-40250-reference-serverfile-client-src-15-available-languages/). Archive folders vary; match by filename. English names must end up as `item_names_en.txt` and `mob_names_en.txt` unless you edit `config.json`.
 
-Boot after install needs the three JSON files only. Missing `itemdesc` / `item_list` / drops are empty catalogs. Proto admin list/edit flash `admin.proto.missing_files` and redirect to `/admin` when `game/db` proto or name files from `config.json` are absent (wrong filename such as `item_names.txt` instead of `item_names_en.txt` counts as missing). The sidebar also hides **Items** and **Mobs** until those dumps are present (`GameProfile::protoFilesReady` / `AdminSections::withoutUnavailableProto`). `game/maps/` is not read (map labels are `lang/en.json` via `Display::map()`).
+Boot after install needs the three JSON files only. Missing `itemdesc` / `item_list` / drops are empty catalogs.
+
+### Admin proto menus (sidebar)
+
+Only **Items** and **Mobs** are gated on disk files. Each needs **both** paths from `config.json` (default: `db/item_proto.txt` + `db/item_names_en.txt`, or `mob_proto.txt` + `mob_names_en.txt`). Wrong or missing names (e.g. `item_names.txt` instead of `item_names_en.txt`) counts as not ready. Until `GameProfile::protoFilesReady` passes, `AdminSections::withoutUnavailableProto` drops those entries from the sidebar; ACL and role permissions are unchanged. Direct URLs still flash `admin.proto.missing_files` and redirect to `/admin`. **Shops**, **Refine**, and **GMs** are not hidden by missing proto dumps. Paths resolve under `game/` or `GAME_DIR`. `game/maps/` is not read (map labels are `lang/en.json` via `Display::map()`).
 
 ## Folder layout
 

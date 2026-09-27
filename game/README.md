@@ -1,6 +1,8 @@
 # Game files
 
-This folder ships **paths and proto schema only** (`config.json`, `schema/`). Proto rows, item names, drop tables, client text, and icons are **not** included. Copy them from your own server and unpacked client. The site boots without them; shop and ranking then show no images, and proto admin reports missing files until the text dumps are in place.
+This folder ships **paths and proto schema only** (`config.json`, `schema/`). Proto rows, item names, drop tables, client text, and icons are **not** included. Copy them from your own server and unpacked client. The site boots without them; shop and ranking then show no images.
+
+**Admin sidebar:** **Items** and **Mobs** (under Game data) appear only when the matching files from `config.json` exist and are readable — for each kind, both the proto txt and the locale names file (defaults under `db/`). Until then those two menu entries stay hidden; opening the URLs directly flashes `admin.proto.missing_files` and redirects to the dashboard. **Shops**, **Refine**, and **GMs** stay visible. Use `GAME_DIR` if your dumps live outside this folder. Details: [`docs/game-files.md`](../docs/game-files.md).
 
 Supported layout: the [40.250 reference serverfile and client](https://metin2.dev/topic/27610-40250-reference-serverfile-client-src-15-available-languages/) (English). Folder names inside those archives vary. Match by **filename**, then rename locale name files if needed.
 
