@@ -48,8 +48,6 @@ use Mt2Cms\Game\ItemStats;
 use Mt2Cms\Game\Proto\ProtoEnums;
 use Mt2Cms\Game\Proto\ProtoFormFields;
 use Mt2Cms\Game\Proto\ProtoSchemas;
-use Mt2Cms\Game\Drop\GroupTextParser;
-use Mt2Cms\Game\Drop\GroupTextWriter;
 use Mt2Cms\Repository\AclRepository;
 use Mt2Cms\Repository\AdminRoleRepository;
 use Mt2Cms\Repository\AdminTotpRepository;
@@ -387,6 +385,7 @@ class Application
         if ($isAdmin) {
             $admin = $this->adminAuth->check() ? $this->adminAuth->user() : null;
             $sections = $this->acl->filterSections($admin, AdminSections::all());
+            $sections = AdminSections::withoutUnavailableProto($sections, $this->gameProfile);
             $globals['admin_sections'] = $sections;
             $globals['admin_pinned_nav'] = AdminSections::pinnedNavItem($sections);
             $globals['cms_version'] = CmsVersion::read();

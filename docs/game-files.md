@@ -6,7 +6,7 @@ Git and the release tarball ship **only** `config.json`, `schema/*.json`, and em
 
 Supported base: the [40.250 reference serverfile and client](https://metin2.dev/topic/27610-40250-reference-serverfile-client-src-15-available-languages/). Archive folders vary; match by filename. English names must end up as `item_names_en.txt` and `mob_names_en.txt` unless you edit `config.json`.
 
-Boot after install needs the three JSON files only. Missing `itemdesc` / `item_list` / drops are empty catalogs. Proto admin list/edit flash `admin.proto.missing_files` and redirect to `/admin` when `game/db` proto or name files from `config.json` are absent (wrong filename such as `item_names.txt` instead of `item_names_en.txt` counts as missing). `game/maps/` is not read (map labels are `lang/en.json` via `Display::map()`).
+Boot after install needs the three JSON files only. Missing `itemdesc` / `item_list` / drops are empty catalogs. Proto admin list/edit flash `admin.proto.missing_files` and redirect to `/admin` when `game/db` proto or name files from `config.json` are absent (wrong filename such as `item_names.txt` instead of `item_names_en.txt` counts as missing). The sidebar also hides **Items** and **Mobs** until those dumps are present (`GameProfile::protoFilesReady` / `AdminSections::withoutUnavailableProto`). `game/maps/` is not read (map labels are `lang/en.json` via `Display::map()`).
 
 ## Folder layout
 
@@ -177,9 +177,9 @@ Add display labels in `lang/en.json` under `admin.proto.tokens.YOUR_TOKEN`. Miss
 
 If your source adds columns (e.g. after `addon_type`), append them to `columns`, add to `form_tabs`, and set `defaults`. The parser truncates extra file columns or pads missing ones.
 
-### Admin drop editor
+### Drop files (read-only)
 
-The admin can edit `mob_drop_item.txt`, `etc_drop_item.txt`, and `common_drop_item.txt` under `game/server/` (or `GAME_DIR`). Writes go through `DropFileService` and `GroupTextWriter`. The game server must `/reload` or restart to pick up changes. On first save of `common_drop_item.txt`, a `.bak` copy is created beside the original.
+There is no admin drop editor. `MobDropService` and `DropFileService` only **read** `game/server/` dumps (or `GAME_DIR`) to show groups on a mob proto and drop sources on an economy item. Edit those txt files on disk; the game server must `/reload` or restart.
 
 ## What stays in PHP (not configurable yet)
 
@@ -198,7 +198,7 @@ Services wired through the profile:
 
 - `GameProtoService` — proto txt paths and columns
 - `GameIconService` — icons, faces, `item_list`
-- `MobDropService` — drop file names
+- `MobDropService` — read-only drop catalogs for proto/economy
 - `ProtoEnums` / `ProtoSchemas` — admin forms and item tooltips
 
 ## Checklist for a new source

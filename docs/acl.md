@@ -8,8 +8,8 @@ Full how-to for a new section: [add-admin-section.md](add-admin-section.md). Cat
 
 | Principal | Rule |
 | --- | --- |
-| Role `super` | Always allowed (`AdminPermissions::isSuper`) |
-| Other roles | IDs granted on the role (prefix match: `game/accounts` grants `game/accounts/edit`) |
+| Role `super` | Always allowed (`AdminPermissions::isSuper`). Super is the only shipped role. |
+| Other roles | Created in Admin → Roles with explicit resource IDs (prefix match: `game/accounts` grants `game/accounts/edit`). None are pre-seeded. |
 | Admin with `use_custom_acl` | Per-admin resource list instead of the role |
 | `system/*` | Super-only (`AdminResourceCatalog::isSuperOnly`) — not assignable |
 

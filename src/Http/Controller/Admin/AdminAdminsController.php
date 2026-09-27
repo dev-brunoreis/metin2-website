@@ -275,7 +275,7 @@ class AdminAdminsController extends AdminController
         $admin = $data['admin'] ?? null;
         $isEdit = is_array($admin) && isset($admin['id']);
         $roleOptions = $this->roles->listForAssign();
-        $defaultRole = $roleOptions[0]['slug'] ?? 'support';
+        $defaultRole = $roleOptions[0]['slug'] ?? AdminPermissions::ROLE_SUPER;
 
         return $this->adminView('admins', 'pages/admin-form.twig', [
             'title' => $this->t($isEdit ? 'admin.admins.edit_title' : 'admin.admins.create_title'),

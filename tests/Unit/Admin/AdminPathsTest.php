@@ -7,6 +7,7 @@ namespace Mt2Cms\Tests\Unit\Admin;
 use Mt2Cms\Admin\AdminPaths;
 use Mt2Cms\Admin\AdminSections;
 use Mt2Cms\Admin\LogCatalog;
+use Mt2Cms\Game\GameProfile;
 use PHPUnit\Framework\TestCase;
 
 final class AdminPathsTest extends TestCase
@@ -29,9 +30,58 @@ final class AdminPathsTest extends TestCase
         self::assertSame('/admin/logs?tab=connections', AdminSections::sectionPath('logs'));
         self::assertSame('/admin/store', AdminSections::sectionPath('store'));
         self::assertSame('/admin/game-data/shops', AdminSections::sectionPath('shops'));
+        self::assertNull(AdminSections::sectionPath('drops'));
+        self::assertNotContains('drops', AdminSections::navSectionIds());
         self::assertSame('/admin/settings', AdminSections::sectionPath('settings'));
         self::assertSame('/admin/settings?tab=registration', AdminPaths::settingsRegistration());
         self::assertSame('/admin/settings?tab=banners', AdminPaths::settingsBanners());
+    }
+
+    public function testWithoutUnavailableProtoHidesItemsAndMobs(): void
+    {
+        $dir = sys_get_temp_dir() . '/mt2cms-admin-proto-nav-' . bin2hex(random_bytes(4));
+        mkdir($dir . '/schema', 0777, true);
+        copy(BASE_DIR . '/game/config.json', $dir . '/config.json');
+        copy(BASE_DIR . '/game/schema/item.json', $dir . '/schema/item.json');
+        copy(BASE_DIR . '/game/schema/mob.json', $dir . '/schema/mob.json');
+
+        $sections = AdminSections::withoutUnavailableProto(AdminSections::all(), GameProfile::load($dir));
+        $ids = [];
+
+        foreach ($sections as $group) {
+            foreach ($group['children'] as $child) {
+                $ids[] = $child['id'];
+            }
+        }
+
+        self::assertNotContains('items', $ids);
+        self::assertNotContains('mobs', $ids);
+        self::assertNotContains('drops', $ids);
+        self::assertContains('shops', $ids);
+        self::assertContains('gms', $ids);
+    }
+
+    public function testWithoutUnavailableProtoKeepsItemsWhenDumpsExist(): void
+    {
+        $dir = sys_get_temp_dir() . '/mt2cms-admin-proto-nav-' . bin2hex(random_bytes(4));
+        mkdir($dir . '/schema', 0777, true);
+        mkdir($dir . '/db', 0777, true);
+        copy(BASE_DIR . '/game/config.json', $dir . '/config.json');
+        copy(BASE_DIR . '/game/schema/item.json', $dir . '/schema/item.json');
+        copy(BASE_DIR . '/game/schema/mob.json', $dir . '/schema/mob.json');
+        file_put_contents($dir . '/db/item_proto.txt', "VNUM\n");
+        file_put_contents($dir . '/db/item_names_en.txt', "VNUM\n");
+
+        $ids = [];
+
+        foreach (AdminSections::withoutUnavailableProto(AdminSections::all(), GameProfile::load($dir)) as $group) {
+            foreach ($group['children'] as $child) {
+                $ids[] = $child['id'];
+            }
+        }
+
+        self::assertContains('items', $ids);
+        self::assertNotContains('mobs', $ids);
     }
 
     public function testSettingsGroupIsPinnedToSidebarFooter(): void

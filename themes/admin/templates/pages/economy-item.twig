@@ -75,9 +75,6 @@
             {% if priceChange is not null %} · {{ t('admin.economy.price_change', {pct: (priceChange * 100)|number_format(1)}) }}{% endif %}
         </p>
         {% endif %}
-        <p class="mt-2 text-sm">
-            <a class="font-medium text-indigo-600 hover:underline" href="{{ admin_path('gameDataDrops') }}">{{ t('admin.economy.open_drops') }}</a>
-        </p>
     </div>
 
     <div class="admin-panel p-4 md:p-6">

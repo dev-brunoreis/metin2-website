@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Mt2Cms\Setup;
 
 use Mt2Cms\Support\Database;
-use Mt2Cms\Repository\AdminRoleRepository;
 
 class CmsSchema
 {
@@ -18,7 +17,6 @@ class CmsSchema
         (new MigrationRunner($this->db))->migrate();
         (new AdminAclColumnMigrator($this->db))->migrateIfNeeded();
         (new AclResourceMigrator($this->db))->migrateIfNeeded();
-        (new AdminRoleRepository($this->db))->seedDefaults();
     }
 
     /**

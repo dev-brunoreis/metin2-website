@@ -47,6 +47,8 @@ final class AdminResourceCatalogTest extends TestCase
 
         self::assertContains('game-data/shops/view', $resources);
         self::assertContains('game-data/shops/mass', $resources);
+        self::assertNotContains('game-data/drops/view', AdminResourceCatalog::allResourceIds());
+        self::assertSame([], AdminResourceCatalog::resourcesForLegacySection('drops'));
     }
 
     public function testLogTabsGenerateViewResources(): void

@@ -168,9 +168,6 @@ return [
     \Mt2Cms\Http\Controller\Admin\AdminRefineController::class => static fn ($app) => new \Mt2Cms\Http\Controller\Admin\AdminRefineController(
         $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->refine, $app->gameProto,
     ),
-    \Mt2Cms\Http\Controller\Admin\AdminDropsController::class => static fn ($app) => new \Mt2Cms\Http\Controller\Admin\AdminDropsController(
-        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->dropFiles, $app->mobDrops, $app->gameProto, $app->gameProfile,
-    ),
     \Mt2Cms\Http\Controller\Admin\AdminAdminsController::class => static fn ($app) => new \Mt2Cms\Http\Controller\Admin\AdminAdminsController(
         $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, new \Mt2Cms\Repository\AdminRepository($app->cmsDb, $app->adminRoles), $app->adminRoles, $app->adminTotp,
     ),

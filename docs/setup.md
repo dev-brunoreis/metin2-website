@@ -3,7 +3,7 @@
 `GET/POST /setup` (`SetupController`) walks **requirements → database → (admin if needed) → done**. The database step writes credentials to `.env` (`APP_INSTALLED=false`), runs `CmsSchema::ensure()`, and seeds defaults via `SetupInstaller`.
 
 - If the CMS `admins` table already has rows (e.g. you deleted only `.env`), setup **skips** creating an admin, sets `APP_INSTALLED=true`, and shows a success screen with links to the public site and `/admin`.
-- If there are no admins, the admin step is required; finishing it marks installed and shows the same success screen (no auto-login).
+- If there are no admins, the admin step is required; finishing it marks installed and shows the same success screen (no auto-login). That first admin is **Super**. Extra roles are created later under Admin → Roles with explicit ACL — setup does not ship Support/Content placeholders.
 - Admin recovery (installed but empty `admins`) still uses the admin step only (skips requirements).
 
 Host checks (`SetupRequirements`): PHP 8.3.x, required extensions (`pdo_mysql`, `gd` with JPEG/PNG/WebP, `curl`, `mbstring`, `iconv`, `fileinfo`, `openssl`), `vendor/autoload.php`, and writable project root / `var/` / `public/uploads/`. Same checks via CLI: `php bin/check-requirements.php` or `composer check`. The wizard re-checks on every show; Continue is blocked until required checks pass.

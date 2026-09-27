@@ -7,7 +7,6 @@ namespace Mt2Cms\Repository;
 use Mt2Cms\Admin\Grid\Definitions\AdminRolesGrid;
 use Mt2Cms\Admin\AdminPermissions;
 use Mt2Cms\Admin\AdminResourceCatalog;
-use Mt2Cms\Admin\AdminSections;
 use Mt2Cms\Admin\Grid\GridQuery;
 use Mt2Cms\Admin\Grid\GridSql;
 use Mt2Cms\Admin\Grid\ProvidesAdminGrid;
@@ -313,60 +312,6 @@ class AdminRoleRepository extends Repository implements ProvidesAdminGrid
         $this->db()->execute('DELETE FROM acl_role_resources WHERE role = ?', [$slug]);
 
         return $this->db()->execute('DELETE FROM admin_roles WHERE slug = ?', [$slug]) > 0;
-    }
-
-    public function seedDefaults(): void
-    {
-        if ($this->defaultsAlreadySeeded()) {
-            return;
-        }
-
-        if ($this->hasAny()) {
-            $this->markDefaultsSeeded();
-
-            return;
-        }
-
-        $acl = new AclRepository($this->db());
-        $defaults = [
-            ['slug' => 'support', 'label' => 'Support', 'sections' => AdminSections::defaultSupportSections()],
-            ['slug' => 'content', 'label' => 'Content', 'sections' => AdminSections::defaultContentSections()],
-        ];
-
-        foreach ($defaults as $row) {
-            $this->db()->execute(
-                'INSERT INTO admin_roles (slug, label) VALUES (?, ?)',
-                [$row['slug'], $row['label']],
-            );
-            $resources = [];
-
-            foreach ($row['sections'] as $sectionId) {
-                foreach (AdminResourceCatalog::resourcesForLegacySection($sectionId) as $resourceId) {
-                    $resources[] = $resourceId;
-                }
-            }
-
-            $acl->seedRoleResources($row['slug'], array_values(array_unique($resources)));
-        }
-
-        $this->markDefaultsSeeded();
-    }
-
-    private function defaultsAlreadySeeded(): bool
-    {
-        return $this->db()->fetchColumn(
-            'SELECT 1 FROM settings WHERE setting_key = ? LIMIT 1',
-            ['admin_roles_defaults_seeded'],
-        ) !== null;
-    }
-
-    private function markDefaultsSeeded(): void
-    {
-        $this->db()->execute(
-            'INSERT INTO settings (setting_key, setting_value) VALUES (?, ?)
-             ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value)',
-            ['admin_roles_defaults_seeded', '1'],
-        );
     }
 
     public function countForGrid(GridQuery $query): int

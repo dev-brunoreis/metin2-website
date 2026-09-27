@@ -12,7 +12,7 @@ Admin routes use area prefixes:
 | Game | `/admin/game/` | accounts, characters, guilds, awards |
 | Content | `/admin/content/` | news (hub), tickets |
 | Store | `/admin/store/` | categories + orders (hub at `/admin/store`; products live in a category) |
-| Game data | `/admin/game-data/` | shops, refine, drops, items, mobs, gms |
+| Game data | `/admin/game-data/` | shops, refine, items, mobs, gms |
 | Logs | `/admin/logs` | Hub with `?tab={logId}` |
 | System | `/admin/system/` | admins, roles, audit-log |
 | Settings | `/admin/settings` | Hub with `?tab=` for registration, themes, locale, security, community, unstuck, banners |
@@ -27,7 +27,7 @@ Admin navigation and ACL use related but separate catalogs:
 
 | Class | Edit when |
 |---|---|
-| [`AdminSections`](../src/Admin/AdminSections.php) | Sidebar menu, breadcrumbs, role seed section lists, super-only ids |
+| [`AdminSections`](../src/Admin/AdminSections.php) | Sidebar menu, breadcrumbs, super-only ids |
 | [`AdminPaths`](../src/Admin/AdminPaths.php) | URL helpers (`admin_path()` / PHP) |
 | [`AdminResourceCatalog`](../src/Admin/AdminResourceCatalog.php) | Assignable ACL permissions (role form tree) |
 | [`AdminPermissions`](../src/Admin/AdminPermissions.php) | Super role constant only |
@@ -45,7 +45,7 @@ The scrollable `.admin-sidebar-nav` keeps its scroll position across page loads 
 ],
 ```
 
-If the section should appear in the sidebar, add it to `AdminSections`. For **assignable permissions**, add the resource tree under [`AdminResourceCatalog::tree()`](../src/Admin/AdminResourceCatalog.php) (role form uses the full tree, including `navHidden` game-data modules).
+If the section should appear in the sidebar, add it to `AdminSections`. For **assignable permissions**, add the resource tree under [`AdminResourceCatalog::tree()`](../src/Admin/AdminResourceCatalog.php) (role form uses the full tree, including `navHidden` game-data modules). Items and mobs are dropped from the rendered sidebar when proto dumps are missing (`AdminSections::withoutUnavailableProto`); ACL and role assignment stay unchanged.
 
 ## 2. Routes + controller
 

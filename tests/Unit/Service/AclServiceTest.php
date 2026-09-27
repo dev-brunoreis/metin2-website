@@ -185,8 +185,4 @@ final class FakeAdminRoleRepository extends AdminRoleRepository
     {
         return 'cms';
     }
-
-    public function seedDefaults(): void
-    {
-    }
 }

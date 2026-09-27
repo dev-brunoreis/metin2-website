@@ -200,11 +200,6 @@ final class AdminPaths
         return '/admin/game-data/refine';
     }
 
-    public static function gameDataDrops(): string
-    {
-        return '/admin/game-data/drops';
-    }
-
     public static function gameDataItems(): string
     {
         return '/admin/game-data/items';
@@ -340,7 +335,6 @@ final class AdminPaths
             'payments' => self::storePayments(),
             'shops' => self::gameDataShops(),
             'refine' => self::gameDataRefine(),
-            'drops' => self::gameDataDrops(),
             'items' => self::gameDataItems(),
             'mobs' => self::gameDataMobs(),
             'gms' => self::gameDataGms(),

@@ -38,7 +38,7 @@ New admin screen: menu in `AdminSections`, path in `AdminPaths`, **permissions i
 | **How code is written** | [patterns.md](patterns.md) | layers, `Response`, `FormInput`, SQL, i18n |
 | **Tests** | [testing.md](testing.md) | `tests/Unit/`, `SecurityContractTest`, opt-in `tests/Integration/` smoke; CI unit + Psalm taint (`.github/workflows/`) |
 | Admin section / grid / hubs | [add-admin-section.md](add-admin-section.md) | `AdminSections`, `AdminRoutes.php`, `src/Admin/Grid/`, `themes/admin`, `public/js/admin/admin-sidebar.js` (keeps sidebar scroll) |
-| **ACL** | [acl.md](acl.md) | `AdminResourceCatalog`, `AclService`, `AdminController` |
+| **ACL** | [acl.md](acl.md) | `AdminResourceCatalog`, `AclService`, `AdminController`. Super is the only shipped role; extra roles are created in Admin → Roles |
 | Public page | [add-page.md](add-page.md) | `PublicRoutes.php`, `src/Http/Controller/` |
 | Repository / SQL | [add-repository.md](add-repository.md) | `src/Repository/`, `src/Support/Database.php` |
 | Payments / donate | [payments.md](payments.md) | `src/Payment/`, `PaymentCheckoutService`, `bin/payments-process.php` |
@@ -61,7 +61,7 @@ New admin screen: menu in `AdminSections`, path in `AdminPaths`, **permissions i
 | `/admin/game/` | accounts, characters, guilds, awards, bans, referrals, economy |
 | `/admin/content/` | news hub, tickets, downloads, banners, events |
 | `/admin/store/` | item shop hub, packages, payments |
-| `/admin/game-data/` | shops, refine, drops, items, mobs, gms |
+| `/admin/game-data/` | shops, refine, items, mobs, gms (items/mobs stay out of the sidebar when proto dumps in `game/db` are missing) |
 | `/admin/logs` | Hub `?tab=` |
 | `/admin/system/` | admins, roles, audit-log (super-only) |
 | `/admin/settings` | Hub `?tab=` (registration, themes, locale, security, community, seo, payment-methods, unstuck, news, banners) |

@@ -1,4 +1,4 @@
--- One-time flag: do not re-insert default roles when admin_roles is empty (user deleted them)
+-- Historical flag. Placeholder Support/Content roles are no longer shipped.
 
 INSERT IGNORE INTO settings (setting_key, setting_value) VALUES
     ('admin_roles_defaults_seeded', '1');

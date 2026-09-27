@@ -236,6 +236,22 @@ class GameProfile
         return $this->resolvePath($relative);
     }
 
+    /**
+     * Proto list/edit needs both the proto txt and the locale names file.
+     */
+    public function protoFilesReady(string $kind): bool
+    {
+        $kind = $this->normalizeKind($kind);
+
+        if ($kind === self::KIND_MOB) {
+            return $this->isReadableFile($this->path('mob_proto'))
+                && $this->isReadableFile($this->path('mob_names'));
+        }
+
+        return $this->isReadableFile($this->path('item_proto'))
+            && $this->isReadableFile($this->path('item_names'));
+    }
+
     public function optionalPath(string $key): ?string
     {
         $relative = $this->config['paths'][$key] ?? null;
@@ -334,6 +350,11 @@ class GameProfile
         }
 
         return $this->gameDir . '/' . ltrim($relative, '/');
+    }
+
+    private function isReadableFile(string $path): bool
+    {
+        return is_file($path) && is_readable($path);
     }
 
     private function normalizeKind(string $kind): string

@@ -145,17 +145,4 @@ class AclRepository extends Repository
             );
         }
     }
-
-    /**
-     * @param list<string> $resources
-     */
-    public function seedRoleResources(string $role, array $resources): void
-    {
-        foreach ($resources as $resourceId) {
-            $this->db()->execute(
-                'INSERT IGNORE INTO acl_role_resources (role, resource_id) VALUES (?, ?)',
-                [$role, $resourceId],
-            );
-        }
-    }
 }

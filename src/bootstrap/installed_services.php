@@ -8,7 +8,6 @@ use Mt2Cms\Auth\AdminAuth;
 use Mt2Cms\Auth\Auth;
 use Mt2Cms\Game\Display;
 use Mt2Cms\Game\Drop\GroupTextParser;
-use Mt2Cms\Game\Drop\GroupTextWriter;
 use Mt2Cms\Game\GameProfile;
 use Mt2Cms\Game\ItemDescCatalog;
 use Mt2Cms\Game\ItemIconCatalog;
@@ -242,7 +241,6 @@ return static function (Application $app): void {
     $app->dropFiles = new DropFileService(
         $app->gameProfile,
         $groupParser,
-        new GroupTextWriter(),
     );
     $app->protoFields = new ProtoFormFields($app->translator, $app->protoEnums);
     $app->auth = new Auth($app->accounts);

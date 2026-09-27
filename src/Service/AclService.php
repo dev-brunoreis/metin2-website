@@ -261,11 +261,6 @@ class AclService
         $this->saveAdminResources($adminId, $this->expandSectionsToResources($sections));
     }
 
-    public function seedDefaults(): void
-    {
-        $this->roles->seedDefaults();
-    }
-
     /**
      * @param list<string> $resources
      * @return list<string>

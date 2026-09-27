@@ -298,7 +298,7 @@ final class AdminResourceCatalog
             return 'settings';
         }
 
-        foreach (['shops', 'refine', 'drops', 'items', 'mobs', 'gms'] as $sectionId) {
+        foreach (['shops', 'refine', 'items', 'mobs', 'gms'] as $sectionId) {
             if (str_starts_with($resourceId, 'game-data/' . $sectionId . '/')) {
                 return $sectionId;
             }
@@ -337,7 +337,7 @@ final class AdminResourceCatalog
             'seo' => 'settings/seo',
             'payment-methods' => 'settings/payment-methods',
             'unstuck' => 'settings/unstuck',
-            'shops', 'refine', 'drops', 'items', 'mobs', 'gms' => 'game-data/' . $sectionId,
+            'shops', 'refine', 'items', 'mobs', 'gms' => 'game-data/' . $sectionId,
             default => null,
         };
     }
@@ -426,7 +426,7 @@ final class AdminResourceCatalog
     {
         $modules = [];
 
-        foreach (['shops', 'refine', 'drops', 'items', 'mobs', 'gms'] as $sectionId) {
+        foreach (['shops', 'refine', 'items', 'mobs', 'gms'] as $sectionId) {
             $labelKey = match ($sectionId) {
                 'items' => 'admin.nav.proto_items',
                 'mobs' => 'admin.nav.proto_mobs',
@@ -584,7 +584,7 @@ final class AdminResourceCatalog
             ),
         ];
 
-        foreach (['shops', 'refine', 'drops', 'items', 'mobs', 'gms'] as $sectionId) {
+        foreach (['shops', 'refine', 'items', 'mobs', 'gms'] as $sectionId) {
             $map[$sectionId] = self::resourcesUnderPrefix('game-data/' . $sectionId);
         }
 

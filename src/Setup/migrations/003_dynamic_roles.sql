@@ -8,7 +8,3 @@ CREATE TABLE IF NOT EXISTS admin_roles (
     PRIMARY KEY (id),
     UNIQUE KEY uniq_admin_roles_slug (slug)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT IGNORE INTO admin_roles (slug, label) VALUES
-    ('support', 'Support'),
-    ('content', 'Content');

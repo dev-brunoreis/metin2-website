@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Mt2Cms\Admin;
 
+use Mt2Cms\Game\GameProfile;
+
 class AdminSections
 {
     /**
@@ -136,11 +138,6 @@ class AdminSections
                         'label' => 'admin.nav.refine',
                     ],
                     [
-                        'id' => 'drops',
-                        'path' => AdminPaths::gameDataDrops(),
-                        'label' => 'admin.nav.drops',
-                    ],
-                    [
                         'id' => 'items',
                         'path' => AdminPaths::gameDataItems(),
                         'label' => 'admin.nav.proto_items',
@@ -202,6 +199,65 @@ class AdminSections
                 ],
             ],
         ];
+    }
+
+    /**
+     * Hide items/mobs when `game/db` proto or name dumps from config.json are absent.
+     *
+     * @param list<array<string, mixed>> $sections
+     * @return list<array<string, mixed>>
+     */
+    public static function withoutUnavailableProto(array $sections, GameProfile $profile): array
+    {
+        $hidden = [];
+
+        if (!$profile->protoFilesReady(GameProfile::KIND_ITEM)) {
+            $hidden[] = 'items';
+        }
+
+        if (!$profile->protoFilesReady(GameProfile::KIND_MOB)) {
+            $hidden[] = 'mobs';
+        }
+
+        return self::withoutSectionIds($sections, $hidden);
+    }
+
+    /**
+     * @param list<array<string, mixed>> $sections
+     * @param list<string> $sectionIds
+     * @return list<array<string, mixed>>
+     */
+    public static function withoutSectionIds(array $sections, array $sectionIds): array
+    {
+        if ($sectionIds === []) {
+            return $sections;
+        }
+
+        $hide = array_flip($sectionIds);
+        $filtered = [];
+
+        foreach ($sections as $group) {
+            $children = [];
+
+            foreach ($group['children'] as $child) {
+                $id = (string) ($child['id'] ?? '');
+
+                if ($id !== '' && isset($hide[$id])) {
+                    continue;
+                }
+
+                $children[] = $child;
+            }
+
+            if ($children === []) {
+                continue;
+            }
+
+            $group['children'] = $children;
+            $filtered[] = $group;
+        }
+
+        return $filtered;
     }
 
     /**
@@ -454,39 +510,6 @@ class AdminSections
     public static function logSectionIds(): array
     {
         return ['logs'];
-    }
-
-    /**
-     * @return list<string>
-     */
-    public static function defaultSupportSections(): array
-    {
-        return [
-            'dashboard',
-            'accounts',
-            'characters',
-            'guilds',
-            'awards',
-            'tickets',
-            'logs',
-        ];
-    }
-
-    /**
-     * @return list<string>
-     */
-    public static function defaultContentSections(): array
-    {
-        return [
-            'dashboard',
-            'news',
-            'banners',
-            'store',
-            'tickets',
-            'registration',
-            'themes',
-            'locale',
-        ];
     }
 
     /**
