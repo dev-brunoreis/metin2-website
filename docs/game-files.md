@@ -4,13 +4,13 @@ The CMS reads Metin2 client/server files from `game/` and loads paths, proto sch
 
 Git and the release tarball ship **only** `config.json`, `schema/*.json`, and empty `db/`, `client/`, and `server/` directories. Proto rows, names, drops, `item_list.txt`, `itemdesc.txt`, icons, and map settings are not in the repo (`.gitignore`). Copy them from your own files. Operator steps that also ship in the tarball: [`game/README.md`](../game/README.md).
 
-Supported base: the [40.250 reference serverfile and client](https://metin2.dev/topic/27610-40250-reference-serverfile-client-src-15-available-languages/). Archive folders vary; match by filename. English names must end up as `item_names_en.txt` and `mob_names_en.txt` unless you edit `config.json`.
+Supported base: the [40.250 reference serverfile and client](https://metin2.dev/topic/27610-40250-reference-serverfile-client-src-15-available-languages/). Archive folders vary; match by filename. Default names paths are `item_names.txt` and `mob_names.txt`; if your pack uses `item_names_en.txt` / `mob_names_en.txt`, rename or edit `config.json`.
 
 Boot after install needs the three JSON files only. Missing `itemdesc` / `item_list` / drops are empty catalogs.
 
 ### Admin proto menus (sidebar)
 
-Only **Items** and **Mobs** are gated on disk files. Each needs **both** paths from `config.json` (default: `db/item_proto.txt` + `db/item_names_en.txt`, or `mob_proto.txt` + `mob_names_en.txt`). Wrong or missing names (e.g. `item_names.txt` instead of `item_names_en.txt`) counts as not ready. Until `GameProfile::protoFilesReady` passes, `AdminSections::withoutUnavailableProto` drops those entries from the sidebar; ACL and role permissions are unchanged. Direct URLs still flash `admin.proto.missing_files` and redirect to `/admin`. **Shops**, **Refine**, and **GMs** are not hidden by missing proto dumps. Paths resolve under `game/` or `GAME_DIR`. `game/maps/` is not read (map labels are `lang/en.json` via `Display::map()`).
+Only **Items** and **Mobs** are gated on disk files. Each needs **both** paths from `config.json` (default: `db/item_proto.txt` + `db/item_names.txt`, or `mob_proto.txt` + `mob_names.txt`). Wrong or missing names (e.g. `item_names_en.txt` while config still points at `item_names.txt`) counts as not ready. Until `GameProfile::protoFilesReady` passes, `AdminSections::withoutUnavailableProto` drops those entries from the sidebar; ACL and role permissions are unchanged. Direct URLs still flash `admin.proto.missing_files` and redirect to `/admin`. **Shops**, **Refine**, and **GMs** are not hidden by missing proto dumps. Paths resolve under `game/` or `GAME_DIR`. `game/maps/` is not read (map labels are `lang/en.json` via `Display::map()`).
 
 ## Folder layout
 
@@ -27,9 +27,9 @@ game/
     icon/
   db/                   # operator: tab-delimited proto text
     item_proto.txt
-    item_names_en.txt
+    item_names.txt
     mob_proto.txt
-    mob_names_en.txt
+    mob_names.txt
   server/               # operator: drop and spawn group files
     mob_drop_item.txt
     common_drop_item.txt
@@ -39,7 +39,7 @@ game/
 | From the 40.250 pack (match by filename) | Into the CMS |
 | --- | --- |
 | `item_proto.txt`, `mob_proto.txt` | `db/` |
-| English item/mob names | `db/item_names_en.txt`, `db/mob_names_en.txt` |
+| English item/mob names | `db/item_names.txt`, `db/mob_names.txt` |
 | Unpacked `item_list.txt`, `itemdesc.txt` | `client/` |
 | Unpacked `icon/item/*.tga` and face TGAs | `client/icon/item/`, `client/icon/face/` |
 | `mob_drop_item.txt`, `common_drop_item.txt`, `etc_drop_item.txt`, `drop_item_group.txt`, `group.txt`, `group_group.txt` | `server/` |
@@ -57,9 +57,9 @@ Maps logical names to files under `game/`:
 | Key | Default | Purpose |
 | --- | --- | --- |
 | `paths.item_proto` | `db/item_proto.txt` | Admin item proto CRUD |
-| `paths.item_names` | `db/item_names_en.txt` | Locale display names |
+| `paths.item_names` | `db/item_names.txt` | Locale display names |
 | `paths.mob_proto` | `db/mob_proto.txt` | Admin mob proto CRUD |
-| `paths.mob_names` | `db/mob_names_en.txt` | Mob locale names |
+| `paths.mob_names` | `db/mob_names.txt` | Mob locale names |
 | `paths.item_list` | `client/item_list.txt` | vnum → icon filename |
 | `paths.itemdesc` | `client/itemdesc.txt` | Item tooltip text |
 | `paths.icon_root` | `client/icon` | TGA icons (`item/`, `face/`) |

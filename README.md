@@ -95,8 +95,8 @@ Full table and face icon names: [`game/README.md`](game/README.md).
 | --- | --- |
 | `item_proto.txt` | `game/db/item_proto.txt` |
 | `mob_proto.txt` | `game/db/mob_proto.txt` |
-| English item names (`item_names.txt` / `item_names_en.txt`) | `game/db/item_names_en.txt` |
-| English mob names (`mob_names.txt` / `mob_names_en.txt`) | `game/db/mob_names_en.txt` |
+| English item names (`item_names.txt` / `item_names_en.txt`) | `game/db/item_names.txt` |
+| English mob names (`mob_names.txt` / `mob_names_en.txt`) | `game/db/mob_names.txt` |
 | `mob_drop_item.txt`, `common_drop_item.txt`, `etc_drop_item.txt`, `drop_item_group.txt`, `group.txt`, `group_group.txt` | `game/server/` |
 
 On the 40.250 pack these usually live under `share/locale/english/`.

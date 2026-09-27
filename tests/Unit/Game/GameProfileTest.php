@@ -38,7 +38,7 @@ final class GameProfileTest extends TestCase
         copy(BASE_DIR . '/game/schema/item.json', $dir . '/schema/item.json');
         copy(BASE_DIR . '/game/schema/mob.json', $dir . '/schema/mob.json');
         file_put_contents($dir . '/db/item_proto.txt', "VNUM\n");
-        file_put_contents($dir . '/db/item_names_en.txt', "VNUM\n");
+        file_put_contents($dir . '/db/item_names.txt', "VNUM\n");
 
         $profile = GameProfile::load($dir);
 
@@ -46,7 +46,7 @@ final class GameProfileTest extends TestCase
         self::assertFalse($profile->protoFilesReady(GameProfile::KIND_MOB));
 
         file_put_contents($dir . '/db/mob_proto.txt', "VNUM\n");
-        file_put_contents($dir . '/db/mob_names_en.txt', "VNUM\n");
+        file_put_contents($dir . '/db/mob_names.txt', "VNUM\n");
 
         self::assertTrue($profile->protoFilesReady(GameProfile::KIND_MOB));
     }

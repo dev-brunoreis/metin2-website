@@ -14,8 +14,8 @@ Do not copy `.epk` or `.sub` packs. Unpack the client first. Do not copy map `Se
 | --- | --- |
 | `item_proto.txt` | `db/item_proto.txt` |
 | `mob_proto.txt` | `db/mob_proto.txt` |
-| English item names (`item_names.txt` or `item_names_en.txt`) | `db/item_names_en.txt` |
-| English mob names (`mob_names.txt` or `mob_names_en.txt`) | `db/mob_names_en.txt` |
+| English item names (`item_names.txt` or `item_names_en.txt`) | `db/item_names.txt` |
+| English mob names (`mob_names.txt` or `mob_names_en.txt`) | `db/mob_names.txt` |
 | Unpacked `item_list.txt` | `client/item_list.txt` |
 | Unpacked `itemdesc.txt` | `client/itemdesc.txt` |
 | Unpacked `icon/item/*.tga` | `client/icon/item/` |

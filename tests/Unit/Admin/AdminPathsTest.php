@@ -70,7 +70,7 @@ final class AdminPathsTest extends TestCase
         copy(BASE_DIR . '/game/schema/item.json', $dir . '/schema/item.json');
         copy(BASE_DIR . '/game/schema/mob.json', $dir . '/schema/mob.json');
         file_put_contents($dir . '/db/item_proto.txt', "VNUM\n");
-        file_put_contents($dir . '/db/item_names_en.txt', "VNUM\n");
+        file_put_contents($dir . '/db/item_names.txt', "VNUM\n");
 
         $ids = [];
 
