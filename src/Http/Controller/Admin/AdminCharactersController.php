@@ -10,6 +10,7 @@ use Mt2Cms\Admin\LogCatalog;
 use Mt2Cms\Auth\AdminAuth;
 use Mt2Cms\Auth\Auth;
 use Mt2Cms\Auth\Csrf;
+use Mt2Cms\Game\GameClock;
 use Mt2Cms\Game\InventoryLayout;
 use Mt2Cms\Http\Response;
 use Mt2Cms\I18n\Translator;
@@ -51,6 +52,7 @@ class AdminCharactersController extends AdminController
         private AccountRepository $accounts,
         private SettingsService $settings,
         private UnstuckService $unstuck,
+        private GameClock $gameClock,
         private LogEnricher $logEnricher,
     ) {
         parent::__construct($theme, $auth, $csrf, $translator, $adminAuth, $adminTheme, $auditLog, $acl);
@@ -60,11 +62,13 @@ class AdminCharactersController extends AdminController
     {
         $spec = PlayersGrid::definition()->spec();
         $query = $this->gridQuery($spec);
+        $minutes = $this->settings->onlineWindowMinutes();
         $grid = GridRunner::fetch(
             $spec,
             $query,
             fn ($q) => $this->players->countForGrid($q),
-            fn ($q) => $this->players->listForGrid($q),
+            fn ($q) => $this->gameClock->markOnline($this->players->listForGrid($q), $minutes),
+            ['onlineWindowMinutes' => $minutes],
         );
 
         return $this->adminView('characters', 'pages/characters.twig', [
@@ -107,6 +111,10 @@ class AdminCharactersController extends AdminController
             'unstuckAvailable' => $this->unstuck->hasPositionColumns(),
             'unstuckOffline' => $this->unstuck->isOffline($playerId),
             'onlineWindowMinutes' => $this->settings->onlineWindowMinutes(),
+            'characterOnline' => $this->gameClock->isRecentlyActive(
+                (string) ($character['last_play'] ?? ''),
+                $this->settings->onlineWindowMinutes(),
+            ),
         ];
 
         if ($tab === 'logs') {

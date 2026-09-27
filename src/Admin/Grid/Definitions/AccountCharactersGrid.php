@@ -19,7 +19,7 @@ final class AccountCharactersGrid
                 'playtime' => 'playtime',
             ])
             ->columns([
-                ['key' => 'name', 'label' => 'account.name', 'sort' => 'name', 'type' => 'icon_link', 'icon' => 'face', 'href' => '/admin/game/characters/{id}'],
+                ['key' => 'name', 'label' => 'account.name', 'sort' => 'name', 'type' => 'icon_link', 'icon' => 'face', 'presence' => true, 'href' => '/admin/game/characters/{id}'],
                 ['key' => 'job', 'label' => 'account.job', 'type' => 'job'],
                 ['key' => 'level', 'label' => 'account.level', 'sort' => 'level', 'type' => 'number'],
                 ['key' => 'playtime', 'label' => 'account.playtime', 'sort' => 'playtime', 'type' => 'playtime'],

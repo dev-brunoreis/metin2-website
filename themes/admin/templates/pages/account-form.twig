@@ -66,6 +66,7 @@
             </div>
         </fieldset>
 
+        {% include 'components/game-lag-caution.twig' with { kind: 'apply' } %}
         <fieldset class="admin-fieldset">
             <legend>
                 {{ t('admin.accounts.state') }}

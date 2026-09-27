@@ -4,6 +4,7 @@
     </div>
 {% endif %}
 
+{% include 'components/game-lag-caution.twig' with { kind: 'reload' } %}
 <form id="admin-proto-form"
       method="post"
       action="{% if isEdit %}{{ protoBase }}/{{ record.vnum }}{% else %}{{ protoBase }}{% endif %}"

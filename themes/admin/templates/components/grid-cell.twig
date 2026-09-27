@@ -72,6 +72,12 @@
         {% elseif column.icon == 'face' %}
             {% include 'components/face-icon.twig' with { job: row.job|default(0) } %}
         {% endif %}
+        {% if column.presence|default(false) %}
+            {% include 'components/presence-dot.twig' with {
+                online: row.online|default(false),
+                minutes: grid.onlineWindowMinutes|default(15)
+            } %}
+        {% endif %}
         <span>{{ value|default('—') }}</span>
     </a>
 

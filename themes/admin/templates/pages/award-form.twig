@@ -5,6 +5,7 @@
 <form id="admin-award-form" method="post" action="/admin/game/awards" class="admin-panel p-6">
     <input type="hidden" name="_csrf" value="{{ csrf }}">
 
+    {% include 'components/game-lag-caution.twig' with { kind: 'apply' } %}
     <fieldset class="admin-fieldset">
         <legend>
             {{ t('admin.awards.details') }}

@@ -19,6 +19,7 @@ use Mt2Cms\Service\ReferralService;
 use Mt2Cms\Service\AccountEmailService;
 use Mt2Cms\Service\GameProtoService;
 use Mt2Cms\Service\SettingsService;
+use Mt2Cms\Game\GameClock;
 use Mt2Cms\Game\Proto\ProtoSchemas;
 use Mt2Cms\Theme\ThemeEngine;
 use Mt2Cms\Service\UnstuckService;
@@ -43,6 +44,7 @@ class AccountController extends Controller
         private SettingsService $settings,
         private UnstuckService $unstuck,
         private ReferralService $referrals,
+        private GameClock $gameClock,
         ?RateLimiter $rateLimiter = null,
     ) {
         parent::__construct($theme, $auth, $csrf, $translator);
@@ -88,7 +90,10 @@ class AccountController extends Controller
 
         $accountId = $this->auth->id();
         $players = $accountId !== null
-            ? $this->players->findByAccountId($accountId)
+            ? $this->gameClock->markOnline(
+                $this->players->findByAccountId($accountId),
+                $this->settings->onlineWindowMinutes(),
+            )
             : [];
 
         if ($accountId !== null) {

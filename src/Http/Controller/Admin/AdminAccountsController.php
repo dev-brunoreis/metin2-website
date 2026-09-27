@@ -12,6 +12,7 @@ use Mt2Cms\Admin\Grid\InMemoryGrid;
 use Mt2Cms\Auth\AdminAuth;
 use Mt2Cms\Auth\Auth;
 use Mt2Cms\Auth\Csrf;
+use Mt2Cms\Game\GameClock;
 use Mt2Cms\Http\Response;
 use Mt2Cms\I18n\Translator;
 use Mt2Cms\Repository\AccountRepository;
@@ -20,6 +21,7 @@ use Mt2Cms\Repository\PlayerRepository;
 use Mt2Cms\Service\AclService;
 use Mt2Cms\Service\AdminAuditService;
 use Mt2Cms\Service\NotificationService;
+use Mt2Cms\Service\SettingsService;
 use Mt2Cms\Theme\ThemeEngine;
 
 class AdminAccountsController extends AdminController
@@ -37,6 +39,8 @@ class AdminAccountsController extends AdminController
         private PlayerRepository $players,
         private LogRepository $logs,
         private NotificationService $notifications,
+        private SettingsService $settings,
+        private GameClock $gameClock,
     ) {
         parent::__construct($theme, $auth, $csrf, $translator, $adminAuth, $adminTheme, $auditLog, $acl);
     }
@@ -263,7 +267,10 @@ class AdminAccountsController extends AdminController
 
         if ($isEdit && $tab === 'activity') {
             $accountId = (int) $account['id'];
-            $characters = $this->players->findByAccountId($accountId);
+            $characters = $this->gameClock->markOnline(
+                $this->players->findByAccountId($accountId),
+                $this->settings->onlineWindowMinutes(),
+            );
             $connectionIps = $this->logs->ipsForAccount($accountId);
             $charactersGrid = $this->charactersGrid($accountId, $characters);
             $ipsGrid = $this->ipsGrid($accountId, $connectionIps);
@@ -308,6 +315,7 @@ class AdminAccountsController extends AdminController
             $query,
             static fn () => count($characters),
             static fn ($q) => InMemoryGrid::apply($characters, $q, $def->sortMap()),
+            ['onlineWindowMinutes' => $this->settings->onlineWindowMinutes()],
         );
     }
 

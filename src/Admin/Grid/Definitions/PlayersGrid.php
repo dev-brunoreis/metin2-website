@@ -23,7 +23,7 @@ final class PlayersGrid
             ])
             ->columns([
                 ['key' => 'id', 'label' => 'admin.characters.id', 'sort' => 'id', 'type' => 'muted'],
-                ['key' => 'name', 'label' => 'admin.characters.name', 'sort' => 'name', 'type' => 'icon_link', 'icon' => 'face', 'href' => '/admin/game/characters/{id}'],
+                ['key' => 'name', 'label' => 'admin.characters.name', 'sort' => 'name', 'type' => 'icon_link', 'icon' => 'face', 'presence' => true, 'href' => '/admin/game/characters/{id}'],
                 ['key' => 'account_id', 'label' => 'admin.characters.account', 'sort' => 'account_id', 'type' => 'muted'],
                 ['key' => 'job', 'label' => 'admin.characters.job', 'sort' => 'job', 'type' => 'job'],
                 ['key' => 'level', 'label' => 'admin.characters.level', 'sort' => 'level', 'type' => 'number'],

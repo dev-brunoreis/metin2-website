@@ -43,6 +43,30 @@ final class GameClockTest extends TestCase
         self::assertStringNotContainsString('1h ago', $label);
     }
 
+    public function testRecentlyActiveUsesWindowOnGameClock(): void
+    {
+        $parsed = new \DateTimeImmutable('2026-09-27 02:29:25', new \DateTimeZone('UTC'));
+        $clock = GameClock::fixed($parsed->getTimestamp() + 120, 0);
+
+        self::assertTrue($clock->isRecentlyActive('2026-09-27 02:29:25', 15));
+        self::assertFalse($clock->isRecentlyActive('2026-09-27 02:29:25', 1));
+        self::assertFalse($clock->isRecentlyActive('', 15));
+    }
+
+    public function testMarkOnlineAddsPresenceFromLastPlay(): void
+    {
+        $parsed = new \DateTimeImmutable('2026-09-27 02:29:25', new \DateTimeZone('UTC'));
+        $clock = GameClock::fixed($parsed->getTimestamp() + 120, 0);
+
+        $rows = $clock->markOnline([
+            ['id' => 1, 'last_play' => '2026-09-27 02:29:25'],
+            ['id' => 2, 'last_play' => '2026-09-27 01:00:00'],
+        ], 15);
+
+        self::assertTrue($rows[0]['online']);
+        self::assertFalse($rows[1]['online']);
+    }
+
     public function testUnstuckTreatsRecentGameClockAsOnline(): void
     {
         $players = $this->createMock(PlayerRepository::class);

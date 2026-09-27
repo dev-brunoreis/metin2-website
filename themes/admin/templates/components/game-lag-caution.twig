@@ -1,0 +1,5 @@
+{% set kind = kind|default('live') %}
+<div class="mb-4 rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900" role="note">
+    <p class="font-medium">{{ t('admin.game_lag.' ~ kind ~ '_title') }}</p>
+    <p class="mt-1">{{ t('admin.game_lag.' ~ kind ~ '_body') }}</p>
+</div>

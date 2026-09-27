@@ -151,6 +151,7 @@ class Application
     public ProtoFormFields $protoFields;
     public SettingsRepository $settingsRepo;
     public SettingsService $settings;
+    public GameClock $gameClock;
     public ThemeCatalog $themeCatalog;
     public NewsRepository $news;
     public NewsCommentRepository $newsComments;

@@ -1,0 +1,5 @@
+{% set online = online|default(false) %}
+{% set minutes = minutes|default(15) %}
+<span class="k-presence {{ online ? 'is-online' : 'is-offline' }}"
+      title="{{ online ? t('player.online_hint', {minutes: minutes}) : t('player.offline_hint', {minutes: minutes}) }}"
+      aria-label="{{ online ? t('player.online') : t('player.offline') }}"></span>

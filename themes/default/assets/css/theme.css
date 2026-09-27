@@ -663,6 +663,23 @@
   animation: k-pulse 1.8s ease-in-out infinite;
 }
 
+.theme-kingdoms .k-presence {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.theme-kingdoms .k-presence.is-online {
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+}
+
+.theme-kingdoms .k-presence.is-offline {
+  background: #f87171;
+}
+
 @keyframes k-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.45; }

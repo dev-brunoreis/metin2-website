@@ -6,6 +6,7 @@
     </div>
 {% endif %}
 
+{% include 'components/game-lag-caution.twig' with { kind: 'reload' } %}
 <form id="admin-guild-form"
       method="post"
       action="/admin/game/guilds/{{ guild.id }}"

@@ -97,7 +97,7 @@ Use `[data-admin-tabs]` when a form has more than one section. Keep **one** `<fo
 
 Read-only panels that are expensive to build (inventory, logs, drops) can stay empty until opened: set `data-tab-src="/admin/…?tab=items&partial=1"` and only query that data when `tab` matches. The script fetches the fragment on first click. Keep editable form fields in the DOM so Save still posts every tab.
 
-Character **Items** and owned-item detail include `components/player-items-caution.twig`: MySQL inventory can lag the live core, so staff must not treat the panel as a perfect in-game snapshot. Public `/player/{name}` equipment uses the same caveat (`player.equipment_caution_*`).
+Character **Items** and owned-item detail include `components/player-items-caution.twig`: MySQL inventory can lag the live core, so staff must not treat the panel as a perfect in-game snapshot. Public `/player/{name}` equipment uses the same caveat (`player.equipment_caution_*`). Other game surfaces that the core caches (`components/game-lag-caution.twig`) use `kind`: `live` (character/guild/marriage reads), `apply` (account cash/status, awards, bans), `reload` (shops, refine, proto, GMs, guilds). Character name cells can set `'presence' => true` on an `icon_link` face column; `GameClock::markOnline()` adds the green/red last_play dot.
 
 Hub `*BaseUrl` must be the path **without** `?tab=` (or use `admin_path('logs', tab.id) ~ '&partial=1'`). Concatenating `?tab=` onto a URL that already has `?tab=` makes every lazy panel load the default tab.
 

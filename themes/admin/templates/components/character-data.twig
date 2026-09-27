@@ -1,3 +1,4 @@
+{% include 'components/game-lag-caution.twig' with { kind: 'live' } %}
 <fieldset class="admin-fieldset">
     <legend>
         {{ t('admin.characters.details') }}
@@ -13,6 +14,10 @@
             <dt>{{ t('admin.characters.name') }}</dt>
             <dd class="admin-game-icon-row">
                 {% include 'components/face-icon.twig' with { job: character.job } %}
+                {% include 'components/presence-dot.twig' with {
+                    online: characterOnline|default(false),
+                    minutes: onlineWindowMinutes|default(15)
+                } %}
                 <span>{{ character.name }}</span>
             </dd>
         </div>

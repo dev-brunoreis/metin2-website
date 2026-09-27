@@ -58,7 +58,7 @@ New admin screen: menu in `AdminSections`, path in `AdminPaths`, **permissions i
 | --- | --- |
 | `/admin` | Dashboard |
 | `/admin/population` | Online / census |
-| `/admin/game/` | accounts, characters, guilds, awards, bans, referrals, economy |
+| `/admin/game/` | accounts, characters (last_play presence dots), guilds, awards, bans, referrals, economy |
 | `/admin/content/` | news hub, tickets, downloads, banners, events |
 | `/admin/store/` | item shop hub, packages, payments |
 | `/admin/game-data/` | shops, refine, items, mobs, gms (items/mobs stay out of the sidebar when proto dumps in `game/db` are missing) |
@@ -69,9 +69,11 @@ New admin screen: menu in `AdminSections`, path in `AdminPaths`, **permissions i
 
 ## Public surfaces
 
-Auth/account: login, register, forgot/reset, verify-email, password, email, PIN, characters/unstuck (player and admin both refuse while `last_play` is inside the online window on the game MySQL clock; admin still skips cooldown), orders, payments, notifications, tickets.
+Auth/account: login, register, forgot/reset, verify-email, password, email, PIN, characters/unstuck (player and admin both refuse while `last_play` is inside the online window on the game MySQL clock; admin still skips cooldown; character lists show a green/red last_play presence dot), orders, payments, notifications, tickets.
 
 Content: news + comments, events, downloads, shop buy, donate, ranking, player profile (optional equipment with MySQL-lag caveat), `/status`, `/robots.txt`, `/sitemap.xml`.
+
+Admin game writes that the core keeps in memory (player/item cache, or boot-loaded shops/refine/proto/GMs/guilds) show `game-lag-caution.twig` so staff know the live client can take a few minutes — or a `/reload` / restart — to match.
 
 First HTTP boot after `/setup` seeds class banners, one published welcome news post, and classic Metin2 events when those tables are empty (see [setup.md](setup.md)).
 

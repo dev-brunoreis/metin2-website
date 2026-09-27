@@ -181,12 +181,12 @@ return static function (Application $app): void {
     );
     $activeTheme = $app->settings->activeTheme();
     $app->db = new Database();
-    $gameClock = new GameClock($app->db);
-    $app->theme = $app->createThemeEngine($activeTheme, $app->settings->registrationEnabled(), false, $gameClock);
+    $app->gameClock = new GameClock($app->db);
+    $app->theme = $app->createThemeEngine($activeTheme, $app->settings->registrationEnabled(), false, $app->gameClock);
     $app->theme->setSeoService($app->seo);
     $app->discord = new DiscordWebhookService($app->settings);
     $app->eventService = new EventService($app->events, $app->discord);
-    $app->adminTheme = $app->createThemeEngine('admin', true, true, $gameClock);
+    $app->adminTheme = $app->createThemeEngine('admin', true, true, $app->gameClock);
     $app->gameEconomyScan = new GameEconomyScanRepository($app->db);
     $app->accounts = new AccountRepository($app->db);
     $app->referralRepo = new ReferralRepository($app->cmsDb, $app->accounts);
@@ -246,7 +246,7 @@ return static function (Application $app): void {
     $app->protoFields = new ProtoFormFields($app->translator, $app->protoEnums);
     $app->auth = new Auth($app->accounts);
     $app->banService = new BanService($app->banRepo, $app->accounts, $app->notificationService);
-    $app->unstuckService = new UnstuckService($app->unstuckRepo, $app->players, $app->settings, $gameClock);
+    $app->unstuckService = new UnstuckService($app->unstuckRepo, $app->players, $app->settings, $app->gameClock);
     $app->referralService = new ReferralService(
         $app->referralRepo,
         $app->accounts,

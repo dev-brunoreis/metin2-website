@@ -18,7 +18,13 @@
                     <div class="k-char-identity">
                         {% include 'components/face-icon.twig' with { job: player.job } %}
                         <div class="min-w-0">
-                            <p class="truncate font-medium text-slate-900">{{ player.name }}</p>
+                            <p class="flex min-w-0 items-center gap-2 font-medium text-slate-900">
+                                {% include 'components/presence-dot.twig' with {
+                                    online: player.online|default(false),
+                                    minutes: onlineWindowMinutes|default(15)
+                                } %}
+                                <span class="truncate">{{ player.name }}</span>
+                            </p>
                             <p class="truncate text-sm text-slate-500" title="{{ jobLabel }}{% if skill %} · {{ skill }}{% endif %}">
                                 {{ jobLabel }}{% if skill %} · {{ skill }}{% endif %}
                             </p>

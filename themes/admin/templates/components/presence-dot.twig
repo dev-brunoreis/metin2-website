@@ -1,0 +1,5 @@
+{% set online = online|default(false) %}
+{% set minutes = minutes|default(15) %}
+<span class="admin-presence {{ online ? 'is-online' : 'is-offline' }}"
+      title="{{ online ? t('admin.characters.online_hint', {minutes: minutes}) : t('admin.characters.offline_hint', {minutes: minutes}) }}"
+      aria-label="{{ online ? t('admin.characters.online') : t('admin.characters.offline') }}"></span>

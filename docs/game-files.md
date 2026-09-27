@@ -42,6 +42,8 @@ game/
 
 Server text is often under `share/locale/english/`. Client text and icons exist only after unpacking `.epk` / `.sub` (those packs are not read). Do not copy map `Setting.txt` files.
 
+Admin proto, shop, refine, and GM editors write files or MySQL; the running core still uses its in-memory copy until `/reload` (proto `p`, GM `a`) or a restart. The admin UI warns about that delay.
+
 Another locale: keep the filenames above, or replace `config.json` paths (no merge — copy the full default and edit). Or set `GAME_DIR` to a tree with the same layout.
 
 ## config.json

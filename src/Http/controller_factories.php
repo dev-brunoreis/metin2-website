@@ -31,7 +31,7 @@ return [
         $app->theme, $app->auth, $app->csrf, $app->translator, $app->accounts, $app->settings, $app->accountEmailService, $app->banService, $app->mailer, $app->referralService,
     ),
     \Mt2Cms\Http\Controller\AccountController::class => static fn ($app) => new \Mt2Cms\Http\Controller\AccountController(
-        $app->theme, $app->auth, $app->csrf, $app->translator, $app->players, $app->accounts, $app->accountEmailService, $app->itemShopOrders, $app->payments, $app->notifications, $app->gameProto, $app->mailer, $app->settings, $app->unstuckService, $app->referralService,
+        $app->theme, $app->auth, $app->csrf, $app->translator, $app->players, $app->accounts, $app->accountEmailService, $app->itemShopOrders, $app->payments, $app->notifications, $app->gameProto, $app->mailer, $app->settings, $app->unstuckService, $app->referralService, $app->gameClock,
     ),
     \Mt2Cms\Http\Controller\PasswordController::class => static fn ($app) => new \Mt2Cms\Http\Controller\PasswordController(
         $app->theme, $app->auth, $app->csrf, $app->translator, $app->accountEmailService, $app->mailer, $app->settings,
@@ -58,7 +58,7 @@ return [
         $app->theme, $app->auth, $app->csrf, $app->translator, $app->players, $app->guilds,
     ),
     \Mt2Cms\Http\Controller\PlayerController::class => static fn ($app) => new \Mt2Cms\Http\Controller\PlayerController(
-        $app->theme, $app->auth, $app->csrf, $app->translator, $app->players, $app->guilds, $app->unstuckService, $app->settings, $app->items,
+        $app->theme, $app->auth, $app->csrf, $app->translator, $app->players, $app->guilds, $app->unstuckService, $app->settings, $app->items, $app->gameClock,
     ),
     \Mt2Cms\Http\Controller\GameIconController::class => static fn ($app) => new \Mt2Cms\Http\Controller\GameIconController(
         $app->theme, $app->auth, $app->csrf, $app->translator, $app->icons,
@@ -94,10 +94,10 @@ return [
         $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->settings, $app->themeCatalog, $app->locales, $app->serverChannels, $app->unstuckService, $app->paymentGateways, $app->seoUploads,
     ),
     \Mt2Cms\Http\Controller\Admin\AdminAccountsController::class => static fn ($app) => new \Mt2Cms\Http\Controller\Admin\AdminAccountsController(
-        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->accounts, $app->players, $app->logs, $app->notificationService,
+        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->accounts, $app->players, $app->logs, $app->notificationService, $app->settings, $app->gameClock,
     ),
     \Mt2Cms\Http\Controller\Admin\AdminCharactersController::class => static fn ($app) => new \Mt2Cms\Http\Controller\Admin\AdminCharactersController(
-        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->players, $app->items, $app->guilds, $app->logs, $app->accounts, $app->settings, $app->unstuckService, new \Mt2Cms\Service\LogEnricher(
+        $app->theme, $app->auth, $app->csrf, $app->translator, $app->adminAuth, $app->adminTheme, $app->acl, $app->adminAudit, $app->players, $app->items, $app->guilds, $app->logs, $app->accounts, $app->settings, $app->unstuckService, $app->gameClock, new \Mt2Cms\Service\LogEnricher(
             new \Mt2Cms\Service\LogRowPresenter($app->translator),
             $app->players,
             $app->gameEconomyScan,

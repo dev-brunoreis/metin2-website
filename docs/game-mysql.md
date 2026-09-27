@@ -75,6 +75,8 @@ Full CMS admin features need **DML** (`SELECT`/`INSERT`/`UPDATE`/`DELETE`) on al
 
 Game `DATETIME` values (`last_play`, logs, account `create_time`) are read on the **game MySQL clock** (`GameClock`: `UNIX_TIMESTAMP(NOW())` plus the session offset from `UTC_TIMESTAMP()`). The CMS host can stay on UTC in any country. CMS tables (news, payments, tickets) keep the CMS clock. The printed calendar time is still the game server's own clock; set that machine with NTP and one timezone (for example `America/Sao_Paulo`) if that number should match local time.
 
+The 40.250 core keeps player rows, items, and guilds in the db/game cache and flushes MySQL on a delay (often 1–3 minutes, or logout). Shop, refine, proto, and GM tables are loaded at boot. CMS admin screens that touch those systems show a lag/reload caution; a MySQL write is not an instant in-game snapshot.
+
 ## CMS database (separate)
 
 On the **CMS Linux host**, run MySQL 8 for schema `cms` only:

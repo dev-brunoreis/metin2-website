@@ -59,6 +59,30 @@ final class GameClock
         return $this->unixNow - $parsed->getTimestamp() + $this->sessionOffset;
     }
 
+    /**
+     * True when $mysqlDatetime is inside the recent-activity window on the
+     * game clock (same rule as population / unstuck).
+     */
+    public function isRecentlyActive(string $mysqlDatetime, int $minutes): bool
+    {
+        $elapsed = $this->elapsedSeconds($mysqlDatetime);
+
+        return $elapsed !== null && $elapsed <= max(1, $minutes) * 60;
+    }
+
+    /**
+     * @param list<array<string, mixed>> $rows
+     * @return list<array<string, mixed>>
+     */
+    public function markOnline(array $rows, int $minutes, string $field = 'last_play'): array
+    {
+        foreach ($rows as $i => $row) {
+            $rows[$i]['online'] = $this->isRecentlyActive((string) ($row[$field] ?? ''), $minutes);
+        }
+
+        return $rows;
+    }
+
     private function load(): bool
     {
         if ($this->loaded) {

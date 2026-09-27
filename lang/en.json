@@ -452,6 +452,8 @@
         "map": "Map",
         "online": "Online",
         "offline": "Offline",
+        "online_hint": "Active within the last {minutes} minutes",
+        "offline_hint": "No activity in the last {minutes} minutes",
         "rank_level": "Level rank",
         "rank_playtime": "Playtime rank",
         "partner": "Married to",
@@ -1220,6 +1222,14 @@
                 "generic": "Log row"
             }
         },
+        "game_lag": {
+            "live_title": "May take a moment to match the live game",
+            "live_body": "The game core keeps characters, items, guilds, and marriage in memory and writes MySQL on a delay. This view can lag behind the client by a few minutes.",
+            "apply_title": "Changes may take a moment to appear in-game",
+            "apply_body": "These values are stored in MySQL. The core may keep the previous cash, account status, or mall award in memory until the player relogs, opens the mall, or the next save cycle.",
+            "reload_title": "Needs a game reload to go live",
+            "reload_body": "The core loads this table into memory on boot. Shops, refine, proto, GM list, and guilds usually update in-game only after /reload (or a core restart)."
+        },
         "accounts": {
             "title": "Accounts",
             "lead": "Create, edit, block, and delete game accounts.",
@@ -1302,7 +1312,11 @@
         },
         "characters": {
             "title": "Characters",
-            "lead": "Browse game characters. Stats are shown as read-only.",
+            "lead": "Browse game characters. A green or red dot shows recent activity from last play.",
+            "online": "Online",
+            "offline": "Offline",
+            "online_hint": "Active within the last {minutes} minutes",
+            "offline_hint": "No activity in the last {minutes} minutes",
             "view_title": "{name}",
             "view_lead": "Character details from the game database. Stats cannot be changed here.",
             "not_found": "Character not found.",

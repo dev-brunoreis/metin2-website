@@ -6,6 +6,7 @@ namespace Mt2Cms\Http\Controller;
 
 use Mt2Cms\Auth\Auth;
 use Mt2Cms\Auth\Csrf;
+use Mt2Cms\Game\GameClock;
 use Mt2Cms\Game\InventoryLayout;
 use Mt2Cms\Http\Response;
 use Mt2Cms\I18n\Translator;
@@ -28,6 +29,7 @@ class PlayerController extends Controller
         private UnstuckService $unstuck,
         private SettingsService $settings,
         private ItemRepository $items,
+        private GameClock $gameClock,
     ) {
         parent::__construct($theme, $auth, $csrf, $translator);
     }
@@ -71,7 +73,7 @@ class PlayerController extends Controller
             'marriage' => $this->publicMarriage($playerId),
             'levelRank' => $this->players->levelRank($playerId),
             'playtimeRank' => $this->players->playtimeRank($playerId),
-            'online' => $this->isRecentlyActive((string) ($player['last_play'] ?? ''), $minutes),
+            'online' => $this->gameClock->isRecentlyActive((string) ($player['last_play'] ?? ''), $minutes),
             'equipmentLayout' => $equipmentLayout,
             ...$this->ownUnstuckContext($playerId),
         ]);
@@ -90,23 +92,6 @@ class PlayerController extends Controller
         }
 
         return ['partner_name' => $partner];
-    }
-
-    private function isRecentlyActive(string $lastPlay, int $minutes): bool
-    {
-        $raw = trim($lastPlay);
-
-        if ($raw === '' || str_starts_with($raw, '0000-00-00')) {
-            return false;
-        }
-
-        try {
-            $at = new \DateTimeImmutable($raw);
-        } catch (\Exception) {
-            return false;
-        }
-
-        return $at->getTimestamp() >= time() - (max(1, $minutes) * 60);
     }
 
     /**
