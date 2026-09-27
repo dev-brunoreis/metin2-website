@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller\Admin;
+namespace Metin2Website\Http\Controller\Admin;
 
-use Mt2Cms\Admin\Grid\Definitions\EventsGrid;
-use Mt2Cms\Admin\Grid\GridRunner;
-use Mt2Cms\Auth\AdminAuth;
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\Auth\Csrf;
-use Mt2Cms\Repository\EventRepository;
-use Mt2Cms\Service\EventService;
-use Mt2Cms\Service\SeoImageUploadService;
-use Mt2Cms\Http\Response;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Service\AclService;
-use Mt2Cms\Service\AdminAuditService;
-use Mt2Cms\Support\HtmlSanitizer;
-use Mt2Cms\Theme\ThemeEngine;
+use Metin2Website\Admin\Grid\Definitions\EventsGrid;
+use Metin2Website\Admin\Grid\GridRunner;
+use Metin2Website\Auth\AdminAuth;
+use Metin2Website\Auth\Auth;
+use Metin2Website\Auth\Csrf;
+use Metin2Website\Repository\EventRepository;
+use Metin2Website\Service\EventService;
+use Metin2Website\Service\SeoImageUploadService;
+use Metin2Website\Http\Response;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Service\AclService;
+use Metin2Website\Service\AdminAuditService;
+use Metin2Website\Support\HtmlSanitizer;
+use Metin2Website\Theme\ThemeEngine;
 
 class AdminEventsController extends AdminController
 {

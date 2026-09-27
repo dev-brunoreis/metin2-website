@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Game\Display;
-use Mt2Cms\Game\Jobs;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\PlayerRepository;
+use Metin2Website\Game\Display;
+use Metin2Website\Game\Jobs;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\PlayerRepository;
 
 class PlayerCensusService
 {

@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller\Admin;
+namespace Metin2Website\Http\Controller\Admin;
 
-use Mt2Cms\Auth\AdminAuth;
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\Auth\Captcha;
-use Mt2Cms\Auth\Csrf;
-use Mt2Cms\Auth\RateLimiter;
-use Mt2Cms\Auth\Totp;
-use Mt2Cms\Http\Controller\Controller;
-use Mt2Cms\Http\Request;
-use Mt2Cms\Http\Response;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Repository\AdminTotpRepository;
-use Mt2Cms\Service\AclService;
-use Mt2Cms\Service\SettingsService;
-use Mt2Cms\Theme\ThemeEngine;
+use Metin2Website\Auth\AdminAuth;
+use Metin2Website\Auth\Auth;
+use Metin2Website\Auth\Captcha;
+use Metin2Website\Auth\Csrf;
+use Metin2Website\Auth\RateLimiter;
+use Metin2Website\Auth\Totp;
+use Metin2Website\Http\Controller\Controller;
+use Metin2Website\Http\Request;
+use Metin2Website\Http\Response;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Repository\AdminTotpRepository;
+use Metin2Website\Service\AclService;
+use Metin2Website\Service\SettingsService;
+use Metin2Website\Theme\ThemeEngine;
 
 class AdminAuthController extends Controller
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Admin;
+namespace Metin2Website\Admin;
 
 /**
  * Hierarchical ACL resources ({area}/{module}/[{entity}/]{action}) for admin roles.

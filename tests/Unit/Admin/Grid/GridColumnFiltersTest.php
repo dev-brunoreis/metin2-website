@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Admin\Grid;
+namespace Metin2Website\Tests\Unit\Admin\Grid;
 
-use Mt2Cms\Admin\Grid\GridColumnFilters;
-use Mt2Cms\Admin\Grid\GridDefinition;
-use Mt2Cms\Admin\Grid\GridQuery;
-use Mt2Cms\Admin\Grid\GridSql;
+use Metin2Website\Admin\Grid\GridColumnFilters;
+use Metin2Website\Admin\Grid\GridDefinition;
+use Metin2Website\Admin\Grid\GridQuery;
+use Metin2Website\Admin\Grid\GridSql;
 use PHPUnit\Framework\TestCase;
 
 final class GridColumnFiltersTest extends TestCase

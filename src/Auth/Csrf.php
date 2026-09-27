@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Auth;
+namespace Metin2Website\Auth;
 
 class Csrf
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Service\LogRowPresenter;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Service\LogRowPresenter;
 use PHPUnit\Framework\TestCase;
 
 final class LogRowPresenterTest extends TestCase

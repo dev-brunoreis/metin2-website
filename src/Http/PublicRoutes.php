@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http;
+namespace Metin2Website\Http;
 
 use FastRoute\RouteCollector;
-use Mt2Cms\Http\Controller\AccountController;
-use Mt2Cms\Http\Controller\CaptchaController;
-use Mt2Cms\Http\Controller\AuthController;
-use Mt2Cms\Http\Controller\DonateController;
-use Mt2Cms\Http\Controller\DownloadsController;
-use Mt2Cms\Http\Controller\EventsController;
-use Mt2Cms\Http\Controller\EmailVerificationController;
-use Mt2Cms\Http\Controller\GameIconController;
-use Mt2Cms\Http\Controller\HealthController;
-use Mt2Cms\Http\Controller\HomeController;
-use Mt2Cms\Http\Controller\ItemShopController;
-use Mt2Cms\Http\Controller\LocaleController;
-use Mt2Cms\Http\Controller\NewsController;
-use Mt2Cms\Http\Controller\PasswordController;
-use Mt2Cms\Http\Controller\PaymentWebhookController;
-use Mt2Cms\Http\Controller\PlayerController;
-use Mt2Cms\Http\Controller\RankingController;
-use Mt2Cms\Http\Controller\SeoController;
-use Mt2Cms\Http\Controller\StatusController;
-use Mt2Cms\Http\Controller\ThemeAssetController;
-use Mt2Cms\Http\Controller\TicketController;
+use Metin2Website\Http\Controller\AccountController;
+use Metin2Website\Http\Controller\CaptchaController;
+use Metin2Website\Http\Controller\AuthController;
+use Metin2Website\Http\Controller\DonateController;
+use Metin2Website\Http\Controller\DownloadsController;
+use Metin2Website\Http\Controller\EventsController;
+use Metin2Website\Http\Controller\EmailVerificationController;
+use Metin2Website\Http\Controller\GameIconController;
+use Metin2Website\Http\Controller\HealthController;
+use Metin2Website\Http\Controller\HomeController;
+use Metin2Website\Http\Controller\ItemShopController;
+use Metin2Website\Http\Controller\LocaleController;
+use Metin2Website\Http\Controller\NewsController;
+use Metin2Website\Http\Controller\PasswordController;
+use Metin2Website\Http\Controller\PaymentWebhookController;
+use Metin2Website\Http\Controller\PlayerController;
+use Metin2Website\Http\Controller\RankingController;
+use Metin2Website\Http\Controller\SeoController;
+use Metin2Website\Http\Controller\StatusController;
+use Metin2Website\Http\Controller\ThemeAssetController;
+use Metin2Website\Http\Controller\TicketController;
 
 final class PublicRoutes
 {

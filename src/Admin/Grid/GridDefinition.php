@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Admin\Grid;
+namespace Metin2Website\Admin\Grid;
 
 /**
  * Colocated grid config: columns, filters, sort map, and mass actions in one place.

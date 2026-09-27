@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Setup;
+namespace Metin2Website\Setup;
 
-use Mt2Cms\Repository\AdminRepository;
-use Mt2Cms\Support\AppCrypto;
-use Mt2Cms\Support\Database;
-use Mt2Cms\Support\Env;
+use Metin2Website\Repository\AdminRepository;
+use Metin2Website\Support\AppCrypto;
+use Metin2Website\Support\Database;
+use Metin2Website\Support\Env;
 
 /**
  * Persists .env + CMS schema during the wizard and decides whether an admin must be created.

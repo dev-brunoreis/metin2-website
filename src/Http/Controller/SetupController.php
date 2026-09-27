@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller;
+namespace Metin2Website\Http\Controller;
 
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\Auth\Csrf;
-use Mt2Cms\Auth\RateLimiter;
-use Mt2Cms\Http\Request;
-use Mt2Cms\Http\Response;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Support\Database;
-use Mt2Cms\Repository\AdminRepository;
-use Mt2Cms\Setup\CmsSchema;
-use Mt2Cms\Setup\EnvWriter;
-use Mt2Cms\Setup\SetupDatabaseDefaults;
-use Mt2Cms\Setup\SetupInstaller;
-use Mt2Cms\Setup\SetupRequirements;
-use Mt2Cms\Setup\ThemeCatalog;
-use Mt2Cms\Support\Env;
-use Mt2Cms\Support\Log;
-use Mt2Cms\Theme\ThemeEngine;
+use Metin2Website\Auth\Auth;
+use Metin2Website\Auth\Csrf;
+use Metin2Website\Auth\RateLimiter;
+use Metin2Website\Http\Request;
+use Metin2Website\Http\Response;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Support\Database;
+use Metin2Website\Repository\AdminRepository;
+use Metin2Website\Setup\CmsSchema;
+use Metin2Website\Setup\EnvWriter;
+use Metin2Website\Setup\SetupDatabaseDefaults;
+use Metin2Website\Setup\SetupInstaller;
+use Metin2Website\Setup\SetupRequirements;
+use Metin2Website\Setup\ThemeCatalog;
+use Metin2Website\Support\Env;
+use Metin2Website\Support\Log;
+use Metin2Website\Theme\ThemeEngine;
 
 class SetupController extends Controller
 {

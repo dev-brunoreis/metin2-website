@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Setup;
+namespace Metin2Website\Tests\Unit\Setup;
 
-use Mt2Cms\Setup\SetupDatabaseDefaults;
+use Metin2Website\Setup\SetupDatabaseDefaults;
 use PHPUnit\Framework\TestCase;
 
 final class SetupDatabaseDefaultsTest extends TestCase

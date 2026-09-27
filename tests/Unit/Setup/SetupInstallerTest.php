@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Setup;
+namespace Metin2Website\Tests\Unit\Setup;
 
-use Mt2Cms\Setup\EnvWriter;
-use Mt2Cms\Setup\SetupInstaller;
+use Metin2Website\Setup\EnvWriter;
+use Metin2Website\Setup\SetupInstaller;
 use PHPUnit\Framework\TestCase;
 
 final class SetupInstallerTest extends TestCase

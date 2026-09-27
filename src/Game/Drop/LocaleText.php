@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Game\Drop;
+namespace Metin2Website\Game\Drop;
 
 class LocaleText
 {

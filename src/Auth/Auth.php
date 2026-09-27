@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Auth;
+namespace Metin2Website\Auth;
 
-use Mt2Cms\Repository\AccountRepository;
+use Metin2Website\Repository\AccountRepository;
 
 class Auth
 {

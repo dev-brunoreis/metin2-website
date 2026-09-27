@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Game\Proto;
+namespace Metin2Website\Game\Proto;
 
-use Mt2Cms\Game\GameProfile;
+use Metin2Website\Game\GameProfile;
 
 class ProtoSchemas
 {

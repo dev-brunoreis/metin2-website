@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Game\GameClock;
-use Mt2Cms\Repository\PlayerRepository;
-use Mt2Cms\Repository\UnstuckRepository;
+use Metin2Website\Game\GameClock;
+use Metin2Website\Repository\PlayerRepository;
+use Metin2Website\Repository\UnstuckRepository;
 
 class UnstuckService
 {

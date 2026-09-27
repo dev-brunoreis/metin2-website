@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Setup;
+namespace Metin2Website\Setup;
 
-use Mt2Cms\Support\Database;
+use Metin2Website\Support\Database;
 
 final class MigrationRunner
 {

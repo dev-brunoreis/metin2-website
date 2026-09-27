@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Admin\Grid\Definitions;
+namespace Metin2Website\Admin\Grid\Definitions;
 
-use Mt2Cms\Admin\Grid\GridDefinition;
-use Mt2Cms\Game\Proto\ProtoEnums;
-use Mt2Cms\Service\GameProtoService;
+use Metin2Website\Admin\Grid\GridDefinition;
+use Metin2Website\Game\Proto\ProtoEnums;
+use Metin2Website\Service\GameProtoService;
 
 final class ProtoGrid
 {

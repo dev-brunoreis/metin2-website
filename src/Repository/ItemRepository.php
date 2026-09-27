@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
-use Mt2Cms\Game\ItemDescCatalog;
-use Mt2Cms\Game\ItemSockets;
-use Mt2Cms\Game\ItemStats;
-use Mt2Cms\Support\Database;
+use Metin2Website\Game\ItemDescCatalog;
+use Metin2Website\Game\ItemSockets;
+use Metin2Website\Game\ItemStats;
+use Metin2Website\Support\Database;
 
 class ItemRepository extends Repository
 {

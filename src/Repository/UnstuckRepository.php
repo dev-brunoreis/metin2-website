@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
-use Mt2Cms\Repository\Repository;
+use Metin2Website\Repository\Repository;
 
 class UnstuckRepository extends Repository
 {

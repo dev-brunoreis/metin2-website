@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Payment\GatewayRegistry;
-use Mt2Cms\Payment\PaymentGateway;
-use Mt2Cms\Payment\PaymentIntent;
-use Mt2Cms\Repository\CashPackageRepository;
-use Mt2Cms\Repository\PaymentRepository;
+use Metin2Website\Payment\GatewayRegistry;
+use Metin2Website\Payment\PaymentGateway;
+use Metin2Website\Payment\PaymentIntent;
+use Metin2Website\Repository\CashPackageRepository;
+use Metin2Website\Repository\PaymentRepository;
 
 class PaymentCheckoutService
 {

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Game;
+namespace Metin2Website\Tests\Unit\Game;
 
-use Mt2Cms\Game\Display;
-use Mt2Cms\Game\GameClock;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Repository\PlayerRepository;
-use Mt2Cms\Repository\UnstuckRepository;
-use Mt2Cms\Service\SettingsService;
-use Mt2Cms\Service\UnstuckService;
+use Metin2Website\Game\Display;
+use Metin2Website\Game\GameClock;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Repository\PlayerRepository;
+use Metin2Website\Repository\UnstuckRepository;
+use Metin2Website\Service\SettingsService;
+use Metin2Website\Service\UnstuckService;
 use PHPUnit\Framework\TestCase;
 
 final class GameClockTest extends TestCase

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Payment;
+namespace Metin2Website\Payment;
 
 /**
  * Pure helpers for inbound webhook envelopes (testable without HTTP).

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Service\DiscordWebhookService;
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\PaymentRepository;
-use Mt2Cms\Support\Log;
+use Metin2Website\Service\DiscordWebhookService;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\PaymentRepository;
+use Metin2Website\Support\Log;
 
 class CashCreditService
 {

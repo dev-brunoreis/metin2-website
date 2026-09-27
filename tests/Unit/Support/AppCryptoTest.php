@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Support;
+namespace Metin2Website\Tests\Unit\Support;
 
-use Mt2Cms\Support\AppCrypto;
+use Metin2Website\Support\AppCrypto;
 use PHPUnit\Framework\TestCase;
 
 final class AppCryptoTest extends TestCase
@@ -16,8 +16,8 @@ final class AppCryptoTest extends TestCase
         $this->previousKey = (string) ($_ENV['APP_KEY'] ?? '');
         $_ENV['APP_KEY'] = AppCrypto::generateKey();
         putenv('APP_KEY=' . $_ENV['APP_KEY']);
-        \Mt2Cms\Support\Env::$instance = null;
-        \Mt2Cms\Support\Env::load();
+        \Metin2Website\Support\Env::$instance = null;
+        \Metin2Website\Support\Env::load();
     }
 
     protected function tearDown(): void
@@ -30,7 +30,7 @@ final class AppCryptoTest extends TestCase
             putenv('APP_KEY');
         }
 
-        \Mt2Cms\Support\Env::$instance = null;
+        \Metin2Website\Support\Env::$instance = null;
     }
 
     public function testEncryptDecryptRoundTrip(): void
@@ -44,7 +44,7 @@ final class AppCryptoTest extends TestCase
 
     public function testEncryptedTotpSecretExceedsLegacyVarchar64(): void
     {
-        $encrypted = AppCrypto::encrypt(\Mt2Cms\Auth\Totp::generateSecret());
+        $encrypted = AppCrypto::encrypt(\Metin2Website\Auth\Totp::generateSecret());
 
         self::assertGreaterThan(64, strlen($encrypted));
         self::assertLessThanOrEqual(255, strlen($encrypted));

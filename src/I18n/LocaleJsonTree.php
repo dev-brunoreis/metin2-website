@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\I18n;
+namespace Metin2Website\I18n;
 
 /**
  * Flatten / apply helpers for nested locale JSON (used by bin/i18n-deepl.php and tests).

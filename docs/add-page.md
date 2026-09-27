@@ -13,8 +13,8 @@ Do not instantiate repositories inside the controller.
 
 ## 2. Controller
 
-- Public: put the class in `src/Http/Controller/` and extend `Mt2Cms\Http\Controller\Controller`.
-- Admin: put the class in `src/Http/Controller/Admin/` and extend `Mt2Cms\Http\Controller\Admin\AdminController`.
+- Public: put the class in `src/Http/Controller/` and extend `Metin2Website\Http\Controller\Controller`.
+- Admin: put the class in `src/Http/Controller/Admin/` and extend `Metin2Website\Http\Controller\Admin\AdminController`.
 
 - Public page: return `$this->view('layoutName', $data)`.
 - Auth required: call `$this->requireAuth()` first (see `AccountController`).

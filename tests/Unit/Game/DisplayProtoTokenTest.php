@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Game;
+namespace Metin2Website\Tests\Unit\Game;
 
-use Mt2Cms\Game\Display;
-use Mt2Cms\I18n\Translator;
+use Metin2Website\Game\Display;
+use Metin2Website\I18n\Translator;
 use PHPUnit\Framework\TestCase;
 
 final class DisplayProtoTokenTest extends TestCase

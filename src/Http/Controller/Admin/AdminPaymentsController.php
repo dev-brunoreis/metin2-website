@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller\Admin;
+namespace Metin2Website\Http\Controller\Admin;
 
-use Mt2Cms\Admin\Grid\Definitions\PaymentsGrid;
-use Mt2Cms\Admin\Grid\GridRunner;
-use Mt2Cms\Auth\AdminAuth;
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\Auth\Csrf;
-use Mt2Cms\Http\Response;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Repository\PaymentEventRepository;
-use Mt2Cms\Repository\PaymentRepository;
-use Mt2Cms\Service\AclService;
-use Mt2Cms\Service\AdminAuditService;
-use Mt2Cms\Service\CashCreditService;
-use Mt2Cms\Service\PaymentExpiryService;
-use Mt2Cms\Service\PaymentStatsService;
-use Mt2Cms\Service\PaymentWebhookProcessor;
-use Mt2Cms\Theme\ThemeEngine;
+use Metin2Website\Admin\Grid\Definitions\PaymentsGrid;
+use Metin2Website\Admin\Grid\GridRunner;
+use Metin2Website\Auth\AdminAuth;
+use Metin2Website\Auth\Auth;
+use Metin2Website\Auth\Csrf;
+use Metin2Website\Http\Response;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Repository\PaymentEventRepository;
+use Metin2Website\Repository\PaymentRepository;
+use Metin2Website\Service\AclService;
+use Metin2Website\Service\AdminAuditService;
+use Metin2Website\Service\CashCreditService;
+use Metin2Website\Service\PaymentExpiryService;
+use Metin2Website\Service\PaymentStatsService;
+use Metin2Website\Service\PaymentWebhookProcessor;
+use Metin2Website\Theme\ThemeEngine;
 
 class AdminPaymentsController extends AdminController
 {

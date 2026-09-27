@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Repository\EventRepository;
-use Mt2Cms\Repository\SettingsRepository;
-use Mt2Cms\Support\HtmlSanitizer;
+use Metin2Website\Repository\EventRepository;
+use Metin2Website\Repository\SettingsRepository;
+use Metin2Website\Support\HtmlSanitizer;
 
 /**
  * Seeds classic Metin2 events once (empty table + flag), dated from the current week.

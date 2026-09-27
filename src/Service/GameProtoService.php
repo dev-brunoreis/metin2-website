@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Admin\Grid\Definitions\ProtoGrid;
-use Mt2Cms\Admin\Grid\GridQuery;
-use Mt2Cms\Admin\Grid\GridSql;
-use Mt2Cms\Game\GameProfile;
-use Mt2Cms\Game\Proto\ProtoEnums;
-use Mt2Cms\Game\Proto\ProtoIndexCache;
-use Mt2Cms\Game\Proto\ProtoSchemas;
-use Mt2Cms\Game\Proto\TabProtoTable;
-use Mt2Cms\Repository\ProtoNameRepository;
-use Mt2Cms\Support\Log;
+use Metin2Website\Admin\Grid\Definitions\ProtoGrid;
+use Metin2Website\Admin\Grid\GridQuery;
+use Metin2Website\Admin\Grid\GridSql;
+use Metin2Website\Game\GameProfile;
+use Metin2Website\Game\Proto\ProtoEnums;
+use Metin2Website\Game\Proto\ProtoIndexCache;
+use Metin2Website\Game\Proto\ProtoSchemas;
+use Metin2Website\Game\Proto\TabProtoTable;
+use Metin2Website\Repository\ProtoNameRepository;
+use Metin2Website\Support\Log;
 
 class GameProtoService
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
 class AclRepository extends Repository
 {

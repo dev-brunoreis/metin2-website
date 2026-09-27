@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Admin;
+namespace Metin2Website\Admin;
 
-use Mt2Cms\Game\GameProfile;
+use Metin2Website\Game\GameProfile;
 
 class AdminSections
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\PlayerRepository;
-use Mt2Cms\Repository\ReferralRepository;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\PlayerRepository;
+use Metin2Website\Repository\ReferralRepository;
 
 class ReferralService
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Repository;
+namespace Metin2Website\Tests\Unit\Repository;
 
-use Mt2Cms\Repository\BannerRepository;
+use Metin2Website\Repository\BannerRepository;
 use PHPUnit\Framework\TestCase;
 
 final class BannerRepositoryTest extends TestCase

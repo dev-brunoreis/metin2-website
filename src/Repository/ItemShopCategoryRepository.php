@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
-use Mt2Cms\Support\SelectOptions;
+use Metin2Website\Support\SelectOptions;
 
 class ItemShopCategoryRepository extends Repository
 {

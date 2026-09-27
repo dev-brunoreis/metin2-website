@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Integration\Http;
+namespace Metin2Website\Tests\Integration\Http;
 
-use Mt2Cms\Tests\Integration\Support\HttpClient;
+use Metin2Website\Tests\Integration\Support\HttpClient;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Live-stack smoke: requires docker compose (or equivalent) on MT2CMS_BASE_URL.
+ * Live-stack smoke: requires docker compose (or equivalent) on METIN2WEBSITE_BASE_URL.
  * Skips when the stack is not reachable so unit CI stays green without MySQL.
  */
 final class PublicSmokeTest extends TestCase
@@ -21,7 +21,7 @@ final class PublicSmokeTest extends TestCase
         if (!HttpClient::isReachable($this->baseUrl)) {
             self::markTestSkipped(
                 'Stack not reachable at ' . $this->baseUrl
-                . ' (start docker compose or set MT2CMS_BASE_URL)'
+                . ' (start docker compose or set METIN2WEBSITE_BASE_URL)'
             );
         }
     }

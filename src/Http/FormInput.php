@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http;
+namespace Metin2Website\Http;
 
 /**
  * Typed helpers for form POST/GET values (mirrors GridRequest conventions).

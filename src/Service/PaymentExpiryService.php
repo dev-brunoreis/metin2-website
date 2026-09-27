@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Payment\GatewayRegistry;
-use Mt2Cms\Repository\PaymentRepository;
+use Metin2Website\Payment\GatewayRegistry;
+use Metin2Website\Repository\PaymentRepository;
 
 class PaymentExpiryService
 {

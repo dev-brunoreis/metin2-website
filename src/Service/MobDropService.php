@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Game\Drop\GroupTextParser;
-use Mt2Cms\Game\Drop\LocaleText;
-use Mt2Cms\Game\GameProfile;
-use Mt2Cms\Game\Proto\ProtoSchemas;
+use Metin2Website\Game\Drop\GroupTextParser;
+use Metin2Website\Game\Drop\LocaleText;
+use Metin2Website\Game\GameProfile;
+use Metin2Website\Game\Proto\ProtoSchemas;
 
 class MobDropService
 {

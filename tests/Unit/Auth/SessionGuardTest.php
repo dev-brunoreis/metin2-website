@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Auth;
+namespace Metin2Website\Tests\Unit\Auth;
 
-use Mt2Cms\Auth\SessionConfig;
-use Mt2Cms\Auth\SessionGuard;
+use Metin2Website\Auth\SessionConfig;
+use Metin2Website\Auth\SessionGuard;
 use PHPUnit\Framework\TestCase;
 
 final class SessionGuardTest extends TestCase

@@ -42,7 +42,7 @@ RBAC via `AclService`, `admin_roles`, resource-based ACL. Super-only routes for 
 
 ### 4. ~~Player and admin share one PHP session~~ — done
 
-Separate cookies: `MT2CMS` (path `/`) and `MT2ADMIN` (path `/admin`). See `SessionConfig`.
+Separate cookies: `METIN2WEB` (path `/`) and `METIN2ADMIN` (path `/admin`). See `SessionConfig`.
 
 ### 5. ~~CSP allows jsDelivr~~ — done
 
@@ -117,7 +117,7 @@ Shipped pack: `en` only (`lang/en.json`). Loader already supports `lang/{locale}
 
 ### ~~Schema as inline SQL~~ — done
 
-[`CmsSchema.php`](../src/Setup/CmsSchema.php) orchestrates; SQL lives in [`src/Setup/migrations/`](../src/Setup/migrations/).
+[`CmsSchema.php`](../src/Setup/CmsSchema.php) orchestrates; baseline SQL is [`001_schema.sql`](../src/Setup/migrations/001_schema.sql); post-release deltas are numbered `002_*.sql`, …
 ---
 
 ## Expanding systems

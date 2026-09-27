@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller\Admin;
+namespace Metin2Website\Http\Controller\Admin;
 
-use Mt2Cms\Admin\AdminPaths;
-use Mt2Cms\Admin\Grid\GridColumnFilters;
-use Mt2Cms\Admin\Grid\GridRunner;
-use Mt2Cms\Admin\Grid\GridSpec;
-use Mt2Cms\Admin\LogCatalog;
-use Mt2Cms\Auth\AdminAuth;
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\Auth\Csrf;
-use Mt2Cms\Http\Response;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Repository\LogRepository;
-use Mt2Cms\Service\AclService;
-use Mt2Cms\Service\AdminAuditService;
-use Mt2Cms\Service\LogEnricher;
-use Mt2Cms\Theme\ThemeEngine;
+use Metin2Website\Admin\AdminPaths;
+use Metin2Website\Admin\Grid\GridColumnFilters;
+use Metin2Website\Admin\Grid\GridRunner;
+use Metin2Website\Admin\Grid\GridSpec;
+use Metin2Website\Admin\LogCatalog;
+use Metin2Website\Auth\AdminAuth;
+use Metin2Website\Auth\Auth;
+use Metin2Website\Auth\Csrf;
+use Metin2Website\Http\Response;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Repository\LogRepository;
+use Metin2Website\Service\AclService;
+use Metin2Website\Service\AdminAuditService;
+use Metin2Website\Service\LogEnricher;
+use Metin2Website\Theme\ThemeEngine;
 
 class AdminLogsController extends AdminController
 {

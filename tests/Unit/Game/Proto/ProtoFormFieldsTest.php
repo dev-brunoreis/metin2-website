@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Game\Proto;
+namespace Metin2Website\Tests\Unit\Game\Proto;
 
-use Mt2Cms\Game\GameProfile;
-use Mt2Cms\Game\Proto\ProtoEnums;
-use Mt2Cms\Game\Proto\ProtoFormFields;
-use Mt2Cms\Game\Proto\ProtoSchemas;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Support\SelectOptions;
+use Metin2Website\Game\GameProfile;
+use Metin2Website\Game\Proto\ProtoEnums;
+use Metin2Website\Game\Proto\ProtoFormFields;
+use Metin2Website\Game\Proto\ProtoSchemas;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Support\SelectOptions;
 use PHPUnit\Framework\TestCase;
 
 final class ProtoFormFieldsTest extends TestCase

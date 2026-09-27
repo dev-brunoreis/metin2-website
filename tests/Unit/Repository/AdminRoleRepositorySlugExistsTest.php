@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Repository;
+namespace Metin2Website\Tests\Unit\Repository;
 
-use Mt2Cms\Support\Database;
-use Mt2Cms\Repository\AdminRoleRepository;
+use Metin2Website\Support\Database;
+use Metin2Website\Repository\AdminRoleRepository;
 use PHPUnit\Framework\TestCase;
 
 final class AdminRoleRepositorySlugExistsTest extends TestCase

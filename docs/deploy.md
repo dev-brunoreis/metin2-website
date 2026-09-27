@@ -43,7 +43,7 @@ Internet → TLS reverse proxy (Caddy / Nginx / Traefik)
 
 ## Before go-live
 
-1. Copy **`.env.prod-example`** to `.env` and set **strong passwords** (not the placeholders). This file includes `MYSQL_ROOT_PASSWORD`, `CMS_MYSQL_ROOT_PASSWORD`, and dedicated app users (`DB_USER=mt2cms`, `CMS_DB_USER=cms`) required by `compose.prod.yml`.
+1. Copy **`.env.prod-example`** to `.env` and set **strong passwords** (not the placeholders). This file includes `MYSQL_ROOT_PASSWORD`, `CMS_MYSQL_ROOT_PASSWORD`, and dedicated app users (`DB_USER=metin2website`, `CMS_DB_USER=cms`) required by `compose.prod.yml`.
    ```bash
    cp .env.prod-example .env
    # edit .env — replace every change-me-* password
@@ -59,7 +59,7 @@ Internet → TLS reverse proxy (Caddy / Nginx / Traefik)
    ```
    The PHP image runs as your host UID/GID (`PUID` / `PGID`, default `1000`) so the bind-mounted `.env` stays readable/writable. Rebuild after changing them: `PUID=$(id -u) PGID=$(id -g) docker compose -f compose.prod.yml up -d --build`.
    From the host (outside Docker), point `.env` at the mapped CMS port: `CMS_DB_HOST=127.0.0.1`, `CMS_DB_PORT=8002`, then run `php bin/migrate.php`.
-5. **Set `APP_INSTALLED=true`** in `.env` after setup (`/setup` writes this automatically). First HTTP boot then seeds class banners and a welcome news post if those tables are empty ([setup.md](setup.md)).
+5. **Set `APP_INSTALLED=true`** in `.env` after setup (`/setup` writes this automatically). First HTTP boot then seeds placeholder class slides (no game art) and a welcome news post if those tables are empty ([setup.md](setup.md)).
 6. **Confirm `APP_KEY`** is present in `.env` (64 hex chars). Setup and migrate generate it; the app returns a generic 503 without it (details are logged server-side only).
 7. **`APP_TRUST_PROXY=1`** is set in `compose.prod.yml`. Keep it when TLS terminates at a reverse proxy so session cookies get the `Secure` flag.
 8. **Enroll admin 2FA** on first login (`/admin/account/security`) when the require-2FA policy is enabled (off by default on new installs; enable under **Settings → Security**).
@@ -84,12 +84,12 @@ Configure a TLS reverse proxy in front of `127.0.0.1:8000`.
 
 ### External game database
 
-**Normal production:** the game MySQL already runs on the Metin2 host. Omit the Compose `game` service and point `.env` at that host. Full hardening (bind address, firewall, `'mt2cms'@'CMS_IP'`): **[game-mysql.md](game-mysql.md)**.
+**Normal production:** the game MySQL already runs on the Metin2 host. Omit the Compose `game` service and point `.env` at that host. Full hardening (bind address, firewall, `'metin2website'@'CMS_IP'`): **[game-mysql.md](game-mysql.md)**.
 
 ```env
 DB_HOST=10.0.0.5
 DB_PORT=3306
-DB_USER=mt2cms
+DB_USER=metin2website
 DB_PASSWORD=...
 ```
 
@@ -139,7 +139,7 @@ server {
 
 | Variable | Required | Notes |
 | --- | --- | --- |
-| `DB_USER` | Yes | Game DB app user (default `mt2cms` in compose.prod.yml) — **not** root |
+| `DB_USER` | Yes | Game DB app user (default `metin2website` in compose.prod.yml) — **not** root |
 | `DB_PASSWORD` | Yes | Password for `DB_USER` |
 | `MYSQL_ROOT_PASSWORD` | Yes (compose.prod) | Game MySQL root — separate from `DB_PASSWORD`; not read by PHP |
 | `CMS_DB_USER` | Yes | CMS DB app user (default `cms`) |
@@ -164,11 +164,11 @@ Init scripts run only on **empty** data directories. If you already have game/CM
 
 ```sql
 -- Game MySQL (as root) — replace CMS_HOST_IP (production) or use a Compose service IP
-CREATE USER 'mt2cms'@'CMS_HOST_IP' IDENTIFIED BY 'strong-password';
-GRANT SELECT, INSERT, UPDATE, DELETE ON account.* TO 'mt2cms'@'CMS_HOST_IP';
-GRANT SELECT, INSERT, UPDATE, DELETE ON player.* TO 'mt2cms'@'CMS_HOST_IP';
-GRANT SELECT, INSERT, UPDATE, DELETE ON common.* TO 'mt2cms'@'CMS_HOST_IP';
-GRANT SELECT, INSERT, UPDATE, DELETE ON log.* TO 'mt2cms'@'CMS_HOST_IP';
+CREATE USER 'metin2website'@'CMS_HOST_IP' IDENTIFIED BY 'strong-password';
+GRANT SELECT, INSERT, UPDATE, DELETE ON account.* TO 'metin2website'@'CMS_HOST_IP';
+GRANT SELECT, INSERT, UPDATE, DELETE ON player.* TO 'metin2website'@'CMS_HOST_IP';
+GRANT SELECT, INSERT, UPDATE, DELETE ON common.* TO 'metin2website'@'CMS_HOST_IP';
+GRANT SELECT, INSERT, UPDATE, DELETE ON log.* TO 'metin2website'@'CMS_HOST_IP';
 FLUSH PRIVILEGES;
 ```
 
@@ -189,7 +189,7 @@ docker compose -f compose.prod.yml exec mysql \
     FLUSH PRIVILEGES;"
 ```
 
-Then update `.env` to use `DB_USER=mt2cms`, `CMS_DB_USER=cms`, and restart PHP.
+Then update `.env` to use `DB_USER=metin2website`, `CMS_DB_USER=cms`, and restart PHP.
 
 **Fresh local prod test** (wipes databases): `docker compose -f compose.prod.yml down -v` then `up -d --build` again.
 
@@ -259,7 +259,7 @@ Bare-metal Nginx/PHP-FPM examples: [`deploy/linux/`](../deploy/linux/). Game MyS
 ## Post-deploy checklist
 
 - [ ] CMS host is **separate** from the Metin2 game server
-- [ ] Game MySQL hardened per [game-mysql.md](game-mysql.md) (`mt2cms`@CMS IP, firewall, not public)
+- [ ] Game MySQL hardened per [game-mysql.md](game-mysql.md) (`metin2website`@CMS IP, firewall, not public)
 - [ ] MySQL not reachable from the internet
 - [ ] Adminer / phpMyAdmin not exposed
 - [ ] App uses dedicated MySQL users (`DB_USER`, `CMS_DB_USER`), not root

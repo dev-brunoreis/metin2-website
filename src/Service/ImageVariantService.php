@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
 /**
  * Resize uploaded images into WebP + JPEG variants for responsive banners.

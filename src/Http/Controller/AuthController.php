@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller;
+namespace Metin2Website\Http\Controller;
 
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\Auth\Captcha;
-use Mt2Cms\Auth\Csrf;
-use Mt2Cms\Auth\RateLimiter;
-use Mt2Cms\Http\Request;
-use Mt2Cms\Http\Response;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Service\BanService;
-use Mt2Cms\Mail\MailerInterface;
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Service\ReferralService;
-use Mt2Cms\Service\AccountEmailService;
-use Mt2Cms\Service\SettingsService;
-use Mt2Cms\Theme\ThemeEngine;
+use Metin2Website\Auth\Auth;
+use Metin2Website\Auth\Captcha;
+use Metin2Website\Auth\Csrf;
+use Metin2Website\Auth\RateLimiter;
+use Metin2Website\Http\Request;
+use Metin2Website\Http\Response;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Service\BanService;
+use Metin2Website\Mail\MailerInterface;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Service\ReferralService;
+use Metin2Website\Service\AccountEmailService;
+use Metin2Website\Service\SettingsService;
+use Metin2Website\Theme\ThemeEngine;
 
 class AuthController extends Controller
 {

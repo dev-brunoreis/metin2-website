@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Admin\AdminAuditTarget;
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\AdminAuditRepository;
-use Mt2Cms\Repository\GuildRepository;
-use Mt2Cms\Repository\PlayerRepository;
+use Metin2Website\Admin\AdminAuditTarget;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\AdminAuditRepository;
+use Metin2Website\Repository\GuildRepository;
+use Metin2Website\Repository\PlayerRepository;
 
 class AdminAuditTargetService
 {

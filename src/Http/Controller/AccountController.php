@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller;
+namespace Metin2Website\Http\Controller;
 
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\Auth\Csrf;
-use Mt2Cms\Auth\RateLimiter;
-use Mt2Cms\Http\Response;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Mail\MailerInterface;
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\ItemShopOrderRepository;
-use Mt2Cms\Repository\NotificationRepository;
-use Mt2Cms\Repository\PaymentRepository;
-use Mt2Cms\Repository\PlayerRepository;
-use Mt2Cms\Service\ReferralService;
-use Mt2Cms\Service\AccountEmailService;
-use Mt2Cms\Service\GameProtoService;
-use Mt2Cms\Service\SettingsService;
-use Mt2Cms\Game\GameClock;
-use Mt2Cms\Game\Proto\ProtoSchemas;
-use Mt2Cms\Theme\ThemeEngine;
-use Mt2Cms\Service\UnstuckService;
+use Metin2Website\Auth\Auth;
+use Metin2Website\Auth\Csrf;
+use Metin2Website\Auth\RateLimiter;
+use Metin2Website\Http\Response;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Mail\MailerInterface;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\ItemShopOrderRepository;
+use Metin2Website\Repository\NotificationRepository;
+use Metin2Website\Repository\PaymentRepository;
+use Metin2Website\Repository\PlayerRepository;
+use Metin2Website\Service\ReferralService;
+use Metin2Website\Service\AccountEmailService;
+use Metin2Website\Service\GameProtoService;
+use Metin2Website\Service\SettingsService;
+use Metin2Website\Game\GameClock;
+use Metin2Website\Game\Proto\ProtoSchemas;
+use Metin2Website\Theme\ThemeEngine;
+use Metin2Website\Service\UnstuckService;
 
 class AccountController extends Controller
 {

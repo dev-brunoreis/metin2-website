@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Payment;
+namespace Metin2Website\Payment;
 
-use Mt2Cms\Service\SettingsService;
-use Mt2Cms\Support\Log;
+use Metin2Website\Service\SettingsService;
+use Metin2Website\Support\Log;
 
 final class PayPalGateway implements PaymentGateway
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Repository\PaymentRepository;
-use Mt2Cms\Service\Economy\EconomyStats;
+use Metin2Website\Repository\PaymentRepository;
+use Metin2Website\Service\Economy\EconomyStats;
 
 class PaymentStatsService
 {

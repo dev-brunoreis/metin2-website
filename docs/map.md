@@ -36,7 +36,7 @@ New admin screen: menu in `AdminSections`, path in `AdminPaths`, **permissions i
 | Area | Read | Key files |
 | --- | --- | --- |
 | **How code is written** | [patterns.md](patterns.md) | layers, `Response`, `FormInput`, SQL, i18n |
-| **Tests** | [testing.md](testing.md) | `tests/Unit/`, `SecurityContractTest`, opt-in `tests/Integration/` smoke; CI unit + Psalm taint (`.github/workflows/`) |
+| **Tests** | [testing.md](testing.md) | `tests/Unit/`, `SecurityContractTest`, opt-in `tests/Integration/` smoke; GitHub Actions: unit + asset build + Docker image build (`.github/workflows/ci.yml`), Psalm taint (`.github/workflows/psalm.yml`) |
 | Admin section / grid / hubs | [add-admin-section.md](add-admin-section.md) | `AdminSections`, `AdminRoutes.php`, `src/Admin/Grid/`, `themes/admin`, `public/js/admin/admin-sidebar.js` (keeps sidebar scroll) |
 | **ACL** | [acl.md](acl.md) | `AdminResourceCatalog`, `AclService`, `AdminController`. Super is the only shipped role; extra roles are created in Admin → Roles |
 | Public page | [add-page.md](add-page.md) | `PublicRoutes.php`, `src/Http/Controller/` |
@@ -75,7 +75,7 @@ Content: news + comments, events, downloads, shop buy, donate, ranking, player p
 
 Admin game writes that the core keeps in memory (player/item cache, or boot-loaded shops/refine/proto/GMs/guilds) show `game-lag-caution.twig` so staff know the live client can take a few minutes — or a `/reload` / restart — to match.
 
-First HTTP boot after `/setup` seeds class banners, one published welcome news post, and classic Metin2 events when those tables are empty (see [setup.md](setup.md)).
+First HTTP boot after `/setup` seeds four placeholder class slides (no game art), one published welcome news post, and classic Metin2 events when those tables are empty (see [setup.md](setup.md)).
 
 ## Change → update
 

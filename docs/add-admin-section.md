@@ -168,7 +168,7 @@ See [acl.md](acl.md) for the full contract. Resource IDs follow `{area}/{module}
 
 Hub tabs: check `requireAdminResourceView('…/view')` per tab; hide tabs with `acl_allowed()` in the hub Twig. Use `resolveResourceTab()` when the default tab may be denied.
 
-Legacy `acl_*_sections` tables remain for migration rollback; runtime ACL reads `acl_role_resources` / `acl_admin_resources`.
+Legacy `acl_*_sections` tables remain in the baseline schema; runtime ACL reads `acl_role_resources` / `acl_admin_resources`.
 
 ### Twig
 

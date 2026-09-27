@@ -55,7 +55,7 @@ function collectPaths(value, out) {
 
 function normalize(filePath) {
   let path = String(filePath).replace(/\\/g, '/');
-  const markers = ['/mt2-cms/', 'mt2-cms/'];
+  const markers = ['/metin2-website/', 'metin2-website/', '/mt2-cms/', 'mt2-cms/'];
   for (const marker of markers) {
     const idx = path.indexOf(marker);
     if (idx !== -1) {

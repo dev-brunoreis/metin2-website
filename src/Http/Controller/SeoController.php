@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller;
+namespace Metin2Website\Http\Controller;
 
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\Auth\Csrf;
-use Mt2Cms\Http\Response;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Repository\EventRepository;
-use Mt2Cms\Repository\NewsRepository;
-use Mt2Cms\Service\SeoService;
-use Mt2Cms\Theme\ThemeEngine;
+use Metin2Website\Auth\Auth;
+use Metin2Website\Auth\Csrf;
+use Metin2Website\Http\Response;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Repository\EventRepository;
+use Metin2Website\Repository\NewsRepository;
+use Metin2Website\Service\SeoService;
+use Metin2Website\Theme\ThemeEngine;
 
 class SeoController extends Controller
 {

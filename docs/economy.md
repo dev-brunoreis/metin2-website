@@ -1,6 +1,6 @@
 # Economy
 
-Admin **Game → Economy** (`/admin/game/economy`). ACL: `game/economy/view`, `edit`, `mass`. CMS tables from migrations `018_economy.sql` + `019_economy_intelligence.sql`. Game gold/item logs stay in the `log` schema; the CMS stores census, yang daily, ingested trades, watches, and alerts.
+Admin **Game → Economy** (`/admin/game/economy`). ACL: `game/economy/view`, `edit`, `mass`. CMS economy tables ship in [`001_schema.sql`](../src/Setup/migrations/001_schema.sql). Game gold/item logs stay in the `log` schema; the CMS stores census, yang daily, ingested trades, watches, and alerts.
 
 ## Tick
 

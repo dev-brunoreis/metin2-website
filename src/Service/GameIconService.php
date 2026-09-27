@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Game\GameProfile;
-use Mt2Cms\Game\Icon\PngEncoder;
-use Mt2Cms\Game\Icon\TgaDecoder;
-use Mt2Cms\Game\ItemIconCatalog;
+use Metin2Website\Game\GameProfile;
+use Metin2Website\Game\Icon\PngEncoder;
+use Metin2Website\Game\Icon\TgaDecoder;
+use Metin2Website\Game\ItemIconCatalog;
 
 class GameIconService
 {

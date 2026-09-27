@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Admin;
+namespace Metin2Website\Tests\Unit\Admin;
 
-use Mt2Cms\Admin\AdminAuditTarget;
+use Metin2Website\Admin\AdminAuditTarget;
 use PHPUnit\Framework\TestCase;
 
 final class AdminAuditTargetTest extends TestCase

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Repository\EventRepository;
+use Metin2Website\Repository\EventRepository;
 
 class EventService
 {

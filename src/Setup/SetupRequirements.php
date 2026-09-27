@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Setup;
+namespace Metin2Website\Setup;
 
 /**
  * Host dependency checks for CLI (`bin/check-requirements.php`) and the setup wizard.

@@ -1,6 +1,6 @@
 # Admin ACL
 
-Resource-based permissions (Magento-style ids). Runtime reads `acl_role_resources` / `acl_admin_resources`. Legacy `acl_*_sections` exist only for migration rollback.
+Resource-based permissions (Magento-style ids). Runtime reads `acl_role_resources` / `acl_admin_resources`. Legacy `acl_*_sections` tables remain for older tooling; new installs use resources only.
 
 Full how-to for a new section: [add-admin-section.md](add-admin-section.md). Catalog source of truth: `src/Admin/AdminResourceCatalog.php`.
 

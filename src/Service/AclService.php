@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Admin\AdminPermissions;
-use Mt2Cms\Admin\AdminResourceCatalog;
-use Mt2Cms\Admin\AdminSections;
-use Mt2Cms\Repository\AclRepository;
-use Mt2Cms\Repository\AdminRoleRepository;
+use Metin2Website\Admin\AdminPermissions;
+use Metin2Website\Admin\AdminResourceCatalog;
+use Metin2Website\Admin\AdminSections;
+use Metin2Website\Repository\AclRepository;
+use Metin2Website\Repository\AdminRoleRepository;
 
 class AclService
 {

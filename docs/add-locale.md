@@ -55,7 +55,7 @@ A locale is supported if either exists:
 
 Default for visitors **without** a `locale` cookie: CMS setting `default_locale` (Settings → Locale), else `LOCALE` in `.env` (default `en`). Cookie always wins when set (`Locales::resolve`). Saving the default locale also sets the admin’s cookie so the panel switches immediately.
 
-Locale cookie is set via `POST /locale` (public session) or `POST /admin/locale` (admin session `MT2ADMIN` — the sidebar switcher must use this path so CSRF matches). Saving Settings → Locale also sets the cookie.
+Locale cookie is set via `POST /locale` (public session) or `POST /admin/locale` (admin session `METIN2ADMIN` — the sidebar switcher must use this path so CSRF matches). Saving Settings → Locale also sets the cookie.
 
 ## Money formats
 
@@ -81,7 +81,7 @@ php bin/i18n-deepl.php --dry-run --only=de
 php bin/i18n-deepl.php --force --only=pt
 ```
 
-Helpers: `Mt2Cms\I18n\LocaleJsonTree` (flatten / placeholders). Progress cache: `lang/.deepl-cache/` (gitignored). Use `--force` to redo a complete file. Supported target codes live in `LOCALES` inside `bin/i18n-deepl.php`.
+Helpers: `Metin2Website\I18n\LocaleJsonTree` (flatten / placeholders). Progress cache: `lang/.deepl-cache/` (gitignored). Use `--force` to redo a complete file. Supported target codes live in `LOCALES` inside `bin/i18n-deepl.php`.
 
 ## PR checklist
 

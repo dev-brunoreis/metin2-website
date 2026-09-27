@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Setup;
+namespace Metin2Website\Setup;
 
-use Mt2Cms\Support\Database;
+use Metin2Website\Support\Database;
 
 class CmsSchema
 {
@@ -15,8 +15,6 @@ class CmsSchema
     public function ensure(): void
     {
         (new MigrationRunner($this->db))->migrate();
-        (new AdminAclColumnMigrator($this->db))->migrateIfNeeded();
-        (new AclResourceMigrator($this->db))->migrateIfNeeded();
     }
 
     /**

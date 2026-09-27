@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Auth;
+namespace Metin2Website\Tests\Unit\Auth;
 
-use Mt2Cms\Auth\RateLimiter;
+use Metin2Website\Auth\RateLimiter;
 use PHPUnit\Framework\TestCase;
 
 final class RateLimiterTest extends TestCase

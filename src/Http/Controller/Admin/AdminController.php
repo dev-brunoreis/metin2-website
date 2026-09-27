@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller\Admin;
+namespace Metin2Website\Http\Controller\Admin;
 
-use Mt2Cms\Admin\AdminAuditMeta;
-use Mt2Cms\Admin\AdminSections;
-use Mt2Cms\Admin\Grid\GridQuery;
-use Mt2Cms\Admin\Grid\GridRequest;
-use Mt2Cms\Admin\Grid\GridSpec;
-use Mt2Cms\Auth\AdminAuth;
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\Auth\Csrf;
-use Mt2Cms\Http\Controller\Controller;
-use Mt2Cms\Http\Response;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Service\AclService;
-use Mt2Cms\Service\AdminAuditService;
-use Mt2Cms\Theme\ThemeEngine;
+use Metin2Website\Admin\AdminAuditMeta;
+use Metin2Website\Admin\AdminSections;
+use Metin2Website\Admin\Grid\GridQuery;
+use Metin2Website\Admin\Grid\GridRequest;
+use Metin2Website\Admin\Grid\GridSpec;
+use Metin2Website\Auth\AdminAuth;
+use Metin2Website\Auth\Auth;
+use Metin2Website\Auth\Csrf;
+use Metin2Website\Http\Controller\Controller;
+use Metin2Website\Http\Response;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Service\AclService;
+use Metin2Website\Service\AdminAuditService;
+use Metin2Website\Theme\ThemeEngine;
 
 abstract class AdminController extends Controller
 {
@@ -383,7 +383,7 @@ abstract class AdminController extends Controller
             return null;
         }
 
-        if (!\Mt2Cms\Admin\AdminRuntime::settings()->adminTwoFactorRequired()) {
+        if (!\Metin2Website\Admin\AdminRuntime::settings()->adminTwoFactorRequired()) {
             return null;
         }
 

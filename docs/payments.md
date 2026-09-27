@@ -21,4 +21,4 @@ On terminal states, `NotificationService` pushes in-app notices (`payment_credit
 
 ## Adding a gateway
 
-Implement `Mt2Cms\Payment\PaymentGateway`, register in `GatewayRegistry` (wired in `Application` / bootstrap). Do not fork `DonateController`. Toggle + webhook id live in **Settings → Payment methods**.
+Implement `Metin2Website\Payment\PaymentGateway`, register in `GatewayRegistry` (wired in `Application` / bootstrap). Do not fork `DonateController`. Toggle + webhook id live in **Settings → Payment methods**.

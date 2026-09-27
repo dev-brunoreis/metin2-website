@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Support;
+namespace Metin2Website\Tests\Unit\Support;
 
-use Mt2Cms\Support\ComposerAutoload;
+use Metin2Website\Support\ComposerAutoload;
 use PHPUnit\Framework\TestCase;
 
 final class ComposerAutoloadTest extends TestCase
@@ -13,7 +13,7 @@ final class ComposerAutoloadTest extends TestCase
 
     protected function tearDown(): void
     {
-        unset($GLOBALS['mt2cms_autoload_loaded']);
+        unset($GLOBALS['metin2website_autoload_loaded']);
 
         if ($this->tmpDir !== '' && is_dir($this->tmpDir)) {
             $autoload = $this->tmpDir . '/vendor/autoload.php';
@@ -31,21 +31,21 @@ final class ComposerAutoloadTest extends TestCase
 
     public function testExistsIsFalseWhenVendorAutoloadMissing(): void
     {
-        self::assertFalse(ComposerAutoload::exists(sys_get_temp_dir() . '/mt2-cms-missing-vendor'));
+        self::assertFalse(ComposerAutoload::exists(sys_get_temp_dir() . '/metin2-website-missing-vendor'));
     }
 
     public function testLoadRequiresVendorAutoloadWhenPresent(): void
     {
-        $this->tmpDir = sys_get_temp_dir() . '/mt2-cms-autoload-' . bin2hex(random_bytes(4));
+        $this->tmpDir = sys_get_temp_dir() . '/metin2-website-autoload-' . bin2hex(random_bytes(4));
         mkdir($this->tmpDir . '/vendor', 0777, true);
         file_put_contents(
             $this->tmpDir . '/vendor/autoload.php',
-            '<?php $GLOBALS["mt2cms_autoload_loaded"] = true;',
+            '<?php $GLOBALS["metin2website_autoload_loaded"] = true;',
         );
 
         ComposerAutoload::load($this->tmpDir);
 
-        self::assertTrue($GLOBALS['mt2cms_autoload_loaded'] ?? false);
+        self::assertTrue($GLOBALS['metin2website_autoload_loaded'] ?? false);
     }
 
     public function testHtmlPageTellsOperatorToRunComposerInstall(): void

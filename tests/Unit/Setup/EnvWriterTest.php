@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Setup;
+namespace Metin2Website\Tests\Unit\Setup;
 
-use Mt2Cms\Setup\EnvWriter;
+use Metin2Website\Setup\EnvWriter;
 use PHPUnit\Framework\TestCase;
 
 final class EnvWriterTest extends TestCase
@@ -13,7 +13,7 @@ final class EnvWriterTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->tempDir = sys_get_temp_dir() . '/mt2cms-envwriter-' . bin2hex(random_bytes(4));
+        $this->tempDir = sys_get_temp_dir() . '/metin2website-envwriter-' . bin2hex(random_bytes(4));
         mkdir($this->tempDir, 0700, true);
     }
 

@@ -8,4 +8,4 @@ if (!defined('BASE_DIR')) {
 
 require BASE_DIR . '/src/Support/ComposerAutoload.php';
 
-Mt2Cms\Support\ComposerAutoload::load(BASE_DIR);
+Metin2Website\Support\ComposerAutoload::load(BASE_DIR);

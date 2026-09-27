@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Theme;
+namespace Metin2Website\Tests\Unit\Theme;
 
-use Mt2Cms\Theme\LayoutMerger;
-use Mt2Cms\Theme\ThemeResolver;
+use Metin2Website\Theme\LayoutMerger;
+use Metin2Website\Theme\ThemeResolver;
 use PHPUnit\Framework\TestCase;
 
 final class LayoutExtendsTest extends TestCase
@@ -14,7 +14,7 @@ final class LayoutExtendsTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->tmp = sys_get_temp_dir() . '/mt2cms-theme-' . bin2hex(random_bytes(4));
+        $this->tmp = sys_get_temp_dir() . '/metin2website-theme-' . bin2hex(random_bytes(4));
         mkdir($this->tmp . '/default/layouts', 0777, true);
         mkdir($this->tmp . '/child/layouts', 0777, true);
 

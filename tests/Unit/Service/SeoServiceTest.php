@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Service\SeoService;
-use Mt2Cms\Service\SettingsService;
-use Mt2Cms\Support\HtmlSanitizer;
+use Metin2Website\Service\SeoService;
+use Metin2Website\Service\SettingsService;
+use Metin2Website\Support\HtmlSanitizer;
 use PHPUnit\Framework\TestCase;
 
 final class SeoServiceTest extends TestCase

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Repository\EventRepository;
-use Mt2Cms\Repository\SettingsRepository;
-use Mt2Cms\Service\EventSeedService;
-use Mt2Cms\Support\HtmlSanitizer;
+use Metin2Website\Repository\EventRepository;
+use Metin2Website\Repository\SettingsRepository;
+use Metin2Website\Service\EventSeedService;
+use Metin2Website\Support\HtmlSanitizer;
 use PHPUnit\Framework\TestCase;
 
 final class EventSeedServiceTest extends TestCase

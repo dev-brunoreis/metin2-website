@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Admin;
+namespace Metin2Website\Tests\Unit\Admin;
 
-use Mt2Cms\Admin\AdminPaths;
-use Mt2Cms\Admin\AdminSections;
-use Mt2Cms\Admin\LogCatalog;
-use Mt2Cms\Game\GameProfile;
+use Metin2Website\Admin\AdminPaths;
+use Metin2Website\Admin\AdminSections;
+use Metin2Website\Admin\LogCatalog;
+use Metin2Website\Game\GameProfile;
 use PHPUnit\Framework\TestCase;
 
 final class AdminPathsTest extends TestCase
@@ -39,7 +39,7 @@ final class AdminPathsTest extends TestCase
 
     public function testWithoutUnavailableProtoHidesItemsAndMobs(): void
     {
-        $dir = sys_get_temp_dir() . '/mt2cms-admin-proto-nav-' . bin2hex(random_bytes(4));
+        $dir = sys_get_temp_dir() . '/metin2website-admin-proto-nav-' . bin2hex(random_bytes(4));
         mkdir($dir . '/schema', 0777, true);
         copy(BASE_DIR . '/game/config.json', $dir . '/config.json');
         copy(BASE_DIR . '/game/schema/item.json', $dir . '/schema/item.json');
@@ -63,7 +63,7 @@ final class AdminPathsTest extends TestCase
 
     public function testWithoutUnavailableProtoKeepsItemsWhenDumpsExist(): void
     {
-        $dir = sys_get_temp_dir() . '/mt2cms-admin-proto-nav-' . bin2hex(random_bytes(4));
+        $dir = sys_get_temp_dir() . '/metin2website-admin-proto-nav-' . bin2hex(random_bytes(4));
         mkdir($dir . '/schema', 0777, true);
         mkdir($dir . '/db', 0777, true);
         copy(BASE_DIR . '/game/config.json', $dir . '/config.json');

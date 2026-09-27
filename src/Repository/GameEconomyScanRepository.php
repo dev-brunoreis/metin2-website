@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
-use Mt2Cms\Service\Economy\EconomyStats;
+use Metin2Website\Service\Economy\EconomyStats;
 
 /**
  * Read-only aggregations against the game MySQL (player / log).
@@ -508,7 +508,7 @@ class GameEconomyScanRepository extends Repository
 
     private function logTableExists(string $table): bool
     {
-        $table = \Mt2Cms\Support\Database::quoteIdentifier($table);
+        $table = \Metin2Website\Support\Database::quoteIdentifier($table);
 
         return $this->db->useDatabase('log')->fetch(
             'SELECT TABLE_NAME

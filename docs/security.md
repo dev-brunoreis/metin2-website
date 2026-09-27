@@ -13,7 +13,7 @@ What the CMS already enforces, and what every change must keep intact.
 | Open redirect | `Locales::safeRedirect` — internal paths only (also the header sanitizer for `Location`) |
 | Locale / theme files | Locale and theme names must match `^[A-Za-z0-9_-]+$` before `file_get_contents` |
 | Cookies | Locale cookie: `HttpOnly`, `SameSite=Lax`, `Secure` on HTTPS |
-| Session | Hardened cookie params; separate admin cookie (`MT2ADMIN`, path `/admin`) vs public (`MT2CMS`); `session_regenerate_id(true)` on successful login; idle timeout (admin 30 min, public 2 h) via `SessionGuard`. Admin UI language switch posts to `/admin/locale` (not `/locale`) so CSRF uses the admin session |
+| Session | Hardened cookie params; separate admin cookie (`METIN2ADMIN`, path `/admin`) vs public (`METIN2WEB`); `session_regenerate_id(true)` on successful login; idle timeout (admin 30 min, public 2 h) via `SessionGuard`. Admin UI language switch posts to `/admin/locale` (not `/locale`) so CSRF uses the admin session |
 | Brute force | File-backed IP + action rate limit on login/register/admin login, password change, and other sensitive POSTs (`var/rate-limit/`); fail-closed when storage is unavailable |
 | Captcha | Self-hosted SVG captcha on public login/register, guest sidebar login, and admin login (toggle in `/admin/settings?tab=security`; on by default on new installs) |
 | Admin 2FA | TOTP + one-time recovery codes; enrollment at `/admin/account/security`; optional policy requiring 2FA for all admins (off by default on new installs); TOTP secrets encrypted at rest with `APP_KEY` |
@@ -55,7 +55,7 @@ Accounts use Metin2 / MySQL `PASSWORD()` style (`*` + uppercase `SHA1(SHA1(passw
 
 ## Production deployment
 
-See [deploy.md](deploy.md) (Linux CMS host / Compose) and [game-mysql.md](game-mysql.md) (remote game MySQL, host-scoped `mt2cms` user): TLS and HSTS on the reverse proxy, MySQL not on `0.0.0.0`, dedicated app users (not root), `php bin/migrate.php` after deploy (schema + `APP_KEY`), PayPal webhook id when donate is enabled, `APP_TRUST_PROXY=1` when TLS terminates at a proxy, optional admin 2FA enrollment. Keep the CMS off the Metin2 game FreeBSD box.
+See [deploy.md](deploy.md) (Linux CMS host / Compose) and [game-mysql.md](game-mysql.md) (remote game MySQL, host-scoped `metin2website` user): TLS and HSTS on the reverse proxy, MySQL not on `0.0.0.0`, dedicated app users (not root), `php bin/migrate.php` after deploy (schema + `APP_KEY`), PayPal webhook id when donate is enabled, `APP_TRUST_PROXY=1` when TLS terminates at a proxy, optional admin 2FA enrollment. Keep the CMS off the Metin2 game FreeBSD box.
 
 ## Out of scope (for now)
 

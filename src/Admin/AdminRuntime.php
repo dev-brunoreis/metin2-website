@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Admin;
+namespace Metin2Website\Admin;
 
-use Mt2Cms\Service\SettingsService;
+use Metin2Website\Service\SettingsService;
 
 /**
  * Runtime bindings for admin controllers (avoids threading SettingsService through every constructor).

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Game;
+namespace Metin2Website\Game;
 
 /**
  * `player.job` is the Metin2 race id (`MAIN_RACE_*`), not the class id (`JOB_*`).

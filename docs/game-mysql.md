@@ -31,20 +31,20 @@ Example intent (adjust for `pf` / `iptables` / cloud SG):
 
 ## Dedicated app user
 
-- Use a dedicated login (e.g. `mt2cms`), **not** MySQL `root` and not the game operator account.
-- Scope the account to the **CMS host IP**: `'mt2cms'@'10.0.0.20'` — **not** `'%'`.
+- Use a dedicated login (e.g. `metin2website`), **not** MySQL `root` and not the game operator account.
+- Scope the account to the **CMS host IP**: `'metin2website'@'10.0.0.20'` — **not** `'%'`.
 - Put the password only in the CMS `.env` (`DB_USER` / `DB_PASSWORD`).
 
 Replace `CMS_HOST_IP` with the address MySQL will see (VPN IP if you tunnel).
 
 ```sql
 -- Run as MySQL root on the GAME database server
-CREATE USER 'mt2cms'@'CMS_HOST_IP' IDENTIFIED BY 'strong-password';
+CREATE USER 'metin2website'@'CMS_HOST_IP' IDENTIFIED BY 'strong-password';
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON account.* TO 'mt2cms'@'CMS_HOST_IP';
-GRANT SELECT, INSERT, UPDATE, DELETE ON player.* TO 'mt2cms'@'CMS_HOST_IP';
-GRANT SELECT, INSERT, UPDATE, DELETE ON common.* TO 'mt2cms'@'CMS_HOST_IP';
-GRANT SELECT, INSERT, UPDATE, DELETE ON log.* TO 'mt2cms'@'CMS_HOST_IP';
+GRANT SELECT, INSERT, UPDATE, DELETE ON account.* TO 'metin2website'@'CMS_HOST_IP';
+GRANT SELECT, INSERT, UPDATE, DELETE ON player.* TO 'metin2website'@'CMS_HOST_IP';
+GRANT SELECT, INSERT, UPDATE, DELETE ON common.* TO 'metin2website'@'CMS_HOST_IP';
+GRANT SELECT, INSERT, UPDATE, DELETE ON log.* TO 'metin2website'@'CMS_HOST_IP';
 
 FLUSH PRIVILEGES;
 ```
@@ -53,7 +53,7 @@ FLUSH PRIVILEGES;
 
 | Privilege / pattern | Why |
 | --- | --- |
-| `'mt2cms'@'%'` | Allows any host that can reach 3306 |
+| `'metin2website'@'%'` | Allows any host that can reach 3306 |
 | `ALL PRIVILEGES` | Far more than the app needs |
 | `SUPER`, `FILE`, `PROCESS`, `RELOAD`, `SHUTDOWN` | Host/OS-level abuse surface |
 | `GRANT OPTION` | User could escalate |
@@ -87,7 +87,7 @@ GRANT ALL PRIVILEGES ON cms.* TO 'cms'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-Prefer `localhost` / socket for `CMS_DB_*` when MySQL is on the same machine as PHP. Do not reuse the game `mt2cms` user for the CMS schema.
+Prefer `localhost` / socket for `CMS_DB_*` when MySQL is on the same machine as PHP. Do not reuse the game `metin2website` user for the CMS schema.
 
 ## `.env` (CMS host)
 
@@ -95,7 +95,7 @@ Prefer `localhost` / socket for `CMS_DB_*` when MySQL is on the same machine as 
 # Game MySQL (remote — private IP)
 DB_HOST=10.0.0.5
 DB_PORT=3306
-DB_USER=mt2cms
+DB_USER=metin2website
 DB_PASSWORD=strong-password
 
 # CMS MySQL (local)
@@ -117,7 +117,7 @@ APP_TRUST_PROXY=1
 From the **CMS** host:
 
 ```bash
-mysql -h "$DB_HOST" -P "$DB_PORT" -u mt2cms -p -e "SELECT 1; SHOW DATABASES;"
+mysql -h "$DB_HOST" -P "$DB_PORT" -u metin2website -p -e "SELECT 1; SHOW DATABASES;"
 ```
 
 You should see `account` / `player` / `common` / `log` (as permitted) and be able to `SELECT` a row. From an unrelated host, TCP 3306 should be **refused** or timed out.
@@ -129,7 +129,7 @@ After the site is up: `GET /health` returns `200` with body `ok` (both DBs reach
 - [ ] CMS runs on a **separate Linux** host from the game server
 - [ ] Game MySQL not bound to a public interface
 - [ ] Firewall allows 3306 only from the CMS IP (or VPN)
-- [ ] App user is `'mt2cms'@'CMS_HOST_IP'`, not `'%'` and not `root`
+- [ ] App user is `'metin2website'@'CMS_HOST_IP'`, not `'%'` and not `root`
 - [ ] Grants are DML-only on `account` / `player` / `common` / `log`
 - [ ] No `SUPER` / `FILE` / `GRANT OPTION` / DDL for the CMS user
 - [ ] `CMS_DB_*` uses a dedicated `cms` user limited to `cms.*`

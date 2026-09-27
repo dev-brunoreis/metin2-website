@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Theme;
+namespace Metin2Website\Theme;
 
-use Mt2Cms\Admin\AdminPaths;
-use Mt2Cms\Admin\AdminSections;
-use Mt2Cms\Admin\Grid\GridUrl;
-use Mt2Cms\Game\Display;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Service\GameIconService;
-use Mt2Cms\Service\SeoService;
-use Mt2Cms\Support\HtmlSanitizer;
-use Mt2Cms\Support\Money;
-use Mt2Cms\Support\SelectOptions;
+use Metin2Website\Admin\AdminPaths;
+use Metin2Website\Admin\AdminSections;
+use Metin2Website\Admin\Grid\GridUrl;
+use Metin2Website\Game\Display;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Service\GameIconService;
+use Metin2Website\Service\SeoService;
+use Metin2Website\Support\HtmlSanitizer;
+use Metin2Website\Support\Money;
+use Metin2Website\Support\SelectOptions;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;

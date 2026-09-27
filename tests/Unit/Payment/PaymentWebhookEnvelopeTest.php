@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Payment;
+namespace Metin2Website\Tests\Unit\Payment;
 
-use Mt2Cms\Payment\PaymentWebhookEnvelope;
+use Metin2Website\Payment\PaymentWebhookEnvelope;
 use PHPUnit\Framework\TestCase;
 
 final class PaymentWebhookEnvelopeTest extends TestCase
@@ -42,7 +42,7 @@ final class PaymentWebhookEnvelopeTest extends TestCase
     {
         $filtered = PaymentWebhookEnvelope::filterHeaders([
             'PAYPAL-TRANSMISSION-ID' => 'abc',
-            'Cookie' => 'MT2CMS=secret',
+            'Cookie' => 'METIN2WEB=secret',
             'X-Signature' => 'sig',
             'Authorization' => 'Bearer x',
             'content-type' => 'application/json',

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Support;
+namespace Metin2Website\Support;
 
 class Database
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\BanRepository;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\BanRepository;
 
 class BanService
 {

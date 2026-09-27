@@ -19,7 +19,7 @@ define('BASE_DIR', dirname(__DIR__));
 
 require BASE_DIR . '/src/bootstrap/autoload.php';
 
-use Mt2Cms\I18n\LocaleJsonTree;
+use Metin2Website\I18n\LocaleJsonTree;
 
 const DEEPL_API = 'https://api-free.deepl.com/v2/translate';
 const DEEPL_USAGE = 'https://api-free.deepl.com/v2/usage';

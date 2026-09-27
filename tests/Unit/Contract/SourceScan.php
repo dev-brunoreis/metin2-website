@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Contract;
+namespace Metin2Website\Tests\Unit\Contract;
 
 use ReflectionClass;
 use ReflectionMethod;
@@ -272,7 +272,7 @@ final class SourceScan
 
         if (preg_match('/\\\\?([A-Za-z0-9_]+Grid)::definition\s*\(/', $expr, $match)) {
             $short = $match[1];
-            $fqcn = 'Mt2Cms\\Admin\\Grid\\Definitions\\' . $short;
+            $fqcn = 'Metin2Website\\Admin\\Grid\\Definitions\\' . $short;
 
             if (class_exists($fqcn)) {
                 return $fqcn;

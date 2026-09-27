@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Game\Proto;
+namespace Metin2Website\Tests\Unit\Game\Proto;
 
-use Mt2Cms\Game\GameProfile;
-use Mt2Cms\I18n\Translator;
+use Metin2Website\Game\GameProfile;
+use Metin2Website\I18n\Translator;
 use PHPUnit\Framework\TestCase;
 
 final class ProtoTokenI18nTest extends TestCase

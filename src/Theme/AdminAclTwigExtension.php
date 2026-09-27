@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Theme;
+namespace Metin2Website\Theme;
 
-use Mt2Cms\Auth\AdminAuth;
-use Mt2Cms\Service\AclService;
+use Metin2Website\Auth\AdminAuth;
+use Metin2Website\Service\AclService;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

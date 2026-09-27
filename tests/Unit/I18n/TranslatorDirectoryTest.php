@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\I18n;
+namespace Metin2Website\Tests\Unit\I18n;
 
-use Mt2Cms\I18n\Translator;
+use Metin2Website\I18n\Translator;
 use PHPUnit\Framework\TestCase;
 
 final class TranslatorDirectoryTest extends TestCase

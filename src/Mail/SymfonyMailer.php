@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Mail;
+namespace Metin2Website\Mail;
 
-use Mt2Cms\Support\Env;
-use Mt2Cms\Support\Log;
+use Metin2Website\Support\Env;
+use Metin2Website\Support\Log;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\Transport;
 use Symfony\Component\Mime\Email;

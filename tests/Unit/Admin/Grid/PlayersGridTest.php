@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Admin\Grid;
+namespace Metin2Website\Tests\Unit\Admin\Grid;
 
-use Mt2Cms\Admin\Grid\Definitions\PlayersGrid;
+use Metin2Website\Admin\Grid\Definitions\PlayersGrid;
 use PHPUnit\Framework\TestCase;
 
 final class PlayersGridTest extends TestCase

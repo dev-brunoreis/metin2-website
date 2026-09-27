@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\I18n;
+namespace Metin2Website\I18n;
 
-use Mt2Cms\Support\SelectOptions;
+use Metin2Website\Support\SelectOptions;
 
 class Locales
 {

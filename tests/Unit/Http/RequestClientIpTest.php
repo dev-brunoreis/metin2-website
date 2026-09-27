@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Http;
+namespace Metin2Website\Tests\Unit\Http;
 
-use Mt2Cms\Http\Request;
-use Mt2Cms\Support\Env;
+use Metin2Website\Http\Request;
+use Metin2Website\Support\Env;
 use PHPUnit\Framework\TestCase;
 
 final class RequestClientIpTest extends TestCase

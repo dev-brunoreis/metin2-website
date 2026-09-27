@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Mt2Cms\Application;
+use Metin2Website\Application;
 
 define('BASE_DIR', dirname(__DIR__));
 

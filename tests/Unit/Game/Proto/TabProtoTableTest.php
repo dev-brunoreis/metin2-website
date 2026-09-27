@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Game\Proto;
+namespace Metin2Website\Tests\Unit\Game\Proto;
 
-use Mt2Cms\Game\Proto\TabProtoTable;
+use Metin2Website\Game\Proto\TabProtoTable;
 use PHPUnit\Framework\TestCase;
 
 final class TabProtoTableTest extends TestCase

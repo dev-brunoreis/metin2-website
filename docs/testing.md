@@ -8,7 +8,7 @@ PHPUnit 11. Two suites: **unit** (default) and **integration** (opt-in smoke aga
 
 The unit suite sets `failOnWarning` / `failOnDeprecation` so PHP 8.5+ host noise fails the run.
 
-Bootstrap (`tests/bootstrap.php`) defines `BASE_DIR` and loads Composer. Mirror `src/` namespaces: `Mt2Cms\Service\Foo` → `tests/Unit/Service/FooTest.php`, namespace `Mt2Cms\Tests\Unit\Service`.
+Bootstrap (`tests/bootstrap.php`) defines `BASE_DIR` and loads Composer. Mirror `src/` namespaces: `Metin2Website\Service\Foo` → `tests/Unit/Service/FooTest.php`, namespace `Metin2Website\Tests\Unit\Service`.
 
 ## Three kinds
 
@@ -33,7 +33,7 @@ Contracts use `SourceScan` (route list, method source, reachable `$this->` calls
 
 ## Integration smoke
 
-Requires the app installed and reachable (typically `docker compose up -d` on `http://127.0.0.1:8000`). Override with `MT2CMS_BASE_URL`.
+Requires the app installed and reachable (typically `docker compose up -d` on `http://127.0.0.1:8000`). Override with `METIN2WEBSITE_BASE_URL`.
 
 ```bash
 docker compose up -d
@@ -43,6 +43,8 @@ composer test:integration
 If the base URL is unreachable, tests `markTestSkipped` (not a failure). `/health` asserts both CMS and game MySQL respond. There is no browser/Dusk suite — UI stays manual + Twig contracts.
 
 HTTP/MySQL live checks belong only under `tests/Integration/`. Do not add them to `tests/Unit/`.
+
+GitHub Actions (`.github/workflows/ci.yml`) runs unit tests, `npm run build`, and Docker image builds on every PR. Integration smoke stays local (`docker compose up -d` then `composer test:integration`) — not wired in CI.
 
 ## GitHub Actions
 

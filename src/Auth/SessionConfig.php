@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Auth;
+namespace Metin2Website\Auth;
 
-use Mt2Cms\Support\Env;
+use Metin2Website\Support\Env;
 
 /**
  * Derives PHP session cookie name and path from the request URI.
  */
 final class SessionConfig
 {
-    public const PUBLIC_NAME = 'MT2CMS';
-    public const ADMIN_NAME = 'MT2ADMIN';
+    public const PUBLIC_NAME = 'METIN2WEB';
+    public const ADMIN_NAME = 'METIN2ADMIN';
 
     public static function forRequestUri(string $uri): self
     {

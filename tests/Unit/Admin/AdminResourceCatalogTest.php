@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Admin;
+namespace Metin2Website\Tests\Unit\Admin;
 
-use Mt2Cms\Admin\AdminResourceCatalog;
-use Mt2Cms\Admin\LogCatalog;
+use Metin2Website\Admin\AdminResourceCatalog;
+use Metin2Website\Admin\LogCatalog;
 use PHPUnit\Framework\TestCase;
 
 final class AdminResourceCatalogTest extends TestCase

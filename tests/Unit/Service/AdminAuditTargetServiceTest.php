@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\AdminAuditRepository;
-use Mt2Cms\Repository\GuildRepository;
-use Mt2Cms\Repository\PlayerRepository;
-use Mt2Cms\Service\AdminAuditTargetService;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\AdminAuditRepository;
+use Metin2Website\Repository\GuildRepository;
+use Metin2Website\Repository\PlayerRepository;
+use Metin2Website\Service\AdminAuditTargetService;
 use PHPUnit\Framework\TestCase;
 
 final class AdminAuditTargetServiceTest extends TestCase

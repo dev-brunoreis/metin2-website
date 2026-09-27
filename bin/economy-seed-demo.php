@@ -21,10 +21,10 @@ define('BASE_DIR', dirname(__DIR__));
 
 require BASE_DIR . '/src/bootstrap/autoload.php';
 
-use Mt2Cms\Service\Economy\EconomyStats;
-use Mt2Cms\Support\Database;
+use Metin2Website\Service\Economy\EconomyStats;
+use Metin2Website\Support\Database;
 
-Mt2Cms\Application::loadConfigs();
+Metin2Website\Application::loadConfigs();
 
 $days = 30;
 $reset = false;

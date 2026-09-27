@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Payment\CheckoutRedirect;
-use Mt2Cms\Payment\GatewayRegistry;
-use Mt2Cms\Payment\PaymentGateway;
-use Mt2Cms\Repository\CashPackageRepository;
-use Mt2Cms\Repository\PaymentRepository;
-use Mt2Cms\Service\NotificationService;
-use Mt2Cms\Service\PaymentCheckoutService;
-use Mt2Cms\Service\PaymentExpiryService;
-use Mt2Cms\Service\SettingsService;
+use Metin2Website\Payment\CheckoutRedirect;
+use Metin2Website\Payment\GatewayRegistry;
+use Metin2Website\Payment\PaymentGateway;
+use Metin2Website\Repository\CashPackageRepository;
+use Metin2Website\Repository\PaymentRepository;
+use Metin2Website\Service\NotificationService;
+use Metin2Website\Service\PaymentCheckoutService;
+use Metin2Website\Service\PaymentExpiryService;
+use Metin2Website\Service\SettingsService;
 use PHPUnit\Framework\TestCase;
 
 final class PaymentCheckoutServiceTest extends TestCase

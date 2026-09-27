@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\ItemAwardRepository;
-use Mt2Cms\Repository\ItemShopOrderRepository;
-use Mt2Cms\Repository\ItemShopProductRepository;
-use Mt2Cms\Support\Log;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\ItemAwardRepository;
+use Metin2Website\Repository\ItemShopOrderRepository;
+use Metin2Website\Repository\ItemShopProductRepository;
+use Metin2Website\Support\Log;
 use PDOException;
 
 class ItemShopPurchaseService

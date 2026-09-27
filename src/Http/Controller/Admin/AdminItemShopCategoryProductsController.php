@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller\Admin;
+namespace Metin2Website\Http\Controller\Admin;
 
-use Mt2Cms\Admin\AdminPaths;
-use Mt2Cms\Admin\Grid\GridQuery;
-use Mt2Cms\Game\Proto\ProtoSchemas;
-use Mt2Cms\Http\Response;
+use Metin2Website\Admin\AdminPaths;
+use Metin2Website\Admin\Grid\GridQuery;
+use Metin2Website\Game\Proto\ProtoSchemas;
+use Metin2Website\Http\Response;
 
 class AdminItemShopCategoryProductsController extends AdminItemShopBaseController
 {

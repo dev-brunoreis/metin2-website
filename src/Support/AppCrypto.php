@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Support;
+namespace Metin2Website\Support;
 
-use Mt2Cms\Support\Env;
+use Metin2Website\Support\Env;
 
 /**
  * Encrypts application secrets at rest using APP_KEY (32-byte hex).

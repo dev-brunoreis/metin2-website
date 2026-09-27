@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http;
+namespace Metin2Website\Http;
 
-use Mt2Cms\Support\Env;
+use Metin2Website\Support\Env;
 
 /**
  * Request helpers (client IP behind reverse proxy).

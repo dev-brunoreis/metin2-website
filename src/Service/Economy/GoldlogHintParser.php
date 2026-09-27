@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service\Economy;
+namespace Metin2Website\Service\Economy;
 
 /**
  * Parse goldlog.hint into item name + stack count for unit-price math.

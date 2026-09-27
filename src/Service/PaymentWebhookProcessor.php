@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Payment\GatewayRegistry;
-use Mt2Cms\Payment\PaymentWebhookEnvelope;
-use Mt2Cms\Payment\WebhookEvent;
-use Mt2Cms\Repository\PaymentEventRepository;
-use Mt2Cms\Repository\PaymentRepository;
-use Mt2Cms\Support\Log;
+use Metin2Website\Payment\GatewayRegistry;
+use Metin2Website\Payment\PaymentWebhookEnvelope;
+use Metin2Website\Payment\WebhookEvent;
+use Metin2Website\Repository\PaymentEventRepository;
+use Metin2Website\Repository\PaymentRepository;
+use Metin2Website\Support\Log;
 
 class PaymentWebhookProcessor
 {

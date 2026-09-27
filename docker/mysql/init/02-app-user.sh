@@ -6,7 +6,7 @@ if [ -z "${DB_PASSWORD:-}" ]; then
   exit 0
 fi
 
-APP_USER="${DB_USER:-mt2cms}"
+APP_USER="${DB_USER:-metin2website}"
 APP_PASS="${DB_PASSWORD}"
 
 mysql --protocol=socket -uroot -p"${MYSQL_ROOT_PASSWORD}" <<EOF

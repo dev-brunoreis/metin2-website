@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Admin\LogCatalog;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Service\Economy\GoldlogHintParser;
-use Mt2Cms\Service\Economy\ItemLogHintParser;
+use Metin2Website\Admin\LogCatalog;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Service\Economy\GoldlogHintParser;
+use Metin2Website\Service\Economy\ItemLogHintParser;
 
 /**
  * Turn raw game-log rows into labels a GM can read.

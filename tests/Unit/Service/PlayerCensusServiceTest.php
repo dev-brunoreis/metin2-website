@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Game\Display;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\PlayerRepository;
-use Mt2Cms\Service\PlayerCensusService;
+use Metin2Website\Game\Display;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\PlayerRepository;
+use Metin2Website\Service\PlayerCensusService;
 use PHPUnit\Framework\TestCase;
 
 final class PlayerCensusServiceTest extends TestCase

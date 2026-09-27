@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Admin;
+namespace Metin2Website\Tests\Unit\Admin;
 
 use PHPUnit\Framework\TestCase;
 
@@ -18,7 +18,7 @@ final class AdminSidebarScriptTest extends TestCase
             '/action="\/admin\/logout"[\s\S]*admin-sidebar\.js[\s\S]*<\/aside>/',
             $layout,
         );
-        self::assertStringContainsString('mt2cms.admin.sidebarNavScroll', $script);
+        self::assertStringContainsString('metin2website.admin.sidebarNavScroll', $script);
         self::assertStringContainsString('sessionStorage.getItem', $script);
         self::assertStringContainsString('sessionStorage.setItem', $script);
         self::assertStringContainsString('nav.scrollTop = saved', $script);

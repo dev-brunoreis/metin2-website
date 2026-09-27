@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Theme;
+namespace Metin2Website\Tests\Unit\Theme;
 
-use Mt2Cms\Theme\ThemeAssetFile;
+use Metin2Website\Theme\ThemeAssetFile;
 use PHPUnit\Framework\TestCase;
 
 final class ThemeAssetFileTest extends TestCase
@@ -13,7 +13,7 @@ final class ThemeAssetFileTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->tmp = sys_get_temp_dir() . '/mt2cms-theme-asset-' . bin2hex(random_bytes(4));
+        $this->tmp = sys_get_temp_dir() . '/metin2website-theme-asset-' . bin2hex(random_bytes(4));
         mkdir($this->tmp . '/default/assets/css', 0777, true);
         file_put_contents($this->tmp . '/default/assets/css/theme.css', 'body{}');
         file_put_contents($this->tmp . '/default/assets/secret.php', '<?php echo 1;');

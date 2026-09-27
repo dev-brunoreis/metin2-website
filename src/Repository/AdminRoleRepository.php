@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
-use Mt2Cms\Admin\Grid\Definitions\AdminRolesGrid;
-use Mt2Cms\Admin\AdminPermissions;
-use Mt2Cms\Admin\AdminResourceCatalog;
-use Mt2Cms\Admin\Grid\GridQuery;
-use Mt2Cms\Admin\Grid\GridSql;
-use Mt2Cms\Admin\Grid\ProvidesAdminGrid;
-use Mt2Cms\Admin\RoleSlug;
-use Mt2Cms\Admin\RoleSlugExistsException;
-use Mt2Cms\Support\SelectOptions;
+use Metin2Website\Admin\Grid\Definitions\AdminRolesGrid;
+use Metin2Website\Admin\AdminPermissions;
+use Metin2Website\Admin\AdminResourceCatalog;
+use Metin2Website\Admin\Grid\GridQuery;
+use Metin2Website\Admin\Grid\GridSql;
+use Metin2Website\Admin\Grid\ProvidesAdminGrid;
+use Metin2Website\Admin\RoleSlug;
+use Metin2Website\Admin\RoleSlugExistsException;
+use Metin2Website\Support\SelectOptions;
 
 class AdminRoleRepository extends Repository implements ProvidesAdminGrid
 {
@@ -124,7 +124,7 @@ class AdminRoleRepository extends Repository implements ProvidesAdminGrid
 
     public function slugExists(string $slug): bool
     {
-        if (\Mt2Cms\Admin\AdminPermissions::isSuper($slug)) {
+        if (\Metin2Website\Admin\AdminPermissions::isSuper($slug)) {
             return false;
         }
 

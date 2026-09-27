@@ -1,6 +1,6 @@
 'use strict'
 
-const SIDEBAR_NAV_SCROLL_KEY = 'mt2cms.admin.sidebarNavScroll'
+const SIDEBAR_NAV_SCROLL_KEY = 'metin2website.admin.sidebarNavScroll'
 
 const readStoredSidebarNavScroll = () => {
   try {

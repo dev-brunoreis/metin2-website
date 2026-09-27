@@ -11,7 +11,7 @@ $_SERVER['REQUEST_URI'] = '/';
 $_SERVER['REQUEST_METHOD'] = 'GET';
 
 try {
-    $app = new Mt2Cms\Application();
+    $app = new Metin2Website\Application();
     $result = $app->paymentWebhookProcessor->run();
 
     if ($result['skipped']) {

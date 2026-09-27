@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service\Economy;
+namespace Metin2Website\Tests\Unit\Service\Economy;
 
-use Mt2Cms\Service\Economy\EconomyAnomaly;
-use Mt2Cms\Service\Economy\EconomyStats;
-use Mt2Cms\Service\Economy\GoldlogHintParser;
-use Mt2Cms\Service\Economy\ItemLogHintParser;
+use Metin2Website\Service\Economy\EconomyAnomaly;
+use Metin2Website\Service\Economy\EconomyStats;
+use Metin2Website\Service\Economy\GoldlogHintParser;
+use Metin2Website\Service\Economy\ItemLogHintParser;
 use PHPUnit\Framework\TestCase;
 
 final class EconomyMathTest extends TestCase

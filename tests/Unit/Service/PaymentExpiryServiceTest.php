@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Payment\GatewayRegistry;
-use Mt2Cms\Payment\PaymentGateway;
-use Mt2Cms\Repository\PaymentRepository;
-use Mt2Cms\Service\NotificationService;
-use Mt2Cms\Service\PaymentExpiryService;
+use Metin2Website\Payment\GatewayRegistry;
+use Metin2Website\Payment\PaymentGateway;
+use Metin2Website\Repository\PaymentRepository;
+use Metin2Website\Service\NotificationService;
+use Metin2Website\Service\PaymentExpiryService;
 use PHPUnit\Framework\TestCase;
 
 final class PaymentExpiryServiceTest extends TestCase

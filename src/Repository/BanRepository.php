@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
-use Mt2Cms\Admin\Grid\Definitions\BansGrid;
-use Mt2Cms\Admin\Grid\GridQuery;
-use Mt2Cms\Admin\Grid\GridSql;
-use Mt2Cms\Admin\Grid\ProvidesAdminGrid;
-use Mt2Cms\Repository\Repository;
+use Metin2Website\Admin\Grid\Definitions\BansGrid;
+use Metin2Website\Admin\Grid\GridQuery;
+use Metin2Website\Admin\Grid\GridSql;
+use Metin2Website\Admin\Grid\ProvidesAdminGrid;
+use Metin2Website\Repository\Repository;
 
 class BanRepository extends Repository implements ProvidesAdminGrid
 {

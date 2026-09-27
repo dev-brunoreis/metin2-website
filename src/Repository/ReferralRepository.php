@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
-use Mt2Cms\Admin\Grid\Definitions\ReferralsGrid;
-use Mt2Cms\Admin\Grid\GridQuery;
-use Mt2Cms\Admin\Grid\GridSql;
-use Mt2Cms\Admin\Grid\ProvidesAdminGrid;
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\Repository;
+use Metin2Website\Admin\Grid\Definitions\ReferralsGrid;
+use Metin2Website\Admin\Grid\GridQuery;
+use Metin2Website\Admin\Grid\GridSql;
+use Metin2Website\Admin\Grid\ProvidesAdminGrid;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\Repository;
 
 class ReferralRepository extends Repository implements ProvidesAdminGrid
 {
     public function __construct(
-        \Mt2Cms\Support\Database $db,
+        \Metin2Website\Support\Database $db,
         private AccountRepository $accounts,
     ) {
         parent::__construct($db);

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Repository\SettingsRepository;
-use Mt2Cms\Service\SettingsService;
-use Mt2Cms\Setup\ThemeCatalog;
+use Metin2Website\Repository\SettingsRepository;
+use Metin2Website\Service\SettingsService;
+use Metin2Website\Setup\ThemeCatalog;
 use PHPUnit\Framework\TestCase;
 
 final class SettingsLayoutTest extends TestCase

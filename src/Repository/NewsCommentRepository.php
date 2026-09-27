@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
-use Mt2Cms\Admin\Grid\Definitions\NewsCommentsGrid;
-use Mt2Cms\Admin\Grid\GridQuery;
-use Mt2Cms\Admin\Grid\GridSql;
-use Mt2Cms\Admin\Grid\ProvidesAdminGrid;
+use Metin2Website\Admin\Grid\Definitions\NewsCommentsGrid;
+use Metin2Website\Admin\Grid\GridQuery;
+use Metin2Website\Admin\Grid\GridSql;
+use Metin2Website\Admin\Grid\ProvidesAdminGrid;
 
 class NewsCommentRepository extends Repository implements ProvidesAdminGrid
 {

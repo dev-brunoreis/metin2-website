@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Support;
+namespace Metin2Website\Tests\Unit\Support;
 
-use Mt2Cms\Support\CmsVersion;
+use Metin2Website\Support\CmsVersion;
 use PHPUnit\Framework\TestCase;
 
 final class CmsVersionTest extends TestCase
@@ -13,7 +13,7 @@ final class CmsVersionTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->tmpDir = sys_get_temp_dir() . '/mt2cms-version-' . uniqid('', true);
+        $this->tmpDir = sys_get_temp_dir() . '/metin2website-version-' . uniqid('', true);
         mkdir($this->tmpDir);
     }
 

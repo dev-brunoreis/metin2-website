@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Game;
+namespace Metin2Website\Game;
 
-use Mt2Cms\I18n\Translator;
+use Metin2Website\I18n\Translator;
 
 class Display
 {

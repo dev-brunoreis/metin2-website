@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Auth;
+namespace Metin2Website\Auth;
 
-use Mt2Cms\Repository\AdminRepository;
+use Metin2Website\Repository\AdminRepository;
 
 class AdminAuth
 {
@@ -153,7 +153,7 @@ class AdminAuth
             return 'super';
         }
 
-        return (string) ($user['role'] ?? \Mt2Cms\Admin\AdminPermissions::ROLE_SUPER);
+        return (string) ($user['role'] ?? \Metin2Website\Admin\AdminPermissions::ROLE_SUPER);
     }
 
     public function logout(): void

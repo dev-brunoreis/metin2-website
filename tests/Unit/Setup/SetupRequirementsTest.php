@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Setup;
+namespace Metin2Website\Tests\Unit\Setup;
 
-use Mt2Cms\Setup\SetupRequirements;
+use Metin2Website\Setup\SetupRequirements;
 use PHPUnit\Framework\TestCase;
 
 final class SetupRequirementsTest extends TestCase
@@ -142,7 +142,7 @@ final class SetupRequirementsTest extends TestCase
             : $dirs;
 
         return new SetupRequirements(
-            '/tmp/mt2-cms-req-test',
+            '/tmp/metin2-website-req-test',
             $phpVersion,
             $extFn,
             static fn (): int => $imageTypes,

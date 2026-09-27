@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Admin\AdminAuditMeta;
-use Mt2Cms\Auth\AdminAuth;
-use Mt2Cms\Http\Request;
-use Mt2Cms\Repository\AdminAuditRepository;
+use Metin2Website\Admin\AdminAuditMeta;
+use Metin2Website\Auth\AdminAuth;
+use Metin2Website\Http\Request;
+use Metin2Website\Repository\AdminAuditRepository;
 
 class AdminAuditService
 {

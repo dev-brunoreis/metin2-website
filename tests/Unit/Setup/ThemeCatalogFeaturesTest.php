@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Setup;
+namespace Metin2Website\Tests\Unit\Setup;
 
-use Mt2Cms\Setup\ThemeCatalog;
+use Metin2Website\Setup\ThemeCatalog;
 use PHPUnit\Framework\TestCase;
 
 final class ThemeCatalogFeaturesTest extends TestCase
@@ -13,7 +13,7 @@ final class ThemeCatalogFeaturesTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->tmp = sys_get_temp_dir() . '/mt2cms-themes-' . bin2hex(random_bytes(4));
+        $this->tmp = sys_get_temp_dir() . '/metin2website-themes-' . bin2hex(random_bytes(4));
         mkdir($this->tmp . '/default', 0777, true);
         mkdir($this->tmp . '/plain', 0777, true);
         mkdir($this->tmp . '/child', 0777, true);

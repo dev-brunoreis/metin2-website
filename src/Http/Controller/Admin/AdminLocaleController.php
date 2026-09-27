@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller\Admin;
+namespace Metin2Website\Http\Controller\Admin;
 
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\Auth\Csrf;
-use Mt2Cms\Http\Controller\Controller;
-use Mt2Cms\Http\Response;
-use Mt2Cms\I18n\Locales;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Theme\ThemeEngine;
+use Metin2Website\Auth\Auth;
+use Metin2Website\Auth\Csrf;
+use Metin2Website\Http\Controller\Controller;
+use Metin2Website\Http\Response;
+use Metin2Website\I18n\Locales;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Theme\ThemeEngine;
 
 /**
- * Admin-session locale switcher. Must POST under /admin/* so CSRF uses MT2ADMIN
- * (path /admin), not the public MT2CMS session used by POST /locale.
+ * Admin-session locale switcher. Must POST under /admin/* so CSRF uses METIN2ADMIN
+ * (path /admin), not the public METIN2WEB session used by POST /locale.
  */
 class AdminLocaleController extends Controller
 {

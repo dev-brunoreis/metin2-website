@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Repository\PlayerRepository;
-use Mt2Cms\Service\SettingsService;
-use Mt2Cms\Repository\UnstuckRepository;
-use Mt2Cms\Service\UnstuckService;
+use Metin2Website\Repository\PlayerRepository;
+use Metin2Website\Service\SettingsService;
+use Metin2Website\Repository\UnstuckRepository;
+use Metin2Website\Service\UnstuckService;
 use PHPUnit\Framework\TestCase;
 
 final class UnstuckServiceTest extends TestCase

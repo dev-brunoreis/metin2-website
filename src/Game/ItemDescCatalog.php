@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Game;
+namespace Metin2Website\Game;
 
-use Mt2Cms\Game\Drop\LocaleText;
+use Metin2Website\Game\Drop\LocaleText;
 
 class ItemDescCatalog
 {

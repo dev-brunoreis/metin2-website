@@ -7,27 +7,27 @@ define('BASE_DIR', dirname(__DIR__));
 
 require BASE_DIR . '/src/bootstrap/autoload.php';
 
-Mt2Cms\Application::loadConfigs();
+Metin2Website\Application::loadConfigs();
 
 try {
-    if (!Mt2Cms\Support\AppCrypto::hasValidKey()) {
-        $writer = new Mt2Cms\Setup\EnvWriter();
+    if (!Metin2Website\Support\AppCrypto::hasValidKey()) {
+        $writer = new Metin2Website\Setup\EnvWriter();
         $writer->upsert(
-            ['APP_KEY' => Mt2Cms\Support\AppCrypto::generateKey()],
+            ['APP_KEY' => Metin2Website\Support\AppCrypto::generateKey()],
             BASE_DIR . '/.env',
         );
         echo "Generated APP_KEY in .env\n";
     }
 
-    $db = Mt2Cms\Support\Database::forCms();
-    $runner = new Mt2Cms\Setup\MigrationRunner($db);
+    $db = Metin2Website\Support\Database::forCms();
+    $runner = new Metin2Website\Setup\MigrationRunner($db);
     $before = $runner->currentVersion();
-    $schema = new Mt2Cms\Setup\CmsSchema($db);
+    $schema = new Metin2Website\Setup\CmsSchema($db);
     $schema->ensure();
     $schema->seedDefaults(array_merge([
         'news_comments_enabled' => '1',
         'news_comments_require_approval' => '0',
-    ], Mt2Cms\Setup\CmsSchema::defaultSecuritySettings()));
+    ], Metin2Website\Setup\CmsSchema::defaultSecuritySettings()));
     $after = $runner->currentVersion();
 
     echo 'CMS schema migrated: ' . $before . ' -> ' . $after . PHP_EOL;

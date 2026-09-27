@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Game;
+namespace Metin2Website\Game;
 
 class InventoryLayout
 {

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Game\ItemDescCatalog;
-use Mt2Cms\Game\ItemSockets;
-use Mt2Cms\Game\ItemStats;
-use Mt2Cms\Game\Proto\ProtoEnums;
-use Mt2Cms\Game\Proto\ProtoSchemas;
+use Metin2Website\Game\ItemDescCatalog;
+use Metin2Website\Game\ItemSockets;
+use Metin2Website\Game\ItemStats;
+use Metin2Website\Game\Proto\ProtoEnums;
+use Metin2Website\Game\Proto\ProtoSchemas;
 
 class ItemTooltipBuilder
 {

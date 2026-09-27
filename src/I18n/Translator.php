@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\I18n;
+namespace Metin2Website\I18n;
 
 class Translator
 {

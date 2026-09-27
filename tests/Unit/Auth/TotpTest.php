@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Auth;
+namespace Metin2Website\Tests\Unit\Auth;
 
-use Mt2Cms\Auth\Totp;
+use Metin2Website\Auth\Totp;
 use PHPUnit\Framework\TestCase;
 
 final class TotpTest extends TestCase

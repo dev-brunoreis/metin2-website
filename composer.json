@@ -2,12 +2,12 @@
     "name": "dev-brunoreis/metin2-website",
     "autoload": {
         "psr-4": {
-            "Mt2Cms\\": "src/"
+            "Metin2Website\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Mt2Cms\\Tests\\": "tests/"
+            "Metin2Website\\Tests\\": "tests/"
         }
     },
     "scripts": {

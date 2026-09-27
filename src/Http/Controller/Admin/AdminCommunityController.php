@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller\Admin;
+namespace Metin2Website\Http\Controller\Admin;
 
-use Mt2Cms\Admin\AdminPaths;
-use Mt2Cms\Auth\AdminAuth;
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\Auth\Csrf;
-use Mt2Cms\Http\Response;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Repository\ServerChannelRepository;
-use Mt2Cms\Service\AclService;
-use Mt2Cms\Service\AdminAuditService;
-use Mt2Cms\Service\LogoUploadService;
-use Mt2Cms\Service\SettingsService;
-use Mt2Cms\Theme\ThemeEngine;
+use Metin2Website\Admin\AdminPaths;
+use Metin2Website\Auth\AdminAuth;
+use Metin2Website\Auth\Auth;
+use Metin2Website\Auth\Csrf;
+use Metin2Website\Http\Response;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Repository\ServerChannelRepository;
+use Metin2Website\Service\AclService;
+use Metin2Website\Service\AdminAuditService;
+use Metin2Website\Service\LogoUploadService;
+use Metin2Website\Service\SettingsService;
+use Metin2Website\Theme\ThemeEngine;
 
 class AdminCommunityController extends AdminController
 {

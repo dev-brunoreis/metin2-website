@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Mail\MailerInterface;
-use Mt2Cms\Repository\AccountEmailRepository;
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\EmailTokenRepository;
+use Metin2Website\Mail\MailerInterface;
+use Metin2Website\Repository\AccountEmailRepository;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\EmailTokenRepository;
 
 class AccountEmailService
 {

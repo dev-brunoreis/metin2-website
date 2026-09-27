@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Auth;
+namespace Metin2Website\Auth;
 
 /**
  * File-backed IP + action rate limiter (no Redis or DB required).

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Service\DiscordWebhookService;
-use Mt2Cms\Repository\EventRepository;
-use Mt2Cms\Service\EventService;
+use Metin2Website\Service\DiscordWebhookService;
+use Metin2Website\Repository\EventRepository;
+use Metin2Website\Service\EventService;
 use PHPUnit\Framework\TestCase;
 
 final class EventServiceTest extends TestCase

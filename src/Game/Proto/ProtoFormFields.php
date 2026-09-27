@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Game\Proto;
+namespace Metin2Website\Game\Proto;
 
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Support\SelectOptions;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Support\SelectOptions;
 
 class ProtoFormFields
 {

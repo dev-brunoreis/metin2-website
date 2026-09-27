@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
 class EmailTokenRepository extends Repository
 {
@@ -75,7 +75,7 @@ class EmailTokenRepository extends Repository
 
     public static function hashToken(string $plain): string
     {
-        $key = (string) (\Mt2Cms\Support\Env::getInstance()->get('APP_KEY') ?? '');
+        $key = (string) (\Metin2Website\Support\Env::getInstance()->get('APP_KEY') ?? '');
 
         return hash('sha256', $plain . $key);
     }

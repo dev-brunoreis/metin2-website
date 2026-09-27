@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Payment;
+namespace Metin2Website\Tests\Unit\Payment;
 
-use Mt2Cms\Payment\GatewayRegistry;
-use Mt2Cms\Payment\PaymentGateway;
+use Metin2Website\Payment\GatewayRegistry;
+use Metin2Website\Payment\PaymentGateway;
 use PHPUnit\Framework\TestCase;
 
 final class GatewayRegistryTest extends TestCase

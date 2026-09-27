@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
-use Mt2Cms\Admin\Grid\Definitions\AdminsGrid;
-use Mt2Cms\Admin\AdminPermissions;
-use Mt2Cms\Support\Database;
-use Mt2Cms\Admin\Grid\GridQuery;
-use Mt2Cms\Admin\Grid\GridSql;
-use Mt2Cms\Admin\Grid\ProvidesAdminGrid;
-use Mt2Cms\Support\SelectOptions;
+use Metin2Website\Admin\Grid\Definitions\AdminsGrid;
+use Metin2Website\Admin\AdminPermissions;
+use Metin2Website\Support\Database;
+use Metin2Website\Admin\Grid\GridQuery;
+use Metin2Website\Admin\Grid\GridSql;
+use Metin2Website\Admin\Grid\ProvidesAdminGrid;
+use Metin2Website\Support\SelectOptions;
 
 class AdminRepository extends Repository implements ProvidesAdminGrid
 {

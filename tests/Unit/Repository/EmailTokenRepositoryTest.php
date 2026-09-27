@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Repository;
+namespace Metin2Website\Tests\Unit\Repository;
 
-use Mt2Cms\Repository\EmailTokenRepository;
-use Mt2Cms\Support\AppCrypto;
+use Metin2Website\Repository\EmailTokenRepository;
+use Metin2Website\Support\AppCrypto;
 use PHPUnit\Framework\TestCase;
 
 final class EmailTokenRepositoryTest extends TestCase
@@ -17,7 +17,7 @@ final class EmailTokenRepositoryTest extends TestCase
         $this->previousKey = (string) ($_ENV['APP_KEY'] ?? '');
         $_ENV['APP_KEY'] = AppCrypto::generateKey();
         putenv('APP_KEY=' . $_ENV['APP_KEY']);
-        \Mt2Cms\Support\Env::$instance = null;
+        \Metin2Website\Support\Env::$instance = null;
     }
 
     protected function tearDown(): void
@@ -30,7 +30,7 @@ final class EmailTokenRepositoryTest extends TestCase
             putenv('APP_KEY');
         }
 
-        \Mt2Cms\Support\Env::$instance = null;
+        \Metin2Website\Support\Env::$instance = null;
     }
 
     public function testHashTokenIsDeterministic(): void

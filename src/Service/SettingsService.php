@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Support\Env;
-use Mt2Cms\Repository\SettingsRepository;
-use Mt2Cms\Setup\ThemeCatalog;
-use Mt2Cms\Support\AppCrypto;
-use Mt2Cms\Support\Money;
+use Metin2Website\Support\Env;
+use Metin2Website\Repository\SettingsRepository;
+use Metin2Website\Setup\ThemeCatalog;
+use Metin2Website\Support\AppCrypto;
+use Metin2Website\Support\Money;
 
 class SettingsService
 {

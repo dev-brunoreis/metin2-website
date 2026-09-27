@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Support;
+namespace Metin2Website\Tests\Unit\Support;
 
-use Mt2Cms\Support\SelectOptions;
+use Metin2Website\Support\SelectOptions;
 use PHPUnit\Framework\TestCase;
 
 final class SelectOptionsTest extends TestCase

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
-use Mt2Cms\Admin\Grid\GridQuery;
-use Mt2Cms\Admin\LogCatalog;
-use Mt2Cms\Support\Database;
+use Metin2Website\Admin\Grid\GridQuery;
+use Metin2Website\Admin\LogCatalog;
+use Metin2Website\Support\Database;
 
 class LogRepository extends Repository
 {

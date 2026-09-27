@@ -25,3 +25,28 @@ jobs:
         run: |
           composer install --no-interaction --prefer-dist --no-progress
           composer test
+
+  assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Build CSS and vendored front-end assets
+        run: |
+          npm ci
+          npm run build
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build PHP and Nginx images
+        run: |
+          docker build --target php -f docker/php/Dockerfile -t metin2-website-php:ci .
+          docker build --target nginx -f docker/php/Dockerfile -t metin2-website-nginx:ci .

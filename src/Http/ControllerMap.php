@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http;
+namespace Metin2Website\Http;
 
 trait ControllerMap
 {
@@ -11,7 +11,7 @@ trait ControllerMap
         static $factories = null;
 
         if ($factories === null) {
-            /** @var array<class-string, callable(\Mt2Cms\Application): object> $factories */
+            /** @var array<class-string, callable(\Metin2Website\Application): object> $factories */
             $factories = require __DIR__ . '/controller_factories.php';
         }
 

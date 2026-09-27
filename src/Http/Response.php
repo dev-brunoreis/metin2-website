@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http;
+namespace Metin2Website\Http;
 
-use Mt2Cms\Auth\SessionConfig;
+use Metin2Website\Auth\SessionConfig;
 
 class Response
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Support;
+namespace Metin2Website\Tests\Unit\Support;
 
-use Mt2Cms\Support\HtmlSanitizer;
+use Metin2Website\Support\HtmlSanitizer;
 use PHPUnit\Framework\TestCase;
 
 final class HtmlSanitizerTest extends TestCase

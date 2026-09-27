@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Mail;
+namespace Metin2Website\Mail;
 
 interface MailerInterface
 {

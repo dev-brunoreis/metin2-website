@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
-use Mt2Cms\Admin\Grid\Definitions\DashboardPlayersGrid;
-use Mt2Cms\Admin\Grid\Definitions\PlayersGrid;
-use Mt2Cms\Admin\Grid\GridQuery;
-use Mt2Cms\Admin\Grid\GridSql;
-use Mt2Cms\Admin\Grid\ProvidesAdminGrid;
+use Metin2Website\Admin\Grid\Definitions\DashboardPlayersGrid;
+use Metin2Website\Admin\Grid\Definitions\PlayersGrid;
+use Metin2Website\Admin\Grid\GridQuery;
+use Metin2Website\Admin\Grid\GridSql;
+use Metin2Website\Admin\Grid\ProvidesAdminGrid;
 
 class PlayerRepository extends Repository implements ProvidesAdminGrid
 {

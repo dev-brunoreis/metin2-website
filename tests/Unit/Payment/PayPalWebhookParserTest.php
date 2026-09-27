@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Payment;
+namespace Metin2Website\Tests\Unit\Payment;
 
-use Mt2Cms\Payment\PayPalWebhookParser;
+use Metin2Website\Payment\PayPalWebhookParser;
 use PHPUnit\Framework\TestCase;
 
 final class PayPalWebhookParserTest extends TestCase

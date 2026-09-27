@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Repository;
+namespace Metin2Website\Repository;
 
-use Mt2Cms\Auth\Totp;
-use Mt2Cms\Support\Database;
+use Metin2Website\Auth\Totp;
+use Metin2Website\Support\Database;
 
 class AdminTotpRepository extends Repository
 {
@@ -49,16 +49,16 @@ class AdminTotpRepository extends Repository
             return null;
         }
 
-        if (\Mt2Cms\Support\AppCrypto::isEncrypted($stored)) {
+        if (\Metin2Website\Support\AppCrypto::isEncrypted($stored)) {
             try {
-                return \Mt2Cms\Support\AppCrypto::decrypt($stored);
+                return \Metin2Website\Support\AppCrypto::decrypt($stored);
             } catch (\RuntimeException) {
                 return null;
             }
         }
 
         try {
-            $encrypted = \Mt2Cms\Support\AppCrypto::encrypt($stored);
+            $encrypted = \Metin2Website\Support\AppCrypto::encrypt($stored);
             $this->db()->execute(
                 'UPDATE admins SET totp_secret = ? WHERE id = ?',
                 [$encrypted, $adminId],
@@ -80,7 +80,7 @@ class AdminTotpRepository extends Repository
         }
 
         $codes = Totp::generateRecoveryCodes();
-        $storedSecret = \Mt2Cms\Support\AppCrypto::encrypt($secret);
+        $storedSecret = \Metin2Website\Support\AppCrypto::encrypt($secret);
         $this->db()->beginTransaction();
 
         try {

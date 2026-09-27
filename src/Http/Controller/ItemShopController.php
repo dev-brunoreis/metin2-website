@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller;
+namespace Metin2Website\Http\Controller;
 
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\Auth\Csrf;
-use Mt2Cms\Auth\RateLimiter;
-use Mt2Cms\Http\Response;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Repository\ItemShopCategoryRepository;
-use Mt2Cms\Repository\ItemShopProductRepository;
-use Mt2Cms\Service\AccountEmailService;
-use Mt2Cms\Service\ItemShopPurchaseService;
-use Mt2Cms\Service\ItemTooltipBuilder;
-use Mt2Cms\Service\SettingsService;
-use Mt2Cms\Theme\ThemeEngine;
+use Metin2Website\Auth\Auth;
+use Metin2Website\Auth\Csrf;
+use Metin2Website\Auth\RateLimiter;
+use Metin2Website\Http\Response;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Repository\ItemShopCategoryRepository;
+use Metin2Website\Repository\ItemShopProductRepository;
+use Metin2Website\Service\AccountEmailService;
+use Metin2Website\Service\ItemShopPurchaseService;
+use Metin2Website\Service\ItemTooltipBuilder;
+use Metin2Website\Service\SettingsService;
+use Metin2Website\Theme\ThemeEngine;
 
 class ItemShopController extends Controller
 {

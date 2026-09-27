@@ -7,20 +7,20 @@ define('BASE_DIR', dirname(__DIR__));
 
 require BASE_DIR . '/src/bootstrap/autoload.php';
 
-Mt2Cms\Application::loadConfigs();
+Metin2Website\Application::loadConfigs();
 
 try {
-    $gameDb = new Mt2Cms\Support\Database();
-    $cmsDb = Mt2Cms\Support\Database::forCms();
+    $gameDb = new Metin2Website\Support\Database();
+    $cmsDb = Metin2Website\Support\Database::forCms();
 
-    $scan = new Mt2Cms\Repository\GameEconomyScanRepository($gameDb);
-    $economy = new Mt2Cms\Repository\EconomyRepository($cmsDb);
-    $settings = new Mt2Cms\Service\SettingsService(
-        new Mt2Cms\Repository\SettingsRepository($cmsDb),
-        new Mt2Cms\Setup\ThemeCatalog(BASE_DIR . '/themes'),
+    $scan = new Metin2Website\Repository\GameEconomyScanRepository($gameDb);
+    $economy = new Metin2Website\Repository\EconomyRepository($cmsDb);
+    $settings = new Metin2Website\Service\SettingsService(
+        new Metin2Website\Repository\SettingsRepository($cmsDb),
+        new Metin2Website\Setup\ThemeCatalog(BASE_DIR . '/themes'),
     );
-    $discord = new Mt2Cms\Service\DiscordWebhookService($settings);
-    $tick = new Mt2Cms\Service\EconomyTickService($scan, $economy, $discord, BASE_DIR);
+    $discord = new Metin2Website\Service\DiscordWebhookService($settings);
+    $tick = new Metin2Website\Service\EconomyTickService($scan, $economy, $discord, BASE_DIR);
 
     $result = $tick->run();
 

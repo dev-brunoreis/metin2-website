@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Repository\PaymentRepository;
-use Mt2Cms\Service\PaymentStatsService;
+use Metin2Website\Repository\PaymentRepository;
+use Metin2Website\Service\PaymentStatsService;
 use PHPUnit\Framework\TestCase;
 
 final class PaymentStatsServiceTest extends TestCase

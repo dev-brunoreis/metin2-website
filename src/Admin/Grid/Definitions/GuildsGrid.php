@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Admin\Grid\Definitions;
+namespace Metin2Website\Admin\Grid\Definitions;
 
-use Mt2Cms\Admin\Grid\GridDefinition;
+use Metin2Website\Admin\Grid\GridDefinition;
 
 final class GuildsGrid
 {

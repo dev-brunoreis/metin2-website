@@ -18,7 +18,7 @@ if (is_file($autoload)) {
     require BASE_DIR . '/src/Setup/SetupRequirements.php';
 }
 
-$checker = new Mt2Cms\Setup\SetupRequirements(BASE_DIR);
+$checker = new Metin2Website\Setup\SetupRequirements(BASE_DIR);
 $checks = $checker->checks();
 $ok = $checker->allRequiredOk();
 

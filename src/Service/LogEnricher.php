@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\GameEconomyScanRepository;
-use Mt2Cms\Repository\GuildRepository;
-use Mt2Cms\Repository\PlayerRepository;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\GameEconomyScanRepository;
+use Metin2Website\Repository\GuildRepository;
+use Metin2Website\Repository\PlayerRepository;
 
 final class LogEnricher
 {

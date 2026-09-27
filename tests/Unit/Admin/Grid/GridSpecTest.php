@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Admin\Grid;
+namespace Metin2Website\Tests\Unit\Admin\Grid;
 
-use Mt2Cms\Admin\Grid\GridQuery;
-use Mt2Cms\Admin\Grid\GridSpec;
-use Mt2Cms\Admin\Grid\GridSql;
+use Metin2Website\Admin\Grid\GridQuery;
+use Metin2Website\Admin\Grid\GridSpec;
+use Metin2Website\Admin\Grid\GridSql;
 use PHPUnit\Framework\TestCase;
 
 final class GridSpecTest extends TestCase

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Game\Proto;
+namespace Metin2Website\Game\Proto;
 
 /**
  * File-backed index cache for proto list/filter (avoids re-parsing tab files every request).

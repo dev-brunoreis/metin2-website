@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Auth;
+namespace Metin2Website\Tests\Unit\Auth;
 
-use Mt2Cms\Auth\Captcha;
+use Metin2Website\Auth\Captcha;
 use PHPUnit\Framework\TestCase;
 
 final class CaptchaTest extends TestCase

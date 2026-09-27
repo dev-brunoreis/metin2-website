@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Contract;
+namespace Metin2Website\Tests\Unit\Contract;
 
-use Mt2Cms\Http\Controller\Admin\AdminAccountSecurityController;
-use Mt2Cms\Http\Controller\Admin\AdminAuthController;
-use Mt2Cms\Http\Controller\Admin\AdminLocaleController;
-use Mt2Cms\Http\Controller\PaymentWebhookController;
-use Mt2Cms\Http\Controller\SetupController;
+use Metin2Website\Http\Controller\Admin\AdminAccountSecurityController;
+use Metin2Website\Http\Controller\Admin\AdminAuthController;
+use Metin2Website\Http\Controller\Admin\AdminLocaleController;
+use Metin2Website\Http\Controller\PaymentWebhookController;
+use Metin2Website\Http\Controller\SetupController;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -40,20 +40,20 @@ final class SecurityContractTest extends TestCase
 
     /** @var list<string> */
     private const RATE_LIMITED_POSTS = [
-        'Mt2Cms\\Http\\Controller\\AuthController::login',
-        'Mt2Cms\\Http\\Controller\\AuthController::register',
-        'Mt2Cms\\Http\\Controller\\PasswordController::forgot',
-        'Mt2Cms\\Http\\Controller\\PasswordController::reset',
-        'Mt2Cms\\Http\\Controller\\AccountController::updatePassword',
-        'Mt2Cms\\Http\\Controller\\AccountController::unstuck',
-        'Mt2Cms\\Http\\Controller\\Admin\\AdminAuthController::login',
-        'Mt2Cms\\Http\\Controller\\Admin\\AdminAuthController::verifyTwoFactor',
-        'Mt2Cms\\Http\\Controller\\NewsController::comment',
-        'Mt2Cms\\Http\\Controller\\TicketController::store',
-        'Mt2Cms\\Http\\Controller\\ItemShopController::buy',
-        'Mt2Cms\\Http\\Controller\\DonateController::buy',
-        'Mt2Cms\\Http\\Controller\\SetupController::submit',
-        'Mt2Cms\\Http\\Controller\\SetupController::testConnection',
+        'Metin2Website\\Http\\Controller\\AuthController::login',
+        'Metin2Website\\Http\\Controller\\AuthController::register',
+        'Metin2Website\\Http\\Controller\\PasswordController::forgot',
+        'Metin2Website\\Http\\Controller\\PasswordController::reset',
+        'Metin2Website\\Http\\Controller\\AccountController::updatePassword',
+        'Metin2Website\\Http\\Controller\\AccountController::unstuck',
+        'Metin2Website\\Http\\Controller\\Admin\\AdminAuthController::login',
+        'Metin2Website\\Http\\Controller\\Admin\\AdminAuthController::verifyTwoFactor',
+        'Metin2Website\\Http\\Controller\\NewsController::comment',
+        'Metin2Website\\Http\\Controller\\TicketController::store',
+        'Metin2Website\\Http\\Controller\\ItemShopController::buy',
+        'Metin2Website\\Http\\Controller\\DonateController::buy',
+        'Metin2Website\\Http\\Controller\\SetupController::submit',
+        'Metin2Website\\Http\\Controller\\SetupController::testConnection',
     ];
 
     public function testDatabaseAlwaysPreparesStatements(): void
@@ -276,7 +276,7 @@ final class SecurityContractTest extends TestCase
         self::assertNotSame([], $calls);
 
         $runMass = SourceScan::methodSource(
-            new \ReflectionMethod(\Mt2Cms\Http\Controller\Admin\AdminController::class, 'runMassActions'),
+            new \ReflectionMethod(\Metin2Website\Http\Controller\Admin\AdminController::class, 'runMassActions'),
         );
         self::assertStringContainsString('allowsMassAction($action)', $runMass);
         self::assertStringContainsString('!isset($handlers[$action])', $runMass);

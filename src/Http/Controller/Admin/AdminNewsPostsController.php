@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller\Admin;
+namespace Metin2Website\Http\Controller\Admin;
 
-use Mt2Cms\Admin\Grid\Definitions\NewsGrid;
-use Mt2Cms\Admin\Grid\GridRunner;
-use Mt2Cms\Service\DiscordWebhookService;
-use Mt2Cms\Http\Response;
-use Mt2Cms\Service\SeoImageUploadService;
+use Metin2Website\Admin\Grid\Definitions\NewsGrid;
+use Metin2Website\Admin\Grid\GridRunner;
+use Metin2Website\Service\DiscordWebhookService;
+use Metin2Website\Http\Response;
+use Metin2Website\Service\SeoImageUploadService;
 
 class AdminNewsPostsController extends AdminNewsBaseController
 {
     public function __construct(
-        \Mt2Cms\Theme\ThemeEngine $theme,
-        \Mt2Cms\Auth\Auth $auth,
-        \Mt2Cms\Auth\Csrf $csrf,
-        \Mt2Cms\I18n\Translator $translator,
-        \Mt2Cms\Auth\AdminAuth $adminAuth,
-        \Mt2Cms\Theme\ThemeEngine $adminTheme,
-        \Mt2Cms\Service\AclService $acl,
-        \Mt2Cms\Service\AdminAuditService $auditLog,
-        \Mt2Cms\Repository\NewsRepository $news,
-        \Mt2Cms\Repository\NewsCommentRepository $comments,
-        \Mt2Cms\Service\SettingsService $settings,
-        \Mt2Cms\Support\HtmlSanitizer $sanitizer,
-        \Mt2Cms\Service\NewsUploadService $uploads,
+        \Metin2Website\Theme\ThemeEngine $theme,
+        \Metin2Website\Auth\Auth $auth,
+        \Metin2Website\Auth\Csrf $csrf,
+        \Metin2Website\I18n\Translator $translator,
+        \Metin2Website\Auth\AdminAuth $adminAuth,
+        \Metin2Website\Theme\ThemeEngine $adminTheme,
+        \Metin2Website\Service\AclService $acl,
+        \Metin2Website\Service\AdminAuditService $auditLog,
+        \Metin2Website\Repository\NewsRepository $news,
+        \Metin2Website\Repository\NewsCommentRepository $comments,
+        \Metin2Website\Service\SettingsService $settings,
+        \Metin2Website\Support\HtmlSanitizer $sanitizer,
+        \Metin2Website\Service\NewsUploadService $uploads,
         private DiscordWebhookService $discord,
     ) {
         parent::__construct(

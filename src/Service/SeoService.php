@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Support\HtmlSanitizer;
+use Metin2Website\Support\HtmlSanitizer;
 
 class SeoService
 {

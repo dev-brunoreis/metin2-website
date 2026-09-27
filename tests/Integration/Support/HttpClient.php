@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Integration\Support;
+namespace Metin2Website\Tests\Integration\Support;
 
 /**
  * Minimal curl GET helper for live-stack smoke tests (no Guzzle).
@@ -49,7 +49,7 @@ final class HttpClient
 
     public static function baseUrl(): string
     {
-        $fromEnv = getenv('MT2CMS_BASE_URL');
+        $fromEnv = getenv('METIN2WEBSITE_BASE_URL');
         if (is_string($fromEnv) && $fromEnv !== '') {
             return rtrim($fromEnv, '/');
         }

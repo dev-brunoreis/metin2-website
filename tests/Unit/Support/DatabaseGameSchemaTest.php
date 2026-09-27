@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Support;
+namespace Metin2Website\Tests\Unit\Support;
 
-use Mt2Cms\Support\Database;
+use Metin2Website\Support\Database;
 use PHPUnit\Framework\TestCase;
 
 final class DatabaseGameSchemaTest extends TestCase
@@ -14,7 +14,7 @@ final class DatabaseGameSchemaTest extends TestCase
         $this->assertFalse(Database::testGameSchema([
             'host' => '127.0.0.1',
             'port' => '1',
-            'user' => 'mt2cms',
+            'user' => 'metin2website',
             'password' => 'invalid',
         ]));
     }

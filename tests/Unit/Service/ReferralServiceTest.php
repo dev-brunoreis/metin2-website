@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Repository\ReferralRepository;
-use Mt2Cms\Service\ReferralService;
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\PlayerRepository;
-use Mt2Cms\Service\SettingsService;
+use Metin2Website\Repository\ReferralRepository;
+use Metin2Website\Service\ReferralService;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\PlayerRepository;
+use Metin2Website\Service\SettingsService;
 use PHPUnit\Framework\TestCase;
 
 final class ReferralServiceTest extends TestCase

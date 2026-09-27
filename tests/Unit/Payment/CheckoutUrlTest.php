@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Payment;
+namespace Metin2Website\Tests\Unit\Payment;
 
-use Mt2Cms\Payment\CheckoutUrl;
+use Metin2Website\Payment\CheckoutUrl;
 use PHPUnit\Framework\TestCase;
 
 final class CheckoutUrlTest extends TestCase

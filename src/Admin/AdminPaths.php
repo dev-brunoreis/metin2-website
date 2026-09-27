@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Admin;
+namespace Metin2Website\Admin;
 
 final class AdminPaths
 {

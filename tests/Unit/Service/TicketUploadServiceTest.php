@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Service\TicketUploadService;
+use Metin2Website\Service\TicketUploadService;
 use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
 
@@ -14,7 +14,7 @@ final class TicketUploadServiceTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->uploads = new TicketUploadService(sys_get_temp_dir() . '/mt2cms-tickets');
+        $this->uploads = new TicketUploadService(sys_get_temp_dir() . '/metin2website-tickets');
     }
 
     public function testAbsolutePathRejectsInvalidName(): void

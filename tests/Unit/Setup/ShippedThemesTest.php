@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Setup;
+namespace Metin2Website\Tests\Unit\Setup;
 
-use Mt2Cms\Setup\ThemeCatalog;
+use Metin2Website\Setup\ThemeCatalog;
 use PHPUnit\Framework\TestCase;
 
 final class ShippedThemesTest extends TestCase

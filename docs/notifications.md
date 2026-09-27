@@ -1,6 +1,6 @@
 # Notifications
 
-In-app inbox for **players** (not admin ACL). Table `cms_notifications` (migration `017_notifications.sql`). Service: `NotificationService`. Repo: `NotificationRepository`.
+In-app inbox for **players** (not admin ACL). Table `cms_notifications` (see [`001_schema.sql`](../src/Setup/migrations/001_schema.sql)). Service: `NotificationService`. Repo: `NotificationRepository`.
 
 ## Types
 

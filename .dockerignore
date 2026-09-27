@@ -16,4 +16,3 @@ docker/mysql/backup
 docs
 compose.yml
 compose.prod.yml
-.gitlab-ci.yml

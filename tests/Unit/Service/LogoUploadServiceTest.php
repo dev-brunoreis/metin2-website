@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Service\LogoUploadService;
+use Metin2Website\Service\LogoUploadService;
 use PHPUnit\Framework\TestCase;
 
 final class LogoUploadServiceTest extends TestCase

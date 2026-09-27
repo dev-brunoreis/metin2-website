@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller\Admin;
+namespace Metin2Website\Http\Controller\Admin;
 
-use Mt2Cms\Admin\Grid\Definitions\NewsCommentsGrid;
-use Mt2Cms\Admin\Grid\GridRunner;
-use Mt2Cms\Http\Response;
+use Metin2Website\Admin\Grid\Definitions\NewsCommentsGrid;
+use Metin2Website\Admin\Grid\GridRunner;
+use Metin2Website\Http\Response;
 
 class AdminNewsCommentsController extends AdminNewsBaseController
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Admin\Grid;
+namespace Metin2Website\Tests\Unit\Admin\Grid;
 
-use Mt2Cms\Admin\Grid\GridRequest;
-use Mt2Cms\Admin\Grid\GridSpec;
+use Metin2Website\Admin\Grid\GridRequest;
+use Metin2Website\Admin\Grid\GridSpec;
 use PHPUnit\Framework\TestCase;
 
 final class GridRequestTest extends TestCase

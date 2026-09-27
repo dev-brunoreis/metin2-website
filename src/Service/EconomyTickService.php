@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Repository\EconomyRepository;
-use Mt2Cms\Repository\GameEconomyScanRepository;
-use Mt2Cms\Service\Economy\EconomyAnomaly;
-use Mt2Cms\Service\Economy\EconomyStats;
-use Mt2Cms\Service\Economy\GoldlogHintParser;
-use Mt2Cms\Service\Economy\ItemLogHintParser;
-use Mt2Cms\Support\Log;
+use Metin2Website\Repository\EconomyRepository;
+use Metin2Website\Repository\GameEconomyScanRepository;
+use Metin2Website\Service\Economy\EconomyAnomaly;
+use Metin2Website\Service\Economy\EconomyStats;
+use Metin2Website\Service\Economy\GoldlogHintParser;
+use Metin2Website\Service\Economy\ItemLogHintParser;
+use Metin2Website\Support\Log;
 
 class EconomyTickService
 {

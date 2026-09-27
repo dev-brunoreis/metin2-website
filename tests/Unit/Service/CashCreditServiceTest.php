@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Service\DiscordWebhookService;
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Repository\PaymentRepository;
-use Mt2Cms\Service\CashCreditService;
-use Mt2Cms\Service\NotificationService;
-use Mt2Cms\Service\SettingsService;
+use Metin2Website\Service\DiscordWebhookService;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Repository\PaymentRepository;
+use Metin2Website\Service\CashCreditService;
+use Metin2Website\Service\NotificationService;
+use Metin2Website\Service\SettingsService;
 use PHPUnit\Framework\TestCase;
 
 final class CashCreditServiceTest extends TestCase

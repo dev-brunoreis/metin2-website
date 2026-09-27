@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Game\Icon;
+namespace Metin2Website\Game\Icon;
 
 class PngEncoder
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Theme;
+namespace Metin2Website\Theme;
 
 final class ThemeAssetFile
 {

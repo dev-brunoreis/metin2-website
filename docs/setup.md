@@ -18,7 +18,7 @@ Host vs Docker defaults (`SetupDatabaseDefaults`): inside Compose the form uses 
 
 | Seed | Service | Flag | When |
 | --- | --- | --- | --- |
-| Four class banners | `BannerSeedService` | `banners_seeded` | Empty `cms_banners` + GD available |
+| Four placeholder class slides (solid color + name, no game art) | `BannerSeedService` | `banners_seeded` | Empty `cms_banners` + GD available |
 | One published welcome news post | `NewsSeedService` | `news_welcome_seeded` | Empty `news` + at least one admin (author) |
 | Five classic Metin2 events | `EventSeedService` | `events_seeded` | Empty `cms_events` |
 

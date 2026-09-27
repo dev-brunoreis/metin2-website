@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Game;
+namespace Metin2Website\Game;
 
-use Mt2Cms\Support\Env;
+use Metin2Website\Support\Env;
 
 class GameProfile
 {

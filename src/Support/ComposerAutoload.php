@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Support;
+namespace Metin2Website\Support;
 
 /**
  * Loads vendor/autoload.php before the rest of the app. This file is required

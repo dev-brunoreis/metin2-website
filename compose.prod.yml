@@ -3,7 +3,7 @@ services:
     image: mysql:5.6
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?MYSQL_ROOT_PASSWORD required}
-      DB_USER: ${DB_USER:-mt2cms}
+      DB_USER: ${DB_USER:-metin2website}
       DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD required}
     command: --sql-mode=NO_ENGINE_SUBSTITUTION
     volumes:

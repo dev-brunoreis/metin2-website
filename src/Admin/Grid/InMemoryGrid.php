@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Admin\Grid;
+namespace Metin2Website\Admin\Grid;
 
 /**
  * Sort/page an in-memory row list for nested detail tabs (guild members, etc.).

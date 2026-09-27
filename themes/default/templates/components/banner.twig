@@ -74,30 +74,9 @@
                                     loading="lazy"
                                 {% endif %}>
                         {% else %}
-                            <source
-                                type="image/webp"
-                                srcset="{{ theme_asset('img/' ~ slide.id ~ '-960.webp') }} 960w,
-                                        {{ theme_asset('img/' ~ slide.id ~ '-1440.webp') }} 1440w,
-                                        {{ theme_asset('img/' ~ slide.id ~ '-1920.webp') }} 1920w"
-                                sizes="{{ sizes }}">
-                            <source
-                                type="image/jpeg"
-                                srcset="{{ theme_asset('img/' ~ slide.id ~ '-960.jpg') }} 960w,
-                                        {{ theme_asset('img/' ~ slide.id ~ '-1440.jpg') }} 1440w,
-                                        {{ theme_asset('img/' ~ slide.id ~ '-1920.jpg') }} 1920w"
-                                sizes="{{ sizes }}">
-                            <img
-                                class="k-banner-img"
-                                src="{{ theme_asset('img/' ~ slide.id ~ '.jpg') }}"
-                                width="1920"
-                                height="1080"
-                                alt="{{ label }}"
-                                decoding="async"
-                                {% if loop.first %}
-                                    fetchpriority="high"
-                                {% else %}
-                                    loading="lazy"
-                                {% endif %}>
+                            <div class="k-banner-placeholder k-banner-placeholder-{{ slide.id }}">
+                                <span class="k-banner-placeholder-label">{{ label }}</span>
+                            </div>
                         {% endif %}
                     </picture>
                     {% if useCms and slide.link_url|default('') %}

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Repository;
+namespace Metin2Website\Tests\Unit\Repository;
 
-use Mt2Cms\Support\Database;
-use Mt2Cms\Repository\AccountRepository;
+use Metin2Website\Support\Database;
+use Metin2Website\Repository\AccountRepository;
 use PHPUnit\Framework\TestCase;
 
 final class AccountRepositoryChangePasswordTest extends TestCase

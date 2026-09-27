@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Game;
+namespace Metin2Website\Game;
 
-use Mt2Cms\Support\Database;
+use Metin2Website\Support\Database;
 
 /**
  * Elapsed time for naive DATETIME values written by the game MySQL.

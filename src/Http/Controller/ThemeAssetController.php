@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Http\Controller;
+namespace Metin2Website\Http\Controller;
 
-use Mt2Cms\Http\Response;
-use Mt2Cms\Theme\ThemeAssetFile;
+use Metin2Website\Http\Response;
+use Metin2Website\Theme\ThemeAssetFile;
 
 class ThemeAssetController extends Controller
 {

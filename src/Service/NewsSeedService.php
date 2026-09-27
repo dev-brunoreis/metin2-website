@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service;
+namespace Metin2Website\Service;
 
-use Mt2Cms\Repository\AdminRepository;
-use Mt2Cms\Repository\NewsRepository;
-use Mt2Cms\Repository\SettingsRepository;
-use Mt2Cms\Support\HtmlSanitizer;
+use Metin2Website\Repository\AdminRepository;
+use Metin2Website\Repository\NewsRepository;
+use Metin2Website\Repository\SettingsRepository;
+use Metin2Website\Support\HtmlSanitizer;
 
 /**
  * Seeds one published welcome post once (empty table + flag), authored by the first admin.

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Service;
+namespace Metin2Website\Tests\Unit\Service;
 
-use Mt2Cms\Admin\AdminPermissions;
-use Mt2Cms\Admin\AdminResourceCatalog;
-use Mt2Cms\Repository\AclRepository;
-use Mt2Cms\Repository\AdminRoleRepository;
-use Mt2Cms\Service\AclService;
+use Metin2Website\Admin\AdminPermissions;
+use Metin2Website\Admin\AdminResourceCatalog;
+use Metin2Website\Repository\AclRepository;
+use Metin2Website\Repository\AdminRoleRepository;
+use Metin2Website\Service\AclService;
 use PHPUnit\Framework\TestCase;
 
 final class AclServiceTest extends TestCase

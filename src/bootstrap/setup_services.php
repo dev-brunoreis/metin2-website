@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use Mt2Cms\Application;
-use Mt2Cms\Auth\Auth;
-use Mt2Cms\I18n\Translator;
-use Mt2Cms\Repository\AccountRepository;
-use Mt2Cms\Support\Database;
+use Metin2Website\Application;
+use Metin2Website\Auth\Auth;
+use Metin2Website\I18n\Translator;
+use Metin2Website\Repository\AccountRepository;
+use Metin2Website\Support\Database;
 
 /**
  * @return callable(Application): void

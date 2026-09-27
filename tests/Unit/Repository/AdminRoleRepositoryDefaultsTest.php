@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Tests\Unit\Repository;
+namespace Metin2Website\Tests\Unit\Repository;
 
-use Mt2Cms\Admin\AdminSections;
-use Mt2Cms\Repository\AdminRoleRepository;
+use Metin2Website\Admin\AdminSections;
+use Metin2Website\Repository\AdminRoleRepository;
 use PHPUnit\Framework\TestCase;
 
 final class AdminRoleRepositoryDefaultsTest extends TestCase
@@ -16,9 +16,9 @@ final class AdminRoleRepositoryDefaultsTest extends TestCase
         self::assertFalse(method_exists(AdminSections::class, 'defaultSupportSections'));
         self::assertFalse(method_exists(AdminSections::class, 'defaultContentSections'));
 
-        $createRolesSql = (string) file_get_contents(BASE_DIR . '/src/Setup/migrations/003_dynamic_roles.sql');
+        $schemaSql = (string) file_get_contents(BASE_DIR . '/src/Setup/migrations/001_schema.sql');
 
-        self::assertStringNotContainsString("'support'", $createRolesSql);
-        self::assertStringNotContainsString("'content'", $createRolesSql);
+        self::assertStringNotContainsString("'support'", $schemaSql);
+        self::assertStringNotContainsString("'content'", $schemaSql);
     }
 }

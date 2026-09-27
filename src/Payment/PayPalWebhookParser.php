@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Payment;
+namespace Metin2Website\Payment;
 
 /**
  * Pure PayPal webhook payload helpers (testable without HTTP).

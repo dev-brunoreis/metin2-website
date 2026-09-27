@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Service\Economy;
+namespace Metin2Website\Service\Economy;
 
 /**
  * Pure helpers for median / anomaly math (no DB).

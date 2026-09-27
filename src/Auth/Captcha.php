@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mt2Cms\Auth;
+namespace Metin2Website\Auth;
 
 /**
  * Self-hosted SVG captcha stored in the PHP session (one-shot verify).
@@ -89,7 +89,7 @@ final class Captcha
 
     private function hashAnswer(string $answer, int $expires): string
     {
-        $pepper = (string) (session_id() ?: 'mt2cms-captcha');
+        $pepper = (string) (session_id() ?: 'metin2website-captcha');
 
         return hash_hmac('sha256', $answer . '|' . $expires . '|' . $this->scope, $pepper);
     }
