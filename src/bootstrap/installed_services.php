@@ -7,6 +7,7 @@ use Mt2Cms\Application;
 use Mt2Cms\Auth\AdminAuth;
 use Mt2Cms\Auth\Auth;
 use Mt2Cms\Game\Display;
+use Mt2Cms\Game\GameClock;
 use Mt2Cms\Game\Drop\GroupTextParser;
 use Mt2Cms\Game\GameProfile;
 use Mt2Cms\Game\ItemDescCatalog;
@@ -179,13 +180,13 @@ return static function (Application $app): void {
         new ItemIconCatalog($app->gameProfile->path('item_list')),
     );
     $activeTheme = $app->settings->activeTheme();
-    $app->theme = $app->createThemeEngine($activeTheme, $app->settings->registrationEnabled(), false);
+    $app->db = new Database();
+    $gameClock = new GameClock($app->db);
+    $app->theme = $app->createThemeEngine($activeTheme, $app->settings->registrationEnabled(), false, $gameClock);
     $app->theme->setSeoService($app->seo);
     $app->discord = new DiscordWebhookService($app->settings);
     $app->eventService = new EventService($app->events, $app->discord);
-    $app->adminTheme = $app->createThemeEngine('admin', true, true);
-
-    $app->db = new Database();
+    $app->adminTheme = $app->createThemeEngine('admin', true, true, $gameClock);
     $app->gameEconomyScan = new GameEconomyScanRepository($app->db);
     $app->accounts = new AccountRepository($app->db);
     $app->referralRepo = new ReferralRepository($app->cmsDb, $app->accounts);
@@ -245,7 +246,7 @@ return static function (Application $app): void {
     $app->protoFields = new ProtoFormFields($app->translator, $app->protoEnums);
     $app->auth = new Auth($app->accounts);
     $app->banService = new BanService($app->banRepo, $app->accounts, $app->notificationService);
-    $app->unstuckService = new UnstuckService($app->unstuckRepo, $app->players, $app->settings);
+    $app->unstuckService = new UnstuckService($app->unstuckRepo, $app->players, $app->settings, $gameClock);
     $app->referralService = new ReferralService(
         $app->referralRepo,
         $app->accounts,

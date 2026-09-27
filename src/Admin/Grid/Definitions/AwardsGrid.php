@@ -30,7 +30,7 @@ final class AwardsGrid
                     'pending' => ['class' => 'admin-badge-warn', 'label' => 'admin.awards.status_pending'],
                     'taken' => ['class' => 'admin-badge-ok', 'label' => 'admin.awards.status_taken'],
                 ]],
-                ['key' => 'given_time', 'label' => 'admin.awards.given', 'sort' => 'given_time', 'type' => 'date'],
+                ['key' => 'given_time', 'label' => 'admin.awards.given', 'sort' => 'given_time', 'type' => 'date', 'clock' => 'game'],
             ])
             ->filters([
                 ['key' => 'status', 'label' => 'admin.awards.status', 'type' => 'select', 'options' => [

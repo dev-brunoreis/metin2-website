@@ -73,6 +73,8 @@ MySQL 5.6 game servers may use older `IDENTIFIED BY` syntax; the grant list is t
 
 Full CMS admin features need **DML** (`SELECT`/`INSERT`/`UPDATE`/`DELETE`) on all four. A public read-only mirror is out of scope for this guide.
 
+Game `DATETIME` values (`last_play`, logs, account `create_time`) are read on the **game MySQL clock** (`GameClock`: `UNIX_TIMESTAMP(NOW())` plus the session offset from `UTC_TIMESTAMP()`). The CMS host can stay on UTC in any country. CMS tables (news, payments, tickets) keep the CMS clock. The printed calendar time is still the game server's own clock; set that machine with NTP and one timezone (for example `America/Sao_Paulo`) if that number should match local time.
+
 ## CMS database (separate)
 
 On the **CMS Linux host**, run MySQL 8 for schema `cms` only:

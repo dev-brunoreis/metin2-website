@@ -69,7 +69,7 @@ New admin screen: menu in `AdminSections`, path in `AdminPaths`, **permissions i
 
 ## Public surfaces
 
-Auth/account: login, register, forgot/reset, verify-email, password, email, PIN, characters/unstuck, orders, payments, notifications, tickets.
+Auth/account: login, register, forgot/reset, verify-email, password, email, PIN, characters/unstuck (player and admin both refuse while `last_play` is inside the online window on the game MySQL clock; admin still skips cooldown), orders, payments, notifications, tickets.
 
 Content: news + comments, events, downloads, shop buy, donate, ranking, player profile (optional equipment with MySQL-lag caveat), `/status`, `/robots.txt`, `/sitemap.xml`.
 

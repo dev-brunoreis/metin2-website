@@ -41,6 +41,7 @@ use Mt2Cms\Repository\ItemShopOrderRepository;
 use Mt2Cms\Repository\ItemShopProductRepository;
 use Mt2Cms\Repository\ShopRepository;
 use Mt2Cms\Repository\TicketRepository;
+use Mt2Cms\Game\GameClock;
 use Mt2Cms\Game\GameProfile;
 use Mt2Cms\Game\ItemDescCatalog;
 use Mt2Cms\Game\ItemIconCatalog;
@@ -369,7 +370,7 @@ class Application
         (require __DIR__ . '/bootstrap/installed_services.php')($this);
     }
 
-    public function createThemeEngine(string $activeTheme, bool $registrationEnabled, bool $isAdmin): ThemeEngine
+    public function createThemeEngine(string $activeTheme, bool $registrationEnabled, bool $isAdmin, ?GameClock $gameClock = null): ThemeEngine
     {
         $engine = new ThemeEngine(
             BASE_DIR . '/themes',
@@ -378,6 +379,7 @@ class Application
             $this->locales->available(),
             $this->icons ?? null,
             isset($this->settings) ? $this->settings->moneyFormat() : Money::FORMAT_DOT,
+            $gameClock,
         );
 
         $globals = ['registration_enabled' => $registrationEnabled];

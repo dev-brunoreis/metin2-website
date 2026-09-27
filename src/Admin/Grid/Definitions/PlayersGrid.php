@@ -28,7 +28,7 @@ final class PlayersGrid
                 ['key' => 'job', 'label' => 'admin.characters.job', 'sort' => 'job', 'type' => 'job'],
                 ['key' => 'level', 'label' => 'admin.characters.level', 'sort' => 'level', 'type' => 'number'],
                 ['key' => 'playtime', 'label' => 'admin.characters.playtime', 'sort' => 'playtime', 'type' => 'playtime'],
-                ['key' => 'last_play', 'label' => 'admin.characters.last_play', 'sort' => 'last_play', 'type' => 'date'],
+                ['key' => 'last_play', 'label' => 'admin.characters.last_play', 'sort' => 'last_play', 'type' => 'date', 'clock' => 'game'],
             ]);
         }
 }

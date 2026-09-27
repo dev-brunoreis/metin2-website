@@ -42,7 +42,7 @@
     <span class="text-slate-600">{{ value|money }} {{ attribute(row, column.currencyKey|default('currency'))|default('') }}</span>
 
 {% elseif type == 'date' %}
-    <span class="text-slate-600">{{ value ? value|game_date : '—' }}</span>
+    <span class="text-slate-600">{{ value ? value|game_date(column.clock|default('') == 'game') : '—' }}</span>
 
 {% elseif type == 'unix_date' %}
     <span class="text-slate-600">{{ value ? value|unix_date : '—' }}</span>

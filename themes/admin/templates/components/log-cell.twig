@@ -35,7 +35,7 @@
         {{ yang > 0 ? '+' : '' }}{{ yang|number_format(0, '.', ',') }} yang
     </span>
 {% elseif column.key in dateColumns %}
-    {{ value|game_date }}
+    {{ value|game_date(true) }}
 {% else %}
     {{ value }}
 {% endif %}

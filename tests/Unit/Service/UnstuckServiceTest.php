@@ -88,7 +88,7 @@ final class UnstuckServiceTest extends TestCase
         $service->unstuck(10, 1);
     }
 
-    public function testAdminBypassSkipsCooldownAndOnlineCheck(): void
+    public function testAdminBypassRejectsOnlinePlayer(): void
     {
         $cooldowns = $this->createMock(UnstuckRepository::class);
         $players = $this->createMock(PlayerRepository::class);
@@ -100,12 +100,37 @@ final class UnstuckServiceTest extends TestCase
             'account_id' => 1,
             'last_play' => date('Y-m-d H:i:s'),
         ]);
+        $settings->method('onlineWindowMinutes')->willReturn(15);
+        $players->expects(self::never())->method('teleportTo');
+
+        $service = new UnstuckService($cooldowns, $players, $settings);
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('unstuck.player_online');
+
+        $service->unstuck(10, 1, adminBypass: true);
+    }
+
+    public function testAdminBypassSkipsCooldownWhenOffline(): void
+    {
+        $cooldowns = $this->createMock(UnstuckRepository::class);
+        $players = $this->createMock(PlayerRepository::class);
+        $settings = $this->createMock(SettingsService::class);
+
+        $players->method('hasPositionColumns')->willReturn(true);
+        $players->method('findById')->willReturn([
+            'id' => 10,
+            'account_id' => 1,
+            'last_play' => '',
+        ]);
         $players->method('findEmpireByAccountId')->willReturn(1);
         $settings->method('unstuckSpawnForEmpire')->willReturn([
             'map_index' => 1,
             'x' => 100,
             'y' => 200,
         ]);
+        $cooldowns->method('lastUnstuckAt')->willReturn(date('Y-m-d H:i:s'));
+        $settings->method('unstuckCooldownMinutes')->willReturn(60);
         $players->expects(self::once())
             ->method('teleportTo')
             ->with(10, 1, 1, 100, 200)

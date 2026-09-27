@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mt2Cms\Theme;
 
 use Mt2Cms\Game\Display;
+use Mt2Cms\Game\GameClock;
 use Mt2Cms\I18n\Translator;
 use Mt2Cms\Service\GameIconService;
 use Mt2Cms\Service\SeoService;
@@ -30,6 +31,7 @@ class ThemeEngine
         array $locales = [],
         ?GameIconService $icons = null,
         string $moneyFormat = Money::FORMAT_DOT,
+        ?GameClock $gameClock = null,
     ) {
         $this->resolver = new ThemeResolver($themesPath, $activeTheme);
         $paths = $this->resolver->templatePaths();
@@ -43,7 +45,7 @@ class ThemeEngine
             'strict_variables' => false,
         ]);
         $this->twig->addExtension(new TwigExtension(
-            new Display($translator),
+            new Display($translator, $gameClock),
             $translator,
             $icons,
             new HtmlSanitizer(),

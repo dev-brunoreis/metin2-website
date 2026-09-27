@@ -22,7 +22,7 @@ final class GuildWarsGrid
             ->columns([
                 ['key' => 'id', 'label' => 'admin.guilds.war_id', 'sort' => 'id', 'type' => 'muted'],
                 ['key' => 'opponent_name', 'label' => 'admin.guilds.war_opponent', 'type' => 'link', 'href' => '/admin/game/guilds/{opponent_id}'],
-                ['key' => 'time', 'label' => 'admin.guilds.war_time', 'sort' => 'time', 'type' => 'date'],
+                ['key' => 'time', 'label' => 'admin.guilds.war_time', 'sort' => 'time', 'type' => 'date', 'clock' => 'game'],
                 ['key' => 'type', 'label' => 'admin.guilds.war_type', 'sort' => 'type', 'type' => 'text'],
                 ['key' => 'warprice', 'label' => 'admin.guilds.war_price', 'sort' => 'warprice', 'type' => 'number'],
                 ['key' => 'started_label', 'label' => 'admin.guilds.war_started', 'type' => 'text'],

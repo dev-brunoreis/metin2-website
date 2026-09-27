@@ -34,7 +34,7 @@ final class AccountsGrid
                 ['key' => 'empire', 'label' => 'admin.accounts.empire', 'type' => 'empire'],
                 ['key' => 'cash', 'label' => 'admin.accounts.cash', 'sort' => 'cash', 'type' => 'number'],
                 ['key' => 'mileage', 'label' => 'admin.accounts.mileage', 'sort' => 'mileage', 'type' => 'number'],
-                ['key' => 'last_play', 'label' => 'admin.accounts.last_play', 'sort' => 'last_play', 'type' => 'date'],
+                ['key' => 'last_play', 'label' => 'admin.accounts.last_play', 'sort' => 'last_play', 'type' => 'date', 'clock' => 'game'],
                 ['key' => 'ip', 'label' => 'admin.accounts.last_ip', 'type' => 'text'],
             ])
             ->filters([

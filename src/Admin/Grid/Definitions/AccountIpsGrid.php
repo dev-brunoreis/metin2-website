@@ -24,8 +24,8 @@ final class AccountIpsGrid
             ->columns([
                 ['key' => 'ip', 'label' => 'admin.logs.columns.ip', 'sort' => 'ip', 'type' => 'text'],
                 ['key' => 'connections', 'label' => 'admin.logs.columns.connections', 'sort' => 'connections', 'type' => 'number'],
-                ['key' => 'first_seen', 'label' => 'admin.logs.columns.first_seen', 'sort' => 'first_seen', 'type' => 'date'],
-                ['key' => 'last_seen', 'label' => 'admin.logs.columns.last_seen', 'sort' => 'last_seen', 'type' => 'date'],
+                ['key' => 'first_seen', 'label' => 'admin.logs.columns.first_seen', 'sort' => 'first_seen', 'type' => 'date', 'clock' => 'game'],
+                ['key' => 'last_seen', 'label' => 'admin.logs.columns.last_seen', 'sort' => 'last_seen', 'type' => 'date', 'clock' => 'game'],
             ]);
     }
 }

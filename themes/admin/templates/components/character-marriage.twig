@@ -36,7 +36,7 @@
             </div>
             <div class="admin-stat">
                 <dt>{{ t('admin.characters.marriage_since') }}</dt>
-                <dd>{{ marriage.married_at|game_date }}</dd>
+                <dd>{{ marriage.married_at|game_date(true) }}</dd>
             </div>
         </dl>
     {% endif %}

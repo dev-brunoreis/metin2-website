@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mt2Cms\Service;
 
+use Mt2Cms\Game\GameClock;
 use Mt2Cms\Repository\PlayerRepository;
 use Mt2Cms\Repository\UnstuckRepository;
 
@@ -13,6 +14,7 @@ class UnstuckService
         private UnstuckRepository $cooldowns,
         private PlayerRepository $players,
         private SettingsService $settings,
+        private ?GameClock $gameClock = null,
     ) {
     }
 
@@ -80,9 +82,14 @@ class UnstuckService
             return true;
         }
 
-        $threshold = time() - ($this->settings->onlineWindowMinutes() * 60);
+        $window = $this->settings->onlineWindowMinutes() * 60;
+        $elapsed = $this->gameClock?->elapsedSeconds($lastPlay);
 
-        return strtotime($lastPlay) < $threshold;
+        if ($elapsed === null) {
+            $elapsed = time() - (int) strtotime($lastPlay);
+        }
+
+        return $elapsed > $window;
     }
 
     public function unstuck(int $playerId, int $accountId, bool $adminBypass = false): void
@@ -101,7 +108,7 @@ class UnstuckService
             throw new \InvalidArgumentException('unstuck.player_not_found');
         }
 
-        if (!$adminBypass && !$this->isOffline($playerId)) {
+        if (!$this->isOffline($playerId)) {
             throw new \RuntimeException('unstuck.player_online');
         }
 

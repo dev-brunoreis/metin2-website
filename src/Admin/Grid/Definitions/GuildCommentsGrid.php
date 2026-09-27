@@ -21,7 +21,7 @@ final class GuildCommentsGrid
             ->columns([
                 ['key' => 'name', 'label' => 'admin.characters.name', 'sort' => 'name', 'type' => 'text'],
                 ['key' => 'content', 'label' => 'admin.characters.guild_comment', 'sort' => 'content', 'type' => 'text'],
-                ['key' => 'time', 'label' => 'admin.characters.guild_comment_time', 'sort' => 'time', 'type' => 'date'],
+                ['key' => 'time', 'label' => 'admin.characters.guild_comment_time', 'sort' => 'time', 'type' => 'date', 'clock' => 'game'],
                 [
                     'key' => '_actions',
                     'type' => 'actions',

@@ -10,6 +10,7 @@ class Display
 {
     public function __construct(
         private Translator $translator,
+        private ?GameClock $gameClock = null,
     ) {
     }
 
@@ -165,8 +166,9 @@ class Display
 
     /**
      * MySQL DATETIME → relative time with calendar date.
+     * $fromGameServer reads elapsed time on the game MySQL clock.
      */
-    public function datetime(mixed $value): string
+    public function datetime(mixed $value, bool $fromGameServer = false): string
     {
         $raw = trim((string) $value);
 
@@ -180,8 +182,9 @@ class Display
             return $this->translator->get('datetime.never');
         }
 
+        $gameElapsed = $fromGameServer ? $this->gameClock?->elapsedSeconds($raw) : null;
         $now = new \DateTimeImmutable('now');
-        $diff = $now->getTimestamp() - $at->getTimestamp();
+        $diff = $gameElapsed ?? ($now->getTimestamp() - $at->getTimestamp());
         $format = $this->translator->get('datetime.calendar_format');
         $calendar = $at->format($format !== 'datetime.calendar_format' ? $format : 'Y-m-d H:i');
 

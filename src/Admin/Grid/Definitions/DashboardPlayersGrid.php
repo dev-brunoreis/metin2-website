@@ -27,7 +27,7 @@ final class DashboardPlayersGrid
                 ['key' => 'account_login', 'label' => 'admin.characters.account', 'type' => 'text'],
                 ['key' => 'job', 'label' => 'admin.characters.job', 'sort' => 'job', 'type' => 'job'],
                 ['key' => 'level', 'label' => 'admin.characters.level', 'sort' => 'level', 'type' => 'number'],
-                ['key' => 'last_play', 'label' => 'admin.characters.last_play', 'sort' => 'last_play', 'type' => 'date'],
+                ['key' => 'last_play', 'label' => 'admin.characters.last_play', 'sort' => 'last_play', 'type' => 'date', 'clock' => 'game'],
             ])
             ->filters([
                 ['key' => 'range', 'label' => 'admin.dashboard.range_label', 'type' => 'select', 'preserveOrder' => true, 'options' => [
