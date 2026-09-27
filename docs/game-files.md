@@ -6,7 +6,7 @@ Git and the release tarball ship **only** `config.json`, `schema/*.json`, and em
 
 Supported base: the [40.250 reference serverfile and client](https://metin2.dev/topic/27610-40250-reference-serverfile-client-src-15-available-languages/). Archive folders vary; match by filename. English names must end up as `item_names_en.txt` and `mob_names_en.txt` unless you edit `config.json`.
 
-Boot after install needs the three JSON files only. Missing `itemdesc` / `item_list` / drops are empty catalogs. Proto admin throws `admin.proto.missing_files` on first use when `game/db/*.txt` is absent. `game/maps/` is not read (map labels are `lang/en.json` via `Display::map()`).
+Boot after install needs the three JSON files only. Missing `itemdesc` / `item_list` / drops are empty catalogs. Proto admin list/edit flash `admin.proto.missing_files` and redirect to `/admin` when `game/db` proto or name files from `config.json` are absent (wrong filename such as `item_names.txt` instead of `item_names_en.txt` counts as missing). `game/maps/` is not read (map labels are `lang/en.json` via `Display::map()`).
 
 ## Folder layout
 

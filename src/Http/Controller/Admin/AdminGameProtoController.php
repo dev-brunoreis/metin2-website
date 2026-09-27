@@ -45,25 +45,29 @@ class AdminGameProtoController extends AdminController
 
     public function index(string $kind): Response
     {
-        $route = $this->routeKind($kind);
-        $internal = $this->protos->kindFromRoute($route);
-        $prefix = $this->i18nPrefix($route);
-        $spec = $this->protoGridSpec($route);
-        $query = $this->gridQuery($spec);
-        $grid = GridRunner::fetch(
-            $spec,
-            $query,
-            fn ($q) => $this->protos->countForGrid($internal, $q),
-            fn ($q) => $this->protos->listForGrid($internal, $q),
-        );
+        try {
+            $route = $this->routeKind($kind);
+            $internal = $this->protos->kindFromRoute($route);
+            $prefix = $this->i18nPrefix($route);
+            $spec = $this->protoGridSpec($route);
+            $query = $this->gridQuery($spec);
+            $grid = GridRunner::fetch(
+                $spec,
+                $query,
+                fn ($q) => $this->protos->countForGrid($internal, $q),
+                fn ($q) => $this->protos->listForGrid($internal, $q),
+            );
 
-        return $this->adminView($route, 'pages/proto-list.twig', [
-            'title' => $this->t($prefix . '.title'),
-            'pageLead' => $this->t($prefix . '.lead'),
-            'headerHref' => $this->protoPath($route) . '/new',
-            'headerActionLabel' => $this->t($prefix . '.create'),
-            'grid' => $grid,
-        ]);
+            return $this->adminView($route, 'pages/proto-list.twig', [
+                'title' => $this->t($prefix . '.title'),
+                'pageLead' => $this->t($prefix . '.lead'),
+                'headerHref' => $this->protoPath($route) . '/new',
+                'headerActionLabel' => $this->t($prefix . '.create'),
+                'grid' => $grid,
+            ]);
+        } catch (\RuntimeException $e) {
+            return $this->protoFilesError($e);
+        }
     }
 
     public function mass(string $kind): Response
@@ -122,17 +126,21 @@ class AdminGameProtoController extends AdminController
 
     public function edit(string $kind, string $id): Response
     {
-        $route = $this->routeKind($kind);
-        $internal = $this->protos->kindFromRoute($route);
-        $record = $this->protos->find($internal, (int) $id);
+        try {
+            $route = $this->routeKind($kind);
+            $internal = $this->protos->kindFromRoute($route);
+            $record = $this->protos->find($internal, (int) $id);
 
-        if ($record === null) {
-            $this->flash('error', $this->t($this->i18nPrefix($route) . '.not_found'));
+            if ($record === null) {
+                $this->flash('error', $this->t($this->i18nPrefix($route) . '.not_found'));
 
-            return $this->redirect($this->protoPath($route));
+                return $this->redirect($this->protoPath($route));
+            }
+
+            return $this->formView($route, $record, null, 200, true);
+        } catch (\RuntimeException $e) {
+            return $this->protoFilesError($e);
         }
-
-        return $this->formView($route, $record, null, 200, true);
     }
 
     public function update(string $kind, string $id): Response
@@ -366,6 +374,18 @@ class AdminGameProtoController extends AdminController
     private function i18nPrefix(string $route): string
     {
         return $route === GameProtoService::ROUTE_MOBS ? 'admin.mobs' : 'admin.items';
+    }
+
+    private function protoFilesError(\RuntimeException $e): Response
+    {
+        $key = $e->getMessage();
+        if ($key !== 'admin.proto.missing_files') {
+            throw $e;
+        }
+
+        $this->flash('error', $this->t($key));
+
+        return $this->redirect('/admin');
     }
 
     /**
