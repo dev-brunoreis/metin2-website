@@ -55,7 +55,7 @@ Reference pack (files + SQL): [40.250 serverfile + client](https://metin2.dev/to
 ### 1. Unpack and install PHP deps
 
 ```bash
-tar -xzf metin2-website-VERSION.tar.gz
+tar -xzf mt2-cms-1.0.0-beta.0.tar.gz
 cd metin2-website-VERSION
 composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
 php bin/check-requirements.php
