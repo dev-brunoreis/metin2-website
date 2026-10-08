@@ -1,0 +1,1017 @@
+/* Hanji — loads after the inherited theme.css; paper surfaces, ink chrome, vermilion seals */
+
+.theme-hanji ::selection {
+  background: rgba(184, 50, 31, 0.22);
+}
+
+.theme-hanji h1,
+.theme-hanji h2,
+.theme-hanji h3,
+.theme-hanji .k-title {
+  color: var(--hj-ink);
+}
+
+.theme-hanji a:hover {
+  color: var(--hj-vermilion-deep);
+}
+
+/* Empire stripe: Chunjo needs its own yellow, the parent reuses the accent */
+.theme-hanji .k-realm-stripe {
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--hj-shinsoo) 0 33.33%,
+    var(--hj-chunjo) 33.33% 66.66%,
+    var(--hj-jinno) 66.66% 100%
+  );
+  box-shadow: none;
+}
+
+.theme-hanji .k-player-stripe.k-player-empire-2,
+.theme-hanji .k-player-empire.k-player-empire-2 {
+  background: var(--hj-chunjo);
+}
+
+/* ---------- Header ---------- */
+
+.theme-hanji .k-chrome {
+  background: rgba(244, 237, 222, 0.9);
+  backdrop-filter: blur(10px) saturate(1.1);
+  box-shadow: 0 1px 0 rgba(31, 27, 23, 0.12), 0 10px 30px -22px rgba(31, 27, 23, 0.6);
+}
+
+.theme-hanji .k-nav {
+  background: transparent;
+  border-bottom: 0;
+}
+
+.theme-hanji .k-nav-bar {
+  padding-block: 0.8rem;
+}
+
+.theme-hanji .k-brand {
+  gap: 0.65rem;
+  color: var(--hj-ink);
+  text-shadow: none;
+  letter-spacing: 0.16em;
+}
+
+.theme-hanji .hj-brand-seal {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.1rem;
+  height: 2.1rem;
+  font-family: "Noto Serif CJK KR", "Noto Serif KR", "Source Han Serif", "Songti SC", serif;
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  color: #fff4e4;
+  background: var(--hj-vermilion);
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 2px rgba(255, 244, 228, 0.35), 0 2px 0 var(--hj-vermilion-deep);
+  transform: rotate(-4deg);
+}
+
+.theme-hanji .hj-brand-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.theme-hanji .k-nav-links a:not(.k-btn) {
+  position: relative;
+  color: var(--hj-ink-soft);
+  font-weight: 700;
+}
+
+.theme-hanji .k-nav-links a:not(.k-btn):hover,
+.theme-hanji .k-nav-links a.k-nav-active {
+  color: var(--hj-vermilion);
+}
+
+@media (min-width: 960px) {
+  .theme-hanji .k-nav-links a.k-nav-active::after {
+    content: "";
+    position: absolute;
+    left: 0.4rem;
+    right: 0.4rem;
+    bottom: -0.15rem;
+    height: 6px;
+    background: url("../img/brush.svg") center / 100% 100% no-repeat;
+    opacity: 0.85;
+  }
+}
+
+.theme-hanji .k-nav-toggle,
+.theme-hanji .locale-switcher-toggle {
+  color: var(--hj-ink);
+  background: rgba(255, 251, 243, 0.7);
+  border-color: var(--k-border-bright);
+}
+
+.theme-hanji .k-nav-toggle:hover,
+.theme-hanji .k-nav.is-open .k-nav-toggle,
+.theme-hanji .locale-switcher-toggle:hover,
+.theme-hanji .locale-switcher.is-open .locale-switcher-toggle {
+  color: var(--hj-vermilion);
+  background: var(--k-bg-raised);
+  border-color: var(--hj-vermilion);
+}
+
+.theme-hanji .locale-switcher-menu {
+  background: var(--k-bg-raised);
+  border: 1px solid var(--k-border-bright);
+  box-shadow: 0 16px 28px -12px rgba(31, 27, 23, 0.4);
+}
+
+.theme-hanji .locale-switcher-option:hover,
+.theme-hanji .locale-switcher-option:focus-visible {
+  background: rgba(184, 50, 31, 0.08);
+}
+
+.theme-hanji .locale-switcher-option.is-current {
+  background: rgba(184, 50, 31, 0.14);
+}
+
+@media (max-width: 959px) {
+  .theme-hanji .k-nav-links a:not(.k-btn) {
+    border-bottom-color: var(--k-border);
+  }
+
+  .theme-hanji .k-nav-enhanced .k-nav-links {
+    background: var(--k-bg-raised);
+    border-bottom: 1px solid var(--k-border-bright);
+    box-shadow: 0 18px 30px -16px rgba(31, 27, 23, 0.45);
+  }
+}
+
+/* ---------- Buttons & inputs ---------- */
+
+.theme-hanji .k-btn {
+  color: #f6eedd;
+  background: var(--hj-ink);
+  border: 1px solid var(--hj-ink);
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 2px 0 rgba(31, 27, 23, 0.25);
+}
+
+.theme-hanji .k-btn:hover {
+  color: #fffaf0;
+  background: #352d25;
+  filter: none;
+}
+
+.theme-hanji .k-btn:active {
+  transform: translateY(1px);
+}
+
+.theme-hanji .k-btn-ember {
+  color: #fff6ea;
+  background: var(--hj-vermilion);
+  border-color: var(--hj-vermilion-deep);
+  box-shadow: inset 0 0 0 2px rgba(255, 246, 234, 0.18), 0 2px 0 var(--hj-vermilion-deep);
+}
+
+.theme-hanji .k-btn-ember:hover {
+  color: #fff;
+  background: #c93a24;
+}
+
+.theme-hanji .k-btn-ghost {
+  color: var(--hj-ink);
+  background: transparent;
+  border-color: rgba(31, 27, 23, 0.35);
+  box-shadow: none;
+}
+
+.theme-hanji .k-btn-ghost:hover {
+  color: var(--hj-vermilion);
+  background: rgba(184, 50, 31, 0.06);
+  border-color: var(--hj-vermilion);
+}
+
+.theme-hanji .k-input,
+.theme-hanji input[type="text"],
+.theme-hanji input[type="password"],
+.theme-hanji input[type="email"],
+.theme-hanji input[type="search"],
+.theme-hanji input[type="number"],
+.theme-hanji textarea,
+.theme-hanji select,
+.theme-hanji main input,
+.theme-hanji main textarea,
+.theme-hanji main select {
+  background: #fffdf8 !important;
+  border-color: var(--k-border-bright) !important;
+  color: var(--k-text) !important;
+}
+
+.theme-hanji input::placeholder,
+.theme-hanji textarea::placeholder {
+  color: #9a8c78;
+}
+
+.theme-hanji .k-input:focus,
+.theme-hanji input:focus,
+.theme-hanji textarea:focus,
+.theme-hanji select:focus {
+  border-color: var(--hj-vermilion) !important;
+  box-shadow: 0 0 0 3px rgba(184, 50, 31, 0.15);
+}
+
+/* ---------- Panels (widgets) ---------- */
+
+.theme-hanji .k-panel {
+  position: relative;
+  background: var(--k-bg-raised);
+  border: 1px solid var(--k-border);
+  border-radius: 4px;
+  box-shadow: var(--hj-shadow);
+}
+
+.theme-hanji .k-panel-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1rem 0.95rem;
+  color: var(--hj-ink);
+  font-weight: 700;
+  background: none;
+  border-bottom: 0;
+}
+
+.theme-hanji .k-panel-head::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.6rem;
+  height: 0.6rem;
+  background: var(--hj-vermilion);
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+
+.theme-hanji .k-panel-head::after {
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0;
+  height: 5px;
+  background: url("../img/brush.svg") left center / 100% 100% no-repeat;
+  opacity: 0.22;
+}
+
+.theme-hanji .k-panel-head a {
+  margin-left: auto;
+}
+
+.theme-hanji .k-rank-row,
+.theme-hanji .k-table td,
+.theme-hanji .k-char-row {
+  border-bottom-color: var(--k-border);
+}
+
+.theme-hanji .k-rank-num.k-top {
+  color: var(--hj-vermilion);
+}
+
+.theme-hanji .k-rank-row img,
+.theme-hanji .k-face-sm img,
+.theme-hanji .k-player-face img {
+  background: var(--hj-paper-deep);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--k-border-bright);
+}
+
+.theme-hanji .k-table tr:hover td,
+.theme-hanji .k-char-row:hover {
+  background: rgba(184, 50, 31, 0.04);
+}
+
+.theme-hanji .k-tabs a.k-tab-active {
+  color: var(--hj-vermilion);
+  border-color: rgba(184, 50, 31, 0.4);
+  background: rgba(184, 50, 31, 0.06);
+}
+
+/* ---------- Status colors on paper ---------- */
+
+.theme-hanji .k-flash-ok {
+  border-color: #8db596;
+  background: #e5f0e2;
+  color: #24502f;
+}
+
+.theme-hanji .k-flash-err {
+  border-color: #d79a8c;
+  background: #f7e1da;
+  color: #7a2112;
+}
+
+.theme-hanji .k-event-status-ongoing,
+.theme-hanji .k-player-online {
+  color: #2f6b3c;
+  border-color: #8db596;
+  background: rgba(47, 107, 60, 0.08);
+}
+
+.theme-hanji .k-char-status {
+  color: #8a5a1c;
+}
+
+.theme-hanji .k-player-stats > div,
+.theme-hanji .k-shop-cash {
+  background: var(--hj-paper);
+  border-color: var(--k-border);
+}
+
+.theme-hanji main .text-amber-200,
+.theme-hanji main .text-amber-200\/80 {
+  color: #8a5a1c !important;
+}
+
+.theme-hanji main .bg-amber-900\/40 {
+  background: rgba(201, 150, 43, 0.18) !important;
+}
+
+.theme-hanji main .rounded-xl.border.border-slate-200,
+.theme-hanji main .rounded-2xl.border.border-slate-200,
+.theme-hanji main .rounded-lg.border.border-slate-200,
+.theme-hanji main .rounded-xl.border.border-slate-300,
+.theme-hanji main .bg-white {
+  background: var(--k-bg-raised) !important;
+  box-shadow: var(--hj-shadow);
+}
+
+.theme-hanji main .bg-slate-50,
+.theme-hanji main .bg-slate-100,
+.theme-hanji main .hover\:bg-slate-50:hover {
+  background: rgba(140, 106, 60, 0.08) !important;
+}
+
+/* Equipment stays dark like the in-game window so item icons read */
+.theme-hanji .k-inv-paperdoll {
+  background: #2b2520;
+  border-color: #4a3f33;
+}
+
+.theme-hanji .k-inv-cell {
+  border-color: #4a3f33;
+}
+
+.theme-hanji .k-inv-tip {
+  border-color: #6a5a45;
+}
+
+.theme-hanji .k-inv-tip-title {
+  color: var(--hj-gold);
+}
+
+.theme-hanji .k-inv-tip-line {
+  color: #b9ad97;
+}
+
+/* ---------- Layout ---------- */
+
+.theme-hanji .k-layout {
+  gap: 1.5rem;
+  padding-top: 1.75rem;
+}
+
+.theme-hanji .k-col {
+  gap: 1.25rem;
+}
+
+/* ---------- Home hero ---------- */
+
+.theme-hanji .hj-hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(31, 27, 23, 0.12);
+  background:
+    radial-gradient(ellipse 55% 70% at 75% 40%, rgba(255, 251, 243, 0.9), transparent 70%),
+    linear-gradient(180deg, rgba(230, 217, 191, 0.25), rgba(230, 217, 191, 0.7));
+}
+
+.theme-hanji .hj-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 0;
+}
+
+@media (min-width: 900px) {
+  .theme-hanji .hj-hero-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: 1rem;
+    min-height: 470px;
+    padding-top: 1.5rem;
+  }
+}
+
+.theme-hanji .hj-hero-copy {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .theme-hanji .hj-hero-copy {
+    padding: 1.5rem 0 3rem;
+  }
+}
+
+.theme-hanji .hj-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
+  font-family: "Cinzel", serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--hj-vermilion);
+}
+
+.theme-hanji .hj-kicker-seal {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  font-family: "Noto Serif CJK KR", "Noto Serif KR", "Source Han Serif", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  color: var(--hj-vermilion);
+  border: 1.5px solid var(--hj-vermilion);
+  border-radius: 2px;
+}
+
+.theme-hanji .hj-hero-title {
+  margin: 0;
+  font-size: clamp(2.3rem, 5.6vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: 0.04em;
+  color: var(--hj-ink);
+  overflow-wrap: anywhere;
+}
+
+.theme-hanji .hj-hero-title::after {
+  content: "";
+  display: block;
+  width: min(16rem, 70%);
+  height: 12px;
+  margin-top: 0.85rem;
+  background: url("../img/brush.svg") left center / 100% 100% no-repeat;
+}
+
+.theme-hanji .hj-hero-lead {
+  max-width: 34rem;
+  margin: 1.1rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--hj-ink-soft);
+}
+
+.theme-hanji .hj-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.6rem;
+}
+
+.theme-hanji .hj-hero-actions .k-btn {
+  padding: 0.75rem 1.35rem;
+}
+
+.theme-hanji .hj-hero-tally {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin: 1.75rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(31, 27, 23, 0.25);
+  max-width: 30rem;
+}
+
+.theme-hanji .hj-hero-tally dt {
+  font-family: "Cinzel", serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--k-muted);
+}
+
+.theme-hanji .hj-hero-tally dd {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.15rem 0 0;
+  font-family: "Cinzel", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--hj-ink);
+}
+
+.theme-hanji .hj-hero-art {
+  position: relative;
+  align-self: end;
+  margin: 0 -1rem;
+  aspect-ratio: 4 / 3;
+  max-height: 470px;
+}
+
+@media (min-width: 900px) {
+  .theme-hanji .hj-hero-art {
+    margin: 0 -1rem 0 0;
+    height: 470px;
+    aspect-ratio: auto;
+  }
+}
+
+.theme-hanji .hj-hero-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 22%, #000 88%, transparent 100%);
+}
+
+.theme-hanji .hj-art-stone {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: hj-float 7s ease-in-out infinite;
+}
+
+.theme-hanji .hj-art-crack {
+  animation: hj-ember 3.2s ease-in-out infinite;
+}
+
+.theme-hanji .hj-art-sun {
+  animation: hj-sun 9s ease-in-out infinite;
+}
+
+.theme-hanji .hj-hero-seal {
+  position: absolute;
+  right: 6%;
+  top: 12%;
+  display: grid;
+  place-items: center;
+  width: 3.4rem;
+  padding: 0.55rem 0;
+  font-family: "Noto Serif CJK KR", "Noto Serif KR", "Source Han Serif", "Songti SC", serif;
+  font-size: 1.35rem;
+  line-height: 1.15;
+  writing-mode: vertical-rl;
+  color: #fff4e4;
+  background: var(--hj-vermilion);
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 3px rgba(255, 244, 228, 0.3);
+  transform: rotate(3deg);
+  opacity: 0.92;
+}
+
+@keyframes hj-float {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50% { transform: translateY(-7px) rotate(-0.5deg); }
+}
+
+@keyframes hj-ember {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@keyframes hj-sun {
+  0%, 100% { opacity: 0.88; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-hanji .hj-art-stone,
+  .theme-hanji .hj-art-crack,
+  .theme-hanji .hj-art-sun {
+    animation: none;
+  }
+}
+
+/* ---------- Banner carousel as a hanging scroll ---------- */
+
+.theme-hanji .k-banner {
+  margin-top: 2.25rem;
+}
+
+.theme-hanji .k-banner::before,
+.theme-hanji .k-banner::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  left: 0.6rem;
+  right: 0.6rem;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #6b4a2e 0%, #3b2717 55%, #24170d 100%);
+  box-shadow: 0 3px 6px rgba(31, 27, 23, 0.35);
+}
+
+.theme-hanji .k-banner::before {
+  top: -6px;
+}
+
+.theme-hanji .k-banner::after {
+  bottom: -6px;
+}
+
+.theme-hanji .k-banner-frame {
+  border: 10px solid #f8f1e1;
+  outline: 1px solid var(--k-border-bright);
+  border-radius: 0;
+  background: var(--hj-ink);
+  box-shadow: 0 18px 34px -20px rgba(31, 27, 23, 0.7);
+}
+
+.theme-hanji .k-banner-placeholder {
+  color: #f6eedd;
+}
+
+.theme-hanji .k-banner-placeholder-label {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+}
+
+.theme-hanji .k-banner-placeholder-warrior { background: linear-gradient(135deg, #3a342d, #7a2316); }
+.theme-hanji .k-banner-placeholder-ninja { background: linear-gradient(135deg, #1f1b17, #2d4f86); }
+.theme-hanji .k-banner-placeholder-shura { background: linear-gradient(135deg, #2a1f1a, #8e2414); }
+.theme-hanji .k-banner-placeholder-shaman { background: linear-gradient(135deg, #3a342d, #8c6a3c); }
+
+.theme-hanji .k-banner-arrow {
+  color: var(--hj-ink);
+  background: rgba(248, 241, 225, 0.88);
+  border-color: rgba(31, 27, 23, 0.25);
+}
+
+.theme-hanji .k-banner-arrow:hover {
+  color: var(--hj-vermilion);
+  background: #fffaf0;
+  border-color: var(--hj-vermilion);
+}
+
+.theme-hanji .k-banner-dot {
+  background: rgba(248, 241, 225, 0.5);
+  border-color: rgba(248, 241, 225, 0.85);
+}
+
+.theme-hanji .k-banner-dot.is-active,
+.theme-hanji .k-banner-dot:hover {
+  background: var(--hj-vermilion);
+  border-color: #f8f1e1;
+}
+
+/* ---------- Home sections ---------- */
+
+.theme-hanji .hj-section + .hj-section {
+  margin-top: 2.25rem;
+}
+
+.theme-hanji .hj-section-head {
+  margin-bottom: 1rem;
+}
+
+.theme-hanji .hj-section-head-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.theme-hanji .hj-section-head h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.theme-hanji .hj-section-head p {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--k-muted);
+}
+
+.theme-hanji .hj-text-link {
+  font-family: "Cinzel", serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.theme-hanji .hj-empty {
+  padding: 1.25rem;
+  text-align: center;
+  color: var(--k-muted);
+  border: 1px dashed var(--k-border-bright);
+  border-radius: 4px;
+}
+
+.theme-hanji .hj-kingdoms {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .theme-hanji .hj-kingdoms {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.theme-hanji .hj-realm-1 { --hj-realm: var(--hj-shinsoo); }
+.theme-hanji .hj-realm-2 { --hj-realm: var(--hj-chunjo); }
+.theme-hanji .hj-realm-3 { --hj-realm: var(--hj-jinno); }
+
+.theme-hanji .hj-kingdom {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.1rem 1rem 1rem;
+  overflow: hidden;
+  color: var(--k-text);
+  text-decoration: none;
+  background: var(--k-bg-raised);
+  border: 1px solid var(--k-border);
+  border-top: 4px solid var(--hj-realm);
+  border-radius: 4px;
+  box-shadow: var(--hj-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-hanji .hj-kingdom::after {
+  content: "";
+  position: absolute;
+  right: -2.5rem;
+  bottom: -2.5rem;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  background: var(--hj-realm);
+  opacity: 0.08;
+  transition: opacity 0.2s ease, transform 0.3s ease;
+}
+
+.theme-hanji .hj-kingdom:hover {
+  color: var(--k-text);
+  transform: translateY(-3px);
+  border-color: var(--hj-realm);
+  box-shadow: 0 18px 30px -18px rgba(31, 27, 23, 0.55);
+}
+
+.theme-hanji .hj-kingdom:hover::after {
+  opacity: 0.16;
+  transform: scale(1.15);
+}
+
+.theme-hanji .hj-kingdom-flag {
+  width: 1.9rem;
+  height: 2.6rem;
+  margin-bottom: 0.35rem;
+  color: var(--hj-ink-soft);
+}
+
+.theme-hanji .hj-flag-cloth {
+  fill: var(--hj-realm);
+}
+
+.theme-hanji .hj-kingdom-name {
+  font-family: "Cinzel", serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--hj-realm);
+}
+
+.theme-hanji .hj-kingdom strong {
+  font-family: "Cinzel", serif;
+  font-size: 1.02rem;
+  color: var(--hj-ink);
+}
+
+.theme-hanji .hj-kingdom-lore {
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--k-muted);
+}
+
+.theme-hanji .hj-kingdom-link {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-family: "Cinzel", serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--hj-realm);
+}
+
+.theme-hanji .hj-chronicle {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--k-bg-raised);
+  border: 1px solid var(--k-border);
+  border-radius: 4px;
+  box-shadow: var(--hj-shadow);
+}
+
+.theme-hanji .hj-entry {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid var(--k-border);
+}
+
+.theme-hanji .hj-entry:last-child {
+  border-bottom: 0;
+}
+
+.theme-hanji .hj-entry-mark {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  margin-top: 0.15rem;
+  font-family: "Cinzel", serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--hj-vermilion);
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+
+.theme-hanji .hj-entry.is-lead .hj-entry-mark {
+  color: #fff4e4;
+  background: var(--hj-vermilion);
+  border-color: var(--hj-vermilion);
+  border-radius: 3px;
+  transform: rotate(-4deg);
+}
+
+.theme-hanji .hj-entry time {
+  font-family: "Cinzel", serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--k-bronze-dim);
+}
+
+.theme-hanji .hj-entry h3 {
+  margin: 0.15rem 0 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.theme-hanji .hj-entry.is-lead h3 {
+  font-size: 1.2rem;
+}
+
+.theme-hanji .hj-entry h3 a {
+  color: var(--hj-ink);
+  text-decoration: none;
+}
+
+.theme-hanji .hj-entry h3 a:hover {
+  color: var(--hj-vermilion);
+}
+
+.theme-hanji .hj-entry p {
+  margin: 0.35rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--k-muted);
+}
+
+/* ---------- Footer ---------- */
+
+.theme-hanji .hj-footer {
+  position: relative;
+  margin-top: 3rem;
+  padding: 0;
+  color: #cfc4ae;
+  background: var(--hj-ink);
+  border-top: 0;
+}
+
+.theme-hanji .hj-footer-ridge {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% - 1px);
+  width: 100%;
+  height: 70px;
+}
+
+.theme-hanji .hj-ridge-far {
+  fill: var(--hj-ink-soft);
+  opacity: 0.35;
+}
+
+.theme-hanji .hj-ridge-near {
+  fill: var(--hj-ink);
+}
+
+.theme-hanji .hj-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 1.75rem;
+}
+
+.theme-hanji .hj-footer-seal {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-family: "Noto Serif CJK KR", "Noto Serif KR", "Source Han Serif", serif;
+  font-size: 1.3rem;
+  color: #fff4e4;
+  background: var(--hj-vermilion);
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 2px rgba(255, 244, 228, 0.3);
+  transform: rotate(-4deg);
+}
+
+.theme-hanji .hj-footer-brand {
+  margin: 0.85rem 0 0;
+  font-family: "Cinzel", serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #f4ecda;
+}
+
+.theme-hanji .hj-footer-tagline {
+  margin: 0.35rem 0 0;
+  font-style: italic;
+  color: #a99d88;
+}
+
+.theme-hanji .hj-footer-realms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.25rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: "Cinzel", serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.theme-hanji .hj-footer-realms li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.theme-hanji .hj-footer-realms li::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--hj-realm);
+  transform: rotate(45deg);
+}
+
+.theme-hanji .hj-footer .k-social-link {
+  color: #cfc4ae;
+  border-color: #4a4037;
+  background: rgba(244, 236, 218, 0.04);
+}
+
+.theme-hanji .hj-footer .k-social-link:hover {
+  color: #fff4e4;
+  border-color: var(--hj-vermilion);
+  background: var(--hj-vermilion);
+}
+
+.theme-hanji .hj-footer-credit {
+  margin: 1rem 0 0;
+  font-size: 0.72rem;
+}
+
+.theme-hanji .hj-footer a {
+  color: var(--hj-gold);
+}
+
+.theme-hanji .hj-footer a:hover {
+  color: #fff4e4;
+}

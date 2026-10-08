@@ -1,0 +1,20 @@
+{
+  "slots": {
+    "banner": [
+      {
+        "id": "hanji-hero",
+        "template": "components/home-hero.twig"
+      },
+      {
+        "id": "hanji-gallery",
+        "template": "components/banner.twig"
+      }
+    ],
+    "main": [
+      {
+        "id": "content",
+        "template": "pages/home.twig"
+      }
+    ]
+  }
+}

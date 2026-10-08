@@ -1,0 +1,49 @@
+<section class="hj-section">
+    <header class="hj-section-head">
+        <h2>{{ t('theme.hanji.kingdoms_title') }}</h2>
+        <p>{{ t('theme.hanji.kingdoms_lead') }}</p>
+    </header>
+    <div class="hj-kingdoms">
+        {% for empire in [1, 2, 3] %}
+            <a href="/ranking?tab=guilds" class="hj-kingdom hj-realm-{{ empire }}">
+                <svg class="hj-kingdom-flag" viewBox="0 0 40 56" aria-hidden="true">
+                    <path d="M4 2v54" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+                    <path class="hj-flag-cloth" d="M6 6h30l-6 10 6 10H6Z"/>
+                </svg>
+                <span class="hj-kingdom-name">{{ t('theme.hanji.kingdom_name_' ~ empire) }}</span>
+                <strong>{{ empire|empire_name }}</strong>
+                <span class="hj-kingdom-lore">{{ t('theme.hanji.kingdom_' ~ empire) }}</span>
+                <span class="hj-kingdom-link">{{ t('home.view_ranking') }} <span aria-hidden="true">→</span></span>
+            </a>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="hj-section">
+    <header class="hj-section-head hj-section-head-row">
+        <div>
+            <h2>{{ t('home.news_title') }}</h2>
+            <p>{{ t('home.news_lead') }}</p>
+        </div>
+        {% if has_news %}
+            <a href="/news" class="hj-text-link">{{ t('home.news_all') }} <span aria-hidden="true">→</span></a>
+        {% endif %}
+    </header>
+
+    {% if posts is empty %}
+        <p class="hj-empty">{{ t('news.empty') }}</p>
+    {% else %}
+        <ol class="hj-chronicle">
+            {% for post in posts %}
+                <li class="hj-entry{% if loop.first %} is-lead{% endif %}">
+                    <span class="hj-entry-mark" aria-hidden="true">{{ loop.index }}</span>
+                    <div class="hj-entry-body">
+                        <time>{{ (post.published_at|default(post.created_at))|game_date }}</time>
+                        <h3><a href="/news/{{ post.id }}">{{ post.title }}</a></h3>
+                        <p>{{ post.body|news_excerpt(loop.first ? 200 : 110) }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+</section>

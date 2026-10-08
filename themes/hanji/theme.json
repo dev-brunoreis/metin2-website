@@ -1,0 +1,7 @@
+{
+  "name": "hanji",
+  "parent": "default",
+  "features": {
+    "layout_columns": true
+  }
+}

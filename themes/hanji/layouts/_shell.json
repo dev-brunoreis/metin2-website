@@ -1,0 +1,7 @@
+{
+  "slots": {
+    "banner": [
+      { "id": "banner", "remove": true }
+    ]
+  }
+}

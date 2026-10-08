@@ -69,6 +69,18 @@
             "banner_ninja": "Ninja",
             "banner_shura": "Sura",
             "banner_shaman": "Shaman"
+        },
+        "hanji": {
+            "hero_kicker": "The stones fell. The kingdoms remain.",
+            "hero_lead": "Black Metin stones struck the continent, poisoning the land and calling monsters from the dark. Shinsoo, Chunjo and Jinno fight the curse and each other. Raise your banner.",
+            "kingdoms_title": "Choose your banner",
+            "kingdoms_lead": "Three kingdoms, one cursed continent.",
+            "kingdom_name_1": "Shinsoo",
+            "kingdom_name_2": "Chunjo",
+            "kingdom_name_3": "Jinno",
+            "kingdom_1": "Strength and loyalty. The southern realm of merchants and old trade roads.",
+            "kingdom_2": "Wisdom and spirit. The western realm guided by its seers.",
+            "kingdom_3": "Steel and mystery. The eastern realm that wants the old empire back."
         }
     },
     "events": {

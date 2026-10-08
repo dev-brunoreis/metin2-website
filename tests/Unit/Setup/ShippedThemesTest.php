@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Metin2Website\Tests\Unit\Setup;
 
 use Metin2Website\Setup\ThemeCatalog;
+use Metin2Website\Theme\ThemeResolver;
 use PHPUnit\Framework\TestCase;
 
 final class ShippedThemesTest extends TestCase
@@ -34,5 +35,46 @@ final class ShippedThemesTest extends TestCase
         self::assertFileExists(BASE_DIR . '/themes/dragon-gate/templates/components/navbar.twig');
         self::assertFileExists(BASE_DIR . '/themes/dragon-gate/templates/pages/home.twig');
         self::assertFileExists(BASE_DIR . '/themes/dragon-gate/templates/components/account-sidebar.twig');
+    }
+
+    public function testHanjiIsPublicChildOfDefaultWithLayoutColumns(): void
+    {
+        $catalog = new ThemeCatalog(BASE_DIR . '/themes');
+
+        self::assertTrue($catalog->isPublic('hanji'));
+        self::assertSame('default', $catalog->meta('hanji')['parent'] ?? null);
+        self::assertTrue($catalog->supportsFeature('hanji', 'layout_columns'));
+
+        foreach ([
+            'assets/css/tokens.css',
+            'assets/css/hanji.css',
+            'assets/img/paper-grain.svg',
+            'assets/img/brush.svg',
+            'layouts/_shell.json',
+            'layouts/home.json',
+            'templates/layouts/shell.twig',
+            'templates/components/navbar.twig',
+            'templates/components/home-hero.twig',
+            'templates/components/footer.twig',
+            'templates/pages/home.twig',
+        ] as $file) {
+            self::assertFileExists(BASE_DIR . '/themes/hanji/' . $file);
+        }
+
+        self::assertStringContainsString(
+            'github.com/dev-brunoreis/metin2-website',
+            (string) file_get_contents(BASE_DIR . '/themes/hanji/templates/components/footer.twig'),
+        );
+    }
+
+    public function testHanjiShowsHeroAndGalleryOnlyOnHome(): void
+    {
+        $resolver = new ThemeResolver(BASE_DIR . '/themes', 'hanji');
+
+        $home = array_column($resolver->resolveLayout('home')['slots']['banner'] ?? [], 'id');
+        $news = array_column($resolver->resolveLayout('news')['slots']['banner'] ?? [], 'id');
+
+        self::assertSame(['hanji-hero', 'hanji-gallery'], $home);
+        self::assertSame([], $news);
     }
 }

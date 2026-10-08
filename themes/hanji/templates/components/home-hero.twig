@@ -1,0 +1,104 @@
+{% set brand = site_title is defined and site_title != '' ? site_title : t('app.name') %}
+{% set dl = theme_client_download|default(null) %}
+<section class="hj-hero">
+    <div class="hj-hero-inner">
+        <div class="hj-hero-copy">
+            <p class="hj-kicker">
+                <span class="hj-kicker-seal" aria-hidden="true">石</span>
+                {{ t('theme.hanji.hero_kicker') }}
+            </p>
+            <h1 class="hj-hero-title">{{ brand }}</h1>
+            <p class="hj-hero-lead">{{ t('theme.hanji.hero_lead') }}</p>
+
+            <div class="hj-hero-actions">
+                {% if auth.check %}
+                    <a href="/account" class="k-btn k-btn-ember">{{ t('nav.account') }}</a>
+                {% elseif registration_enabled|default(true) %}
+                    <a href="/register" class="k-btn k-btn-ember">{{ t('home.create_account') }}</a>
+                {% endif %}
+                {% if dl and dl.external_url %}
+                    <a href="{{ dl.external_url }}" target="_blank" rel="noopener noreferrer" class="k-btn">{{ t('theme.kingdoms.download_client') }}</a>
+                {% elseif dl and dl.stored_name %}
+                    <a href="/downloads/{{ dl.id }}/file" class="k-btn">{{ t('theme.kingdoms.download_client') }}</a>
+                {% else %}
+                    <a href="/downloads" class="k-btn">{{ t('theme.kingdoms.download_client') }}</a>
+                {% endif %}
+            </div>
+
+            <dl class="hj-hero-tally">
+                <div>
+                    <dt>{{ t('status.players_online') }}</dt>
+                    <dd><span class="k-online-pulse" aria-hidden="true"></span>{{ theme_players_online|default(0) }}</dd>
+                </div>
+                <div>
+                    <dt>{{ t('status.accounts_online') }}</dt>
+                    <dd>{{ theme_accounts_online|default(0) }}</dd>
+                </div>
+            </dl>
+        </div>
+
+        <div class="hj-hero-art" aria-hidden="true">
+            <svg viewBox="0 0 640 480" preserveAspectRatio="xMidYMax slice">
+                <defs>
+                    <radialGradient id="hj-sun" cx="50%" cy="50%" r="50%">
+                        <stop offset="0" stop-color="#d9482c"/>
+                        <stop offset="0.72" stop-color="#b8321f"/>
+                        <stop offset="1" stop-color="#b8321f" stop-opacity="0"/>
+                    </radialGradient>
+                    <linearGradient id="hj-far" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#5d554b" stop-opacity="0.42"/>
+                        <stop offset="1" stop-color="#5d554b" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="hj-mid" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#3a342d" stop-opacity="0.78"/>
+                        <stop offset="1" stop-color="#3a342d" stop-opacity="0.1"/>
+                    </linearGradient>
+                    <linearGradient id="hj-stone" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#3b3530"/>
+                        <stop offset="0.55" stop-color="#1b1815"/>
+                        <stop offset="1" stop-color="#0d0b0a"/>
+                    </linearGradient>
+                    <linearGradient id="hj-mist" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#f1e8d6" stop-opacity="0"/>
+                        <stop offset="0.5" stop-color="#f1e8d6" stop-opacity="0.9"/>
+                        <stop offset="1" stop-color="#f1e8d6" stop-opacity="0"/>
+                    </linearGradient>
+                    <filter id="hj-glow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="3.5" result="b"/>
+                        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+
+                <circle class="hj-art-sun" cx="350" cy="168" r="112" fill="url(#hj-sun)"/>
+
+                <g class="hj-art-birds" fill="none" stroke="#2a2520" stroke-width="2" stroke-linecap="round">
+                    <path d="M118 112q7-6 14 0q7-6 14 0"/>
+                    <path d="M150 88q5-4 10 0q5-4 10 0"/>
+                    <path d="M92 140q5-4 10 0q5-4 10 0"/>
+                </g>
+
+                <path fill="url(#hj-far)" d="M0 320c50-24 84-80 132-70 38 8 56-52 104-66 44-12 64 44 102 52 50 10 76-60 128-50 54 10 82 70 128 64 34-4 46-20 46-20V480H0Z"/>
+
+                <g class="hj-art-stone">
+                    <ellipse cx="342" cy="338" rx="74" ry="12" fill="#1b1815" opacity="0.35"/>
+                    <path fill="url(#hj-stone)" d="M300 336 284 236l22-92 34-52 26 58 20 86-14 100Z"/>
+                    <path fill="none" stroke="#6b6158" stroke-width="1.4" opacity="0.7" d="M306 144l34 34 26-68M340 178l-8 158M340 178l40 58M284 236l48-14"/>
+                    <path class="hj-art-crack" fill="none" stroke="#ff5a36" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#hj-glow)" d="M322 160l12 34-14 34 18 30-8 40 10 26"/>
+                    <path class="hj-art-crack" fill="none" stroke="#ff7a4a" stroke-width="1.8" stroke-linecap="round" filter="url(#hj-glow)" d="M356 196l-10 26 16 22M300 252l18 10"/>
+                </g>
+
+                <rect y="300" width="640" height="34" fill="url(#hj-mist)"/>
+
+                <path fill="url(#hj-mid)" d="M0 372c34-14 60-66 98-74 34-8 44 34 80 38 38 4 58-46 96-46 30 0 40 46 76 60 30 12 62 0 92-26 30-26 60-18 84 2 34 28 70 32 114 22V480H0Z"/>
+                <rect y="398" width="640" height="26" fill="url(#hj-mist)" opacity="0.8"/>
+                <path fill="#221d18" opacity="0.88" d="M0 438c70-20 128-34 196-24 64 10 108 34 176 30 70-4 120-34 190-34 34 0 58 6 78 12V480H0Z"/>
+
+                <g class="hj-art-pine" fill="#221d18">
+                    <path d="M560 420l3-58 3 58Z"/>
+                    <path d="M526 372c14-8 34-10 50-2-14 2-30 6-50 2Zm6 16c16-8 38-8 56 0-18 2-36 4-56 0Zm-10 18c22-8 50-8 74 2-24 2-48 4-74-2Z"/>
+                </g>
+            </svg>
+            <span class="hj-hero-seal">三國</span>
+        </div>
+    </div>
+</section>
