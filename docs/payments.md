@@ -4,6 +4,8 @@ Donate cash packages via pluggable gateways (PayPal today). Admin list: `/admin/
 
 ## Flow
 
+`/donate` and `/donate/pay` are authenticated and use the account sidebar (`themes/default/layouts/donate.json` and `donate-pay.json` swap the `sidebar` node to `components/account-sidebar.twig`). Child themes inherit that unless they replace the node.
+
 1. Player `POST /donate/buy` (CSRF, auth, rate limit) → `PaymentCheckoutService::startCheckout`.
 2. Pending row in `cms_payments`; gateway `createCheckout()` returns an approval URL.
 3. Browser goes to `/donate/pay` then to the provider (`form-action 'self'` blocks a 302 straight to PayPal).

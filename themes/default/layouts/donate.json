@@ -1,6 +1,12 @@
 {
   "extends": "_shell",
   "slots": {
+    "sidebar": [
+      {
+        "id": "sidebar",
+        "template": "components/account-sidebar.twig"
+      }
+    ],
     "main": [
       {
         "id": "content",

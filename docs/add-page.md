@@ -26,7 +26,7 @@ Example layout name must match a file under `themes/*/layouts/{name}.json`.
 
 ## 3. Layout JSON
 
-Extend the shared shell; only override `main` (and `sidebar` for account pages):
+Extend the shared shell; only override `main` (and `sidebar` for account pages and donate):
 
 ```json
 {

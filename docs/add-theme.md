@@ -166,13 +166,13 @@ Public pages extend `layouts/_shell.json`. The shell template is `templates/layo
 | --- | --- | --- |
 | `header` | `navbar` | `components/navbar.twig` |
 | `banner` | `banner` | `components/banner.twig` |
-| `sidebar` | `sidebar` | `components/sidebar-auth.twig` (account layouts swap this `id`) |
+| `sidebar` | `sidebar` | `components/sidebar-auth.twig` (account layouts, plus `donate` and `donate-pay`, swap this `id` for `components/account-sidebar.twig`) |
 | `left` | `widget-online`, `widget-download` | matching `components/widget-*.twig` |
 | `main` | `content` (filled by each page) | `pages/….twig` |
 | `right` | `widget-ranking`, `widget-events`, `widget-discord` | matching widgets |
 | `footer` | `footer` | `components/footer.twig` |
 
-A page layout only fills `main` (and `sidebar` on account pages):
+A page layout only fills `main` (and `sidebar` on account pages and donate):
 
 ```json
 {

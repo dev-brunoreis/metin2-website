@@ -145,6 +145,24 @@ final class LayoutExtendsTest extends TestCase
         self::assertSame('pages/account.twig', $layout['slots']['main'][0]['template']);
     }
 
+    public function testShippedDonateLayoutsKeepAccountSidebar(): void
+    {
+        $resolver = new ThemeResolver(BASE_DIR . '/themes', 'default');
+
+        foreach (['donate', 'donate-pay'] as $layoutName) {
+            $layout = $resolver->resolveLayout($layoutName);
+            $sidebar = $layout['slots']['sidebar'] ?? [];
+
+            self::assertSame('components/account-sidebar.twig', $sidebar[0]['template'] ?? null, $layoutName);
+            self::assertSame('sidebar', $sidebar[0]['id'] ?? null, $layoutName);
+        }
+
+        $child = new ThemeResolver(BASE_DIR . '/themes', 'starter');
+        $inherited = $child->resolveLayout('donate');
+
+        self::assertSame('components/account-sidebar.twig', $inherited['slots']['sidebar'][0]['template'] ?? null);
+    }
+
     public function testMergeByIdRemoveFlag(): void
     {
         $base = [
