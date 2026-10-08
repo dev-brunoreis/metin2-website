@@ -1,0 +1,38 @@
+{% set account_section = t('account.sidebar') %}
+{% if current_path == '/account' %}
+    {% set account_section = t('account.dashboard') %}
+{% elseif current_path starts with '/account/notifications' %}
+    {% set account_section = t('account.notifications') %}
+{% elseif current_path starts with '/account/characters' %}
+    {% set account_section = t('account.characters') %}
+{% elseif current_path starts with '/account/tickets' %}
+    {% set account_section = t('account.tickets') %}
+{% elseif current_path starts with '/account/password' %}
+    {% set account_section = t('account.password') %}
+{% elseif current_path starts with '/account/email' %}
+    {% set account_section = t('account.email') %}
+{% elseif current_path starts with '/account/pin' %}
+    {% set account_section = t('account.pin') %}
+{% elseif current_path starts with '/account/orders' %}
+    {% set account_section = t('account.orders') %}
+{% elseif current_path starts with '/account/payments' %}
+    {% set account_section = t('account.payments') %}
+{% elseif current_path starts with '/donate' %}
+    {% set account_section = t('nav.donate') %}
+{% endif %}
+
+<nav class="dg-account-bar" aria-label="{{ t('account.sidebar') }}">
+    {% include 'components/account-links.twig' %}
+</nav>
+
+<details class="dg-account-fold">
+    <summary>
+        <span>{{ account_section }}</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M5 7.5 10 12.5 15 7.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+    </summary>
+    <div class="dg-account-fold-list">
+        {% include 'components/account-links.twig' %}
+    </div>
+</details>

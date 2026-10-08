@@ -2,7 +2,7 @@
 
 A public theme is a folder next to `default`. It overlays Twig, layout JSON, and CSS. It does not run PHP.
 
-`default` is the Kingdoms parent. `starter` is a child example: night/cobalt colors and the Discord widget removed. `admin` is the panel (`"public": false`) — do not pick it for the site.
+`default` is the Kingdoms parent. `dragon-gate` is a full public child: vertical desktop navigation, a data-driven hero, and a dashboard home in lacquer night, lantern gold, and jade. `starter` is the minimal child example: night/cobalt colors and the Discord widget removed. `admin` is the panel (`"public": false`) — do not pick it for the site.
 
 ## Add one
 

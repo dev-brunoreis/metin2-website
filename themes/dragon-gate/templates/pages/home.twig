@@ -1,0 +1,130 @@
+<section class="dg-command">
+    <header class="dg-section-head">
+        <div>
+            <span class="dg-section-index">01</span>
+            <p class="dg-eyebrow">{{ t('home.news_lead') }}</p>
+            <h2>{{ t('home.news_title') }}</h2>
+        </div>
+        {% if has_news %}
+            <a href="/news" class="dg-text-link">{{ t('home.news_all') }} <span aria-hidden="true">→</span></a>
+        {% endif %}
+    </header>
+
+    <div class="dg-command-grid">
+        <div class="dg-news-ledger">
+            {% if posts is empty %}
+                <div class="dg-empty">{{ t('news.empty') }}</div>
+            {% else %}
+                {% for post in posts %}
+                    <article class="dg-news-card{% if loop.first %} is-featured{% endif %}">
+                        <div class="dg-news-meta">
+                            <span>{{ loop.index < 10 ? '0' ~ loop.index : loop.index }}</span>
+                            <time>{{ (post.published_at|default(post.created_at))|game_date }}</time>
+                        </div>
+                        <div>
+                            <h3><a href="/news/{{ post.id }}">{{ post.title }}</a></h3>
+                            <p>{{ post.body|news_excerpt(loop.first ? 180 : 100) }}</p>
+                        </div>
+                        <a href="/news/{{ post.id }}" class="dg-card-arrow" aria-label="{{ post.title }}">↗</a>
+                    </article>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <aside class="dg-war-room">
+            <div class="dg-war-room-head">
+                <span class="dg-section-index">02</span>
+                <div>
+                    <p class="dg-eyebrow">{{ t('ranking.title') }}</p>
+                    <h2>{{ t('theme.kingdoms.ranking_title') }}</h2>
+                </div>
+                <a href="/ranking" class="dg-card-arrow" aria-label="{{ t('home.view_ranking') }}">↗</a>
+            </div>
+
+            {% if theme_top_players is empty %}
+                <p class="dg-empty">{{ t('ranking.empty') }}</p>
+            {% else %}
+                <ol class="dg-warriors">
+                    {% for row in theme_top_players|slice(0, 5) %}
+                        <li>
+                            <span class="dg-rank">{{ loop.index < 10 ? '0' ~ loop.index : loop.index }}</span>
+                            <span class="dg-warrior-face">{% include 'components/face-icon.twig' with {job: row.job} %}</span>
+                            <span class="dg-warrior-name">
+                                <a href="/player/{{ row.name|url_encode }}">{{ row.name }}</a>
+                                <small>{{ row.job|job_name(row.skill_group) }}</small>
+                            </span>
+                            <strong>Lv {{ row.level }}</strong>
+                        </li>
+                    {% endfor %}
+                </ol>
+            {% endif %}
+        </aside>
+    </div>
+</section>
+
+<section class="dg-realms">
+    <header class="dg-section-head">
+        <div>
+            <span class="dg-section-index">03</span>
+            <p class="dg-eyebrow">{{ t('theme.kingdoms.banner_kicker') }}</p>
+            <h2>{{ t('ranking.tab_guilds') }}</h2>
+        </div>
+    </header>
+    <div class="dg-realm-grid">
+        {% for empire in [1, 2, 3] %}
+            <a href="/ranking?tab=guilds" class="dg-realm-card dg-realm-{{ empire }}">
+                <span class="dg-realm-number">0{{ empire }}</span>
+                <strong>{{ empire|empire_name }}</strong>
+                <span>{{ t('home.view_ranking') }} →</span>
+            </a>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="dg-lower-grid">
+    <div class="dg-events-board">
+        <header class="dg-section-head">
+            <div>
+                <span class="dg-section-index">04</span>
+                <p class="dg-eyebrow">{{ t('home.events_lead') }}</p>
+                <h2>{{ t('home.events_title') }}</h2>
+            </div>
+            <a href="/events" class="dg-text-link">{{ t('home.events_all') }} <span aria-hidden="true">→</span></a>
+        </header>
+
+        {% if theme_upcoming_events is empty %}
+            <p class="dg-empty">{{ t('events.empty') }}</p>
+        {% else %}
+            <div class="dg-event-list">
+                {% for event in theme_upcoming_events|slice(0, 3) %}
+                    <a href="/events/{{ event.id }}">
+                        <time>{{ event.starts_at|game_date }}</time>
+                        <strong>{{ event.title }}</strong>
+                        <span aria-hidden="true">↗</span>
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <aside class="dg-enlist">
+        <span class="dg-enlist-mark" aria-hidden="true">龍</span>
+        <p class="dg-eyebrow">{{ t('theme.kingdoms.download_title') }}</p>
+        <h2>{{ t('theme.kingdoms.download_lead') }}</h2>
+        {% set dl = theme_client_download|default(null) %}
+        {% if dl and dl.external_url %}
+            <a href="{{ dl.external_url }}" target="_blank" rel="noopener noreferrer" class="k-btn k-btn-ember">
+                {{ t('theme.kingdoms.download_client') }}
+            </a>
+        {% elseif dl and dl.stored_name %}
+            <a href="/downloads/{{ dl.id }}/file" class="k-btn k-btn-ember">{{ t('theme.kingdoms.download_client') }}</a>
+        {% else %}
+            <a href="/downloads" class="k-btn k-btn-ember">{{ t('theme.kingdoms.download_client') }}</a>
+        {% endif %}
+        {% if discord_invite_url %}
+            <a href="{{ discord_invite_url }}" target="_blank" rel="noopener noreferrer" class="dg-text-link">
+                {{ t('theme.kingdoms.discord_join') }} →
+            </a>
+        {% endif %}
+    </aside>
+</section>

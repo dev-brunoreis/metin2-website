@@ -1,0 +1,91 @@
+{% set brand = site_title is defined and site_title != '' ? site_title : t('app.name') %}
+<header class="k-nav" data-k-nav>
+    <nav class="k-nav-bar">
+        <div class="dg-brand-row">
+            <button type="button"
+                    class="k-nav-toggle"
+                    data-k-nav-toggle
+                    aria-controls="k-nav-menu"
+                    aria-expanded="false"
+                    aria-label="{{ t('nav.open_menu') }}"
+                    data-label-open="{{ t('nav.open_menu') }}"
+                    data-label-close="{{ t('nav.close_menu') }}">
+                <svg class="k-nav-icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16"/>
+                </svg>
+                <svg class="k-nav-icon-close" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+
+            <a href="/" class="k-brand">
+                <span class="dg-brand-seal" aria-hidden="true">
+                    <svg viewBox="0 0 64 64">
+                        <path d="M32 3 56 17v30L32 61 8 47V17Z"/>
+                        <path d="M20 38c10-2 17-10 19-23 7 8 7 18 0 25-5 5-14 7-22 2 8 1 13-1 17-5-5 2-10 2-14 1Z"/>
+                    </svg>
+                </span>
+                <span class="dg-brand-copy">
+                    {% if site_logo|default('') %}
+                        <img src="{{ site_logo }}" alt="{{ brand }}" class="k-brand-logo">
+                    {% else %}
+                        <strong>{{ brand }}</strong>
+                    {% endif %}
+                    <small>{{ t('theme.kingdoms.banner_kicker') }}</small>
+                </span>
+            </a>
+        </div>
+
+        <div id="k-nav-menu" class="k-nav-links" data-k-nav-menu>
+            <a href="/" class="{% if current_path == '/' %}k-nav-active{% endif %}">
+                <span>01</span>{{ t('nav.home') }}
+            </a>
+            {% if has_news %}
+                <a href="/news" class="{% if current_path starts with '/news' %}k-nav-active{% endif %}">
+                    <span>02</span>{{ t('nav.news') }}
+                </a>
+            {% endif %}
+            {% if auth.check %}
+                <a href="/shop" class="{% if current_path starts with '/shop' %}k-nav-active{% endif %}">
+                    <span>03</span>{{ t('nav.shop') }}
+                </a>
+            {% endif %}
+            <a href="/ranking" class="{% if current_path starts with '/ranking' %}k-nav-active{% endif %}">
+                <span>04</span>{{ t('nav.ranking') }}
+            </a>
+            <a href="/status" class="{% if current_path starts with '/status' %}k-nav-active{% endif %}">
+                <span>05</span>{{ t('nav.status') }}
+            </a>
+            <a href="/downloads" class="{% if current_path starts with '/downloads' %}k-nav-active{% endif %}">
+                <span>06</span>{{ t('nav.downloads') }}
+            </a>
+            <a href="/donate" class="{% if current_path starts with '/donate' %}k-nav-active{% endif %}">
+                <span>07</span>{{ t('nav.donate') }}
+            </a>
+        </div>
+
+        <div class="dg-nav-foot">
+            <div class="dg-realm-pulse">
+                <span class="k-online-pulse" aria-hidden="true"></span>
+                <span>{{ theme_players_online|default(0) }} {{ t('status.players_online') }}</span>
+            </div>
+            <div class="dg-nav-actions">
+                {% include 'components/locale-switcher.twig' %}
+                {% if auth.check %}
+                    <a href="/account" class="k-btn k-btn-ghost">
+                        {{ t('nav.account') }}
+                        {% if notification_unread|default(0) > 0 %}
+                            <span class="dg-notification">{{ notification_unread }}</span>
+                        {% endif %}
+                    </a>
+                    <form class="dg-logout" method="post" action="/logout">
+                        <input type="hidden" name="_csrf" value="{{ csrf }}">
+                        <button type="submit">{{ t('nav.logout') }}</button>
+                    </form>
+                {% else %}
+                    <a href="/register" class="k-btn k-btn-ember">{{ t('nav.register') }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</header>

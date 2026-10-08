@@ -1,0 +1,7 @@
+{
+  "name": "dragon-gate",
+  "parent": "default",
+  "features": {
+    "layout_columns": false
+  }
+}

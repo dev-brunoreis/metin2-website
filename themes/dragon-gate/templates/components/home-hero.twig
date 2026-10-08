@@ -1,0 +1,60 @@
+{% set brand = site_title is defined and site_title != '' ? site_title : t('app.name') %}
+{% set slides = site_banners|default([]) %}
+{% set firstSlide = slides|first|default({}) %}
+{% set variants = firstSlide.variants|default({}) %}
+{% set heroImage = variants['1920'].webp|default(variants['1440'].webp|default(variants.fallback|default(firstSlide.original_path|default('')))) %}
+
+<section class="dg-hero{% if heroImage %} has-image{% endif %}">
+    {% if heroImage %}
+        <img class="dg-hero-image"
+             src="{{ heroImage }}"
+             alt="{{ firstSlide.alt|default(firstSlide.title|default('')) }}"
+             width="1920"
+             height="1080"
+             fetchpriority="high">
+    {% endif %}
+
+    <div class="dg-hero-art" aria-hidden="true">
+        <span class="dg-hero-sun"></span>
+        <span class="dg-hero-ridge dg-hero-ridge-far"></span>
+        <span class="dg-hero-ridge dg-hero-ridge-near"></span>
+        <svg class="dg-dragon-mark" viewBox="0 0 300 300">
+            <circle cx="150" cy="150" r="126"/>
+            <path d="M87 174c60-10 102-55 105-126 43 45 45 105 7 145-32 33-89 43-139 13 45 5 78-8 100-37-26 12-49 14-73 5Z"/>
+            <path d="M177 61c20 15 33 35 37 59M66 217c38 24 88 27 127 5"/>
+        </svg>
+    </div>
+
+    <div class="dg-hero-copy">
+        <p class="dg-eyebrow">
+            <span></span>
+            {{ t('theme.kingdoms.banner_kicker') }}
+        </p>
+        <h1>{{ brand }}</h1>
+        <p class="dg-hero-lead">{{ t('home.lead') }}</p>
+        <div class="dg-hero-actions">
+            {% if auth.check %}
+                <a href="/account" class="k-btn">{{ t('nav.account') }}</a>
+                <a href="/ranking" class="k-btn k-btn-ghost">{{ t('home.view_ranking') }}</a>
+            {% else %}
+                <a href="/register" class="k-btn k-btn-ember">{{ t('home.create_account') }}</a>
+                <a href="/downloads" class="k-btn k-btn-ghost">{{ t('theme.kingdoms.download_client') }}</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <dl class="dg-hero-stats">
+        <div>
+            <dt>{{ t('status.players_online') }}</dt>
+            <dd><span class="k-online-pulse" aria-hidden="true"></span>{{ theme_players_online|default(0) }}</dd>
+        </div>
+        <div>
+            <dt>{{ t('status.accounts_online') }}</dt>
+            <dd>{{ theme_accounts_online|default(0) }}</dd>
+        </div>
+        <div>
+            <dt>{{ t('theme.kingdoms.ranking_title') }}</dt>
+            <dd>{{ theme_top_players|default([])|length }}</dd>
+        </div>
+    </dl>
+</section>

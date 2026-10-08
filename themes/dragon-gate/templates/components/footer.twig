@@ -1,0 +1,37 @@
+{% set brand = site_title is defined and site_title != '' ? site_title : t('app.name') %}
+{% set tagline = footer_text is defined and footer_text != '' ? footer_text : t('theme.kingdoms.footer_tagline') %}
+<footer class="k-footer">
+    <div class="dg-footer-brand">
+        <span class="dg-footer-seal" aria-hidden="true">龍</span>
+        <div>
+            <strong>{{ brand }}</strong>
+            {% if tagline != '' %}<p>{{ tagline }}</p>{% endif %}
+        </div>
+    </div>
+
+    <nav class="dg-footer-nav" aria-label="{{ t('theme.kingdoms.social_links') }}">
+        <a href="/ranking">{{ t('nav.ranking') }}</a>
+        <a href="/events">{{ t('events.title') }}</a>
+        <a href="/downloads">{{ t('nav.downloads') }}</a>
+        <a href="https://github.com/dev-brunoreis/metin2-website"
+           target="_blank"
+           rel="noopener noreferrer">{{ t('theme.kingdoms.cms_credit') }}</a>
+    </nav>
+
+    {% if social_links is defined and social_links is not empty %}
+        <ul class="k-social" aria-label="{{ t('theme.kingdoms.social_links') }}">
+            {% for network, url in social_links %}
+                <li>
+                    <a href="{{ url }}"
+                       class="k-social-link"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       title="{{ t('nav.social_' ~ network) }}"
+                       aria-label="{{ t('nav.social_' ~ network) }}">
+                        {% include 'components/social-icon.twig' with {network: network} %}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</footer>

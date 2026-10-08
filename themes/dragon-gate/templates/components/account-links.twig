@@ -1,0 +1,15 @@
+<a href="/account" class="{% if current_path == '/account' %}is-active{% endif %}">{{ t('account.dashboard') }}</a>
+<a href="/account/notifications" class="{% if current_path starts with '/account/notifications' %}is-active{% endif %}">
+    {{ t('account.notifications') }}
+    {% if notification_unread|default(0) > 0 %}
+        <span class="dg-notification">{{ notification_unread }}</span>
+    {% endif %}
+</a>
+<a href="/account/characters" class="{% if current_path starts with '/account/characters' %}is-active{% endif %}">{{ t('account.characters') }}</a>
+<a href="/account/tickets" class="{% if current_path starts with '/account/tickets' %}is-active{% endif %}">{{ t('account.tickets') }}</a>
+<a href="/account/password" class="{% if current_path starts with '/account/password' %}is-active{% endif %}">{{ t('account.password') }}</a>
+<a href="/account/email" class="{% if current_path starts with '/account/email' %}is-active{% endif %}">{{ t('account.email') }}</a>
+<a href="/account/pin" class="{% if current_path starts with '/account/pin' %}is-active{% endif %}">{{ t('account.pin') }}</a>
+<a href="/account/orders" class="{% if current_path starts with '/account/orders' %}is-active{% endif %}">{{ t('account.orders') }}</a>
+<a href="/account/payments" class="{% if current_path starts with '/account/payments' %}is-active{% endif %}">{{ t('account.payments') }}</a>
+<a href="/donate" class="{% if current_path starts with '/donate' %}is-active{% endif %}">{{ t('nav.donate') }}</a>

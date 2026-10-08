@@ -58,7 +58,9 @@ A theme is files only. It does not run PHP, register routes, or query the databa
 
 Folder and feature names: theme `^[A-Za-z0-9_-]+$`. `ThemeCatalog` does not read `theme.json` until the name is valid. A broken `parent` fails when the page renders, not when you save settings.
 
-Shipped public themes: `default` (Kingdoms) and `starter` (child example). New public pages still land in `default`; a child only overrides what it needs. See [add-page.md](add-page.md).
+Shipped public themes: `default` (Kingdoms), `dragon-gate` (lacquer night, lantern gold, jade — child of `default`), and `starter` (child example). New public pages still land in `default`; a child only overrides what it needs. See [add-page.md](add-page.md).
+
+`dragon-gate` is the full-overlay example: it replaces the public shell, navigation, footer, home layout, hero, and home page while inheriting every route and internal page from `default`. The home composes the existing banner, online, ranking, event, download, Discord, and news globals. Every other page is one content column beside the navigation; login, online, ranking, and event widgets stay on the home. Account links sit in a row above account pages and `/donate` on wide screens, and in one collapsible list on narrow screens. It sets `layout_columns` to false. `assets/css/atmosphere.css` loads after the inherited `theme.css` and owns that composition without copying the parent's large stylesheet.
 
 The default footer (`templates/components/footer.twig`) includes a credit link to this repository. Keep that link if you override the footer.
 

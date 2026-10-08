@@ -1,0 +1,16 @@
+{
+  "slots": {
+    "banner": [
+      {
+        "id": "banner",
+        "template": "components/home-hero.twig"
+      }
+    ],
+    "main": [
+      {
+        "id": "content",
+        "template": "pages/home.twig"
+      }
+    ]
+  }
+}
